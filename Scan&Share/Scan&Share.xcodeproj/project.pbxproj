@@ -64,9 +64,6 @@
 		8A0F8AAB17315F0F00974581 = {
 			isa = PBXGroup;
 			children = (
-				8A4922E61733C8B700158AEB /* MobileCoreServices.framework */,
-				8A4922E41733C89B00158AEB /* Security.framework */,
-				8A4922E21733C88A00158AEB /* CFNetwork.framework */,
 				8A0F8ABD17315F0F00974581 /* Scan&Share */,
 				8A0F8AB617315F0F00974581 /* Frameworks */,
 				8A0F8AB517315F0F00974581 /* Products */,
@@ -85,6 +82,9 @@
 		8A0F8AB617315F0F00974581 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A4922E61733C8B700158AEB /* MobileCoreServices.framework */,
+				8A4922E41733C89B00158AEB /* Security.framework */,
+				8A4922E21733C88A00158AEB /* CFNetwork.framework */,
 				8A0F8AB717315F0F00974581 /* UIKit.framework */,
 				8A0F8AB917315F0F00974581 /* Foundation.framework */,
 				8A0F8ABB17315F0F00974581 /* CoreGraphics.framework */,
@@ -96,8 +96,7 @@
 		8A0F8ABD17315F0F00974581 /* Scan&Share */ = {
 			isa = PBXGroup;
 			children = (
-				8A0F8AC617315F0F00974581 /* SSAppDelegate.h */,
-				8A0F8AC717315F0F00974581 /* SSAppDelegate.m */,
+				8A4922E817345A2500158AEB /* Classes */,
 				8A0F8ABE17315F0F00974581 /* Supporting Files */,
 			);
 			path = "Scan&Share";
@@ -115,6 +114,63 @@
 				8A0F8ACD17315F0F00974581 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8A4922E817345A2500158AEB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8A4922E917345A2E00158AEB /* Generic */,
+				8A4922EA17345A3500158AEB /* Model */,
+				8A4922ED17345A6100158AEB /* UI */,
+				8A4922EC17345A4F00158AEB /* Webservices */,
+				8A4922EB17345A4600158AEB /* Application Delegate */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		8A4922E917345A2E00158AEB /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Generic;
+			sourceTree = "<group>";
+		};
+		8A4922EA17345A3500158AEB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8A4922EB17345A4600158AEB /* Application Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				8A0F8AC617315F0F00974581 /* SSAppDelegate.h */,
+				8A0F8AC717315F0F00974581 /* SSAppDelegate.m */,
+			);
+			name = "Application Delegate";
+			sourceTree = "<group>";
+		};
+		8A4922EC17345A4F00158AEB /* Webservices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Webservices;
+			sourceTree = "<group>";
+		};
+		8A4922ED17345A6100158AEB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8A4922EE17345A9100158AEB /* iPhone */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		8A4922EE17345A9100158AEB /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPhone;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
