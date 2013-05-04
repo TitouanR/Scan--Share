@@ -7,6 +7,8 @@
 //
 
 #import "SSAppDelegate.h"
+#import "SSApi.h"
+#import <RestKit/RestKit.h>
 
 @implementation SSAppDelegate
 
@@ -14,8 +16,13 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    UIViewController *root = [[UIViewController alloc] init];
+    [self.window setRootViewController:root];
+    [[SSApi sharedApi] getProductWithEAN:@"3017624044003"];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    
     return YES;
 }
 

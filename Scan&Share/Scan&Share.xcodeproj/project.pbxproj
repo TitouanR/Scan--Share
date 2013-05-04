@@ -19,6 +19,8 @@
 		8A4922E31733C88A00158AEB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4922E21733C88A00158AEB /* CFNetwork.framework */; };
 		8A4922E51733C89B00158AEB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4922E41733C89B00158AEB /* Security.framework */; };
 		8A4922E71733C8B700158AEB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4922E61733C8B700158AEB /* MobileCoreServices.framework */; };
+		8A4922F117345C7D00158AEB /* SSApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4922F017345C7D00158AEB /* SSApi.m */; };
+		8A4922F61735BD0400158AEB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4922F41735BD0400158AEB /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		99D1440E4CE14C78B80DBD3D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 733F9113697B41B4BF2970D3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,11 @@
 		8A4922E21733C88A00158AEB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8A4922E41733C89B00158AEB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8A4922E61733C8B700158AEB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		8A4922EF17345C7D00158AEB /* SSApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSApi.h; path = Classes/SSApi.h; sourceTree = "<group>"; };
+		8A4922F017345C7D00158AEB /* SSApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSApi.m; path = Classes/SSApi.m; sourceTree = "<group>"; };
+		8A4922F217345E9100158AEB /* SSWSConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSWSConfiguration.h; sourceTree = "<group>"; };
+		8A4922F41735BD0400158AEB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		8A4922F51735BD0400158AEB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		F831B74949C7401AB7A03154 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -82,6 +89,7 @@
 		8A0F8AB617315F0F00974581 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A4922F31735BCE400158AEB /* JSONKit */,
 				8A4922E61733C8B700158AEB /* MobileCoreServices.framework */,
 				8A4922E41733C89B00158AEB /* Security.framework */,
 				8A4922E21733C88A00158AEB /* CFNetwork.framework */,
@@ -109,6 +117,7 @@
 				8A0F8AC017315F0F00974581 /* InfoPlist.strings */,
 				8A0F8AC317315F0F00974581 /* main.m */,
 				8A0F8AC517315F0F00974581 /* Scan&Share-Prefix.pch */,
+				8A4922F217345E9100158AEB /* SSWSConfiguration.h */,
 				8A0F8AC917315F0F00974581 /* Default.png */,
 				8A0F8ACB17315F0F00974581 /* Default@2x.png */,
 				8A0F8ACD17315F0F00974581 /* Default-568h@2x.png */,
@@ -154,6 +163,8 @@
 		8A4922EC17345A4F00158AEB /* Webservices */ = {
 			isa = PBXGroup;
 			children = (
+				8A4922EF17345C7D00158AEB /* SSApi.h */,
+				8A4922F017345C7D00158AEB /* SSApi.m */,
 			);
 			name = Webservices;
 			sourceTree = "<group>";
@@ -171,6 +182,15 @@
 			children = (
 			);
 			name = iPhone;
+			sourceTree = "<group>";
+		};
+		8A4922F31735BCE400158AEB /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				8A4922F41735BD0400158AEB /* JSONKit.m */,
+				8A4922F51735BD0400158AEB /* JSONKit.h */,
+			);
+			name = JSONKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +294,8 @@
 			files = (
 				8A0F8AC417315F0F00974581 /* main.m in Sources */,
 				8A0F8AC817315F0F00974581 /* SSAppDelegate.m in Sources */,
+				8A4922F117345C7D00158AEB /* SSApi.m in Sources */,
+				8A4922F61735BD0400158AEB /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +378,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Scan&Share/Scan&Share-Prefix.pch";
 				INFOPLIST_FILE = "Scan&Share/Scan&Share-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -382,6 +405,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Scan&Share/Scan&Share-Prefix.pch";
 				INFOPLIST_FILE = "Scan&Share/Scan&Share-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
