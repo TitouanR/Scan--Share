@@ -9,6 +9,7 @@
 #import "SSAppDelegate.h"
 #import "SSApi.h"
 #import <RestKit/RestKit.h>
+#import "SSProduct.h"
 
 @implementation SSAppDelegate
 
@@ -18,7 +19,13 @@
     // Override point for customization after application launch.
     UIViewController *root = [[UIViewController alloc] init];
     [self.window setRootViewController:root];
-    [[SSApi sharedApi] getProductWithEAN:@"3660140823951"];
+   // [[SSApi sharedApi] getProductWithEAN:@"3660140823951"];
+    [[SSApi sharedApi] getProductWithEAN:@"3660140823951" withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
+        RKLogInfo(@"Load collection of Products: %@", product);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+         RKLogError(@"Operation failed with error: %@", error);
+    }];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     

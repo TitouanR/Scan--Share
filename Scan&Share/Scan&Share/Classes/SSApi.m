@@ -61,4 +61,32 @@ static SSApi *sharedApi = nil;
     [objectRequestOperation start];
 }
 
+- (void)getProductWithEAN:(NSString *)eanID withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
+                  failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure
+{
+    // Create mapping between JSON and Objective-C class
+    RKObjectMapping *productMapping = [RKObjectMapping mappingForClass:[SSProduct class]];
+    [productMapping addAttributeMappingsFromDictionary:@{
+     @"titre": @"titles",
+     @"marque": @"brands"}];
+    
+    RKObjectMapping *imageMapping = [RKObjectMapping mappingForClass:[SSProduct class]];
+    [imageMapping addAttributeMappingsFromDictionary:@{@"url": @"imageURL"}];
+    
+    [productMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"image" toKeyPath:@"imageURL" withMapping:imageMapping]];
+    
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:productMapping pathPattern:nil keyPath:@"produit" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    // Create url request for asking API
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@ean/%@?key=%@", SSBaseURL, eanID, SSAppKey]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
+    
+    // Set blocks for request response
+    [objectRequestOperation setCompletionBlockWithSuccess:success failure:failure];
+    
+    // Launch request
+    [objectRequestOperation start];
+}
+
 @end
