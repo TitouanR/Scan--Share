@@ -16,6 +16,7 @@
 		8A0F8ACA17315F0F00974581 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A0F8AC917315F0F00974581 /* Default.png */; };
 		8A0F8ACC17315F0F00974581 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A0F8ACB17315F0F00974581 /* Default@2x.png */; };
 		8A0F8ACE17315F0F00974581 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A0F8ACD17315F0F00974581 /* Default-568h@2x.png */; };
+		8A4096E0173B1651004D4D83 /* SSProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4096DF173B1651004D4D83 /* SSProduct.m */; };
 		8A4922E31733C88A00158AEB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4922E21733C88A00158AEB /* CFNetwork.framework */; };
 		8A4922E51733C89B00158AEB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4922E41733C89B00158AEB /* Security.framework */; };
 		8A4922E71733C8B700158AEB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4922E61733C8B700158AEB /* MobileCoreServices.framework */; };
@@ -39,6 +40,8 @@
 		8A0F8AC917315F0F00974581 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8A0F8ACB17315F0F00974581 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8A0F8ACD17315F0F00974581 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8A4096DE173B1651004D4D83 /* SSProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSProduct.h; path = Classes/SSProduct.h; sourceTree = "<group>"; };
+		8A4096DF173B1651004D4D83 /* SSProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSProduct.m; path = Classes/SSProduct.m; sourceTree = "<group>"; };
 		8A4922E21733C88A00158AEB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8A4922E41733C89B00158AEB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8A4922E61733C8B700158AEB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -147,6 +150,8 @@
 		8A4922EA17345A3500158AEB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8A4096DE173B1651004D4D83 /* SSProduct.h */,
+				8A4096DF173B1651004D4D83 /* SSProduct.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				8A0F8AC817315F0F00974581 /* SSAppDelegate.m in Sources */,
 				8A4922F117345C7D00158AEB /* SSApi.m in Sources */,
 				8A4922F61735BD0400158AEB /* JSONKit.m in Sources */,
+				8A4096E0173B1651004D4D83 /* SSProduct.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

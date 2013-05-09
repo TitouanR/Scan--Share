@@ -18,7 +18,7 @@
     // Override point for customization after application launch.
     UIViewController *root = [[UIViewController alloc] init];
     [self.window setRootViewController:root];
-    [[SSApi sharedApi] getProductWithEAN:@"3017624044003"];
+    [[SSApi sharedApi] getProductWithEAN:@"3660140823951"];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
