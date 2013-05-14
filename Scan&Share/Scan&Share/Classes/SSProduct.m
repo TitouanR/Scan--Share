@@ -10,4 +10,18 @@
 
 @implementation SSProduct
 
+@synthesize titles;
+@synthesize brands;
+@synthesize imageURL;
+
+- (NSString *)title
+{
+    return (titles ? [titles objectAtIndex:0] : nil);
+}
+
+- (NSString *)brand
+{
+    return (brands ? [brands objectAtIndex:0] : nil);
+}
+
 @end
