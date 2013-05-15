@@ -15,30 +15,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    // Override point for customization after application launch.
-//    UIViewController *root = [[UIViewController alloc] init];
-//    [self.window setRootViewController:root];
-//   // [[SSApi sharedApi] getProductWithEAN:@"3660140823951"];
-//    [[SSApi sharedApi] getProductWithEAN:@"3660140823951" withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-//        SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
-//        RKLogInfo(@"Load collection of Products: %@", product);
-//    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-//         RKLogError(@"Operation failed with error: %@", error);
-//    }];
-//    self.window.backgroundColor = [UIColor whiteColor];
-//    [self.window makeKeyAndVisible];
-    
+    // Setting Tab Bar
     SSMainViewController *tabBarController = (SSMainViewController *)self.window.rootViewController;
     [tabBarController setDelegate:self];
     [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background1.png"]];
     [tabBarController.tabBar setSelectionIndicatorImage:[[UIImage alloc] init]];
-   // [[[tabBarController.viewControllers objectAtIndex:1] tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"searchIcon.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"searchIcon.png"]];
-  
 
-    
-   
-   //[[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"tabBarBackground2.png"]];
+    // Setting Nav Bar
+    UIImage *navBackgroundImage = [UIImage imageNamed:@"navbar.png"];
+    [[UINavigationBar appearance] setBackgroundImage:navBackgroundImage forBarMetrics:UIBarMetricsDefault];
     return YES;
 }
 
@@ -84,6 +69,12 @@
             break;
         case 2:
             [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background1.png"]];
+            break;
+        case 3:
+            [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background4.png"]];
+            break;
+        case 4:
+            [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background5.png"]];
             break;
             
             

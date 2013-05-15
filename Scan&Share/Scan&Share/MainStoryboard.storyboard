@@ -67,7 +67,16 @@
                     <view key="view" contentMode="scaleToFill" id="uO9-ef-hpf">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="fmf-Qh-MnJ"/>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fmf-Qh-MnJ" firstAttribute="leading" secondItem="uO9-ef-hpf" secondAttribute="leading" type="default" id="YET-FH-mLj"/>
+                            <constraint firstItem="fmf-Qh-MnJ" firstAttribute="bottom" secondItem="uO9-ef-hpf" secondAttribute="bottom" type="default" id="aMP-Wk-1AM"/>
+                            <constraint firstItem="fmf-Qh-MnJ" firstAttribute="trailing" secondItem="uO9-ef-hpf" secondAttribute="trailing" type="default" id="pfa-hh-aLc"/>
+                            <constraint firstItem="fmf-Qh-MnJ" firstAttribute="top" secondItem="uO9-ef-hpf" secondAttribute="top" type="default" id="xX6-vP-6v9"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vCL-44-Uho"/>
                 </viewController>
@@ -98,7 +107,16 @@
                     <view key="view" contentMode="scaleToFill" id="zVc-aG-ENc">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="C74-84-EvT"/>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="C74-84-EvT" firstAttribute="trailing" secondItem="zVc-aG-ENc" secondAttribute="trailing" type="default" id="Wr8-6l-lMb"/>
+                            <constraint firstItem="C74-84-EvT" firstAttribute="leading" secondItem="zVc-aG-ENc" secondAttribute="leading" type="default" id="kxE-Mi-VML"/>
+                            <constraint firstItem="C74-84-EvT" firstAttribute="bottom" secondItem="zVc-aG-ENc" secondAttribute="bottom" type="default" id="m90-xB-mhR"/>
+                            <constraint firstItem="C74-84-EvT" firstAttribute="top" secondItem="zVc-aG-ENc" secondAttribute="top" type="default" id="wol-ip-yNo"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Drg-Za-ZUF"/>
                 </viewController>
@@ -110,11 +128,10 @@
         <scene sceneID="CXr-f7-hOy">
             <objects>
                 <viewController id="lrE-Uo-LVn" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="z5K-5g-odT">
+                    <imageView key="view" userInteractionEnabled="NO" contentMode="scaleToFill" image="background@2x.png" id="VeC-0L-6NG">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </imageView>
                     <navigationItem key="navigationItem" id="eVA-7M-QqD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYg-Ug-Zl4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -144,7 +161,19 @@
                     <view key="view" contentMode="scaleToFill" id="ORe-av-bcF">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="BYB-Ci-r97">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="455" id="BMp-83-TrJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BYB-Ci-r97" firstAttribute="trailing" secondItem="ORe-av-bcF" secondAttribute="trailing" type="default" id="2Vn-ac-DwG"/>
+                            <constraint firstItem="BYB-Ci-r97" firstAttribute="leading" secondItem="ORe-av-bcF" secondAttribute="leading" type="default" id="7c6-rY-RxQ"/>
+                            <constraint firstItem="BYB-Ci-r97" firstAttribute="top" secondItem="ORe-av-bcF" secondAttribute="top" type="default" id="zsG-aL-Spl"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fb3-zY-cjM"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -177,7 +206,16 @@
                     <view key="view" contentMode="scaleToFill" id="JCJ-qE-a8G">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="GO5-Jp-2q5"/>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GO5-Jp-2q5" firstAttribute="top" secondItem="JCJ-qE-a8G" secondAttribute="top" type="default" id="UYy-Aq-Kw1"/>
+                            <constraint firstItem="GO5-Jp-2q5" firstAttribute="bottom" secondItem="JCJ-qE-a8G" secondAttribute="bottom" type="default" id="Uda-UZ-Rfo"/>
+                            <constraint firstItem="GO5-Jp-2q5" firstAttribute="trailing" secondItem="JCJ-qE-a8G" secondAttribute="trailing" type="default" id="Vcv-dE-9YM"/>
+                            <constraint firstItem="GO5-Jp-2q5" firstAttribute="leading" secondItem="JCJ-qE-a8G" secondAttribute="leading" type="default" id="xH8-Mw-omO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Kiz-7d-FWe"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -187,7 +225,13 @@
             <point key="canvasLocation" x="878" y="-997"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background@2x.png" width="640" height="1136"/>
+    </resources>
     <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
         <class className="SSMainViewController" superclassName="UITabBarController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SSMainViewController.h"/>
         </class>
