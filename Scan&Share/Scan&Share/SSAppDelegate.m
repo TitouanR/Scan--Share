@@ -20,7 +20,11 @@
     [tabBarController setDelegate:self];
     [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background1.png"]];
     [tabBarController.tabBar setSelectionIndicatorImage:[[UIImage alloc] init]];
-
+    [tabBarController setSelectedIndex:2];
+    CGRect frame = tabBarController.tabBar.frame;
+    frame.size.height -= 20;
+    tabBarController.tabBar.frame = frame;
+    
     // Setting Nav Bar
     UIImage *navBackgroundImage = [UIImage imageNamed:@"navbar.png"];
     [[UINavigationBar appearance] setBackgroundImage:navBackgroundImage forBarMetrics:UIBarMetricsDefault];
@@ -59,7 +63,6 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-    NSLog(@"controller : %@", viewController);
     switch (tabBarController.selectedIndex) {
         case 0:
               [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background2.png"]];
