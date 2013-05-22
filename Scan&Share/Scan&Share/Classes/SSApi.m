@@ -10,7 +10,7 @@
 #import <RestKit/RestKit.h>
 #import "JSONKit.h"
 #import "SSProduct.h"
-
+#import "SSImage.h"
 @implementation SSApi
 
 static SSApi *sharedApi = nil;
@@ -34,18 +34,24 @@ static SSApi *sharedApi = nil;
     // Create mapping between JSON and Objective-C class
     RKObjectMapping *productMapping = [RKObjectMapping mappingForClass:[SSProduct class]];
     [productMapping addAttributeMappingsFromDictionary:@{
-     @"titre": @"titles",
-     @"marque": @"brands"}];
+     @"ean": @"ean",
+     @"name": @"name",
+     @"description": @"description",
+     @"rating": @"rating",
+     @"gps": @"gps",
+     @"types": @"types",
+     @"prices": @"prices"}];
     
-    RKObjectMapping *imageMapping = [RKObjectMapping mappingForClass:[SSProduct class]];
-    [imageMapping addAttributeMappingsFromDictionary:@{@"url": @"imageURL"}];
+    RKObjectMapping *imageMapping = [RKObjectMapping mappingForClass:[SSImage class]];
+    [imageMapping addAttributeMappingsFromDictionary:@{@"url": @"imageURL",
+    @"buffer":@"imageBuffer"}];
     
-    [productMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"image" toKeyPath:@"imageURL" withMapping:imageMapping]];
+    [productMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"photo" toKeyPath:@"image" withMapping:imageMapping]];
     
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:productMapping pathPattern:nil keyPath:@"produit" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:productMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
    
     // Create url request for asking API
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@ean/%@?key=%@", SSBaseURL, eanID, SSAppKey]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@ean?id=%@", SSBaseURL, eanID]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
     
@@ -57,6 +63,7 @@ static SSApi *sharedApi = nil;
         RKLogError(@"Operation failed with error: %@", error);
     }];
     
+
     // Launch request
     [objectRequestOperation start];
 }
@@ -67,18 +74,25 @@ static SSApi *sharedApi = nil;
     // Create mapping between JSON and Objective-C class
     RKObjectMapping *productMapping = [RKObjectMapping mappingForClass:[SSProduct class]];
     [productMapping addAttributeMappingsFromDictionary:@{
-     @"titre": @"titles",
-     @"marque": @"brands"}];
+     @"ean": @"ean",
+     @"name": @"name",
+     @"description": @"description",
+     @"rating": @"rating",
+     @"gps": @"gps",
+     @"types": @"types",
+     @"prices": @"prices"}];
     
     RKObjectMapping *imageMapping = [RKObjectMapping mappingForClass:[SSProduct class]];
-    [imageMapping addAttributeMappingsFromDictionary:@{@"url": @"imageURL"}];
+    [imageMapping addAttributeMappingsFromDictionary:@{@"url": @"imageURL",
+     @"buffer":@"imageBuffer"}];
     
-    [productMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"image" toKeyPath:@"imageURL" withMapping:imageMapping]];
+    [productMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"photo" toKeyPath:@"imageURL" withMapping:imageMapping]];
+    [productMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"photo" toKeyPath:@"imageBuffer" withMapping:imageMapping]];
     
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:productMapping pathPattern:nil keyPath:@"produit" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:productMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
     // Create url request for asking API
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@ean/%@?key=%@", SSBaseURL, eanID, SSAppKey]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@ean?id=%@", SSBaseURL, eanID]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
     

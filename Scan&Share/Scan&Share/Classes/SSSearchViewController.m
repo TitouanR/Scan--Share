@@ -7,6 +7,7 @@
 //
 
 #import "SSSearchViewController.h"
+#import "SSApi.h"
 
 @interface SSSearchViewController ()
 
@@ -27,7 +28,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-   
+    [[SSApi sharedApi] getProductWithEAN:@"3068320052007"];
 }
 
 - (void)didReceiveMemoryWarning

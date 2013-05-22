@@ -7,12 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SSImage.h"
 
 @interface SSProduct : NSObject
 
-@property (nonatomic, strong) NSArray *titles;
-@property (nonatomic, strong) NSArray *brands;
-@property (nonatomic, strong) NSString *price;
-@property (nonatomic, strong) NSString *imageURL;
+@property (nonatomic, strong) NSString *ean;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSNumber *rating;
+@property (nonatomic, strong) SSImage* image;
+@property (nonatomic, strong) NSArray *gps;
+@property (nonatomic, strong) NSArray *types;
+@property (nonatomic, strong) NSArray *prices;
+
+// TO DO : Add Comments
 
 @end
