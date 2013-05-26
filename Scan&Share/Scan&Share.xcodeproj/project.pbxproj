@@ -19,6 +19,7 @@
 		8A1C76D7173D226A0042B9B6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1C76D6173D226A0042B9B6 /* MainStoryboard.storyboard */; };
 		8A1C76DC173DAB380042B9B6 /* SSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C76DB173DAB380042B9B6 /* SSMainViewController.m */; };
 		8A1C7701173DC4BB0042B9B6 /* SSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C7700173DC4BB0042B9B6 /* SSSearchViewController.m */; };
+		8A2450291752B70700342B8D /* SSPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2450281752B70700342B8D /* SSPrice.m */; };
 		8A4096E0173B1651004D4D83 /* SSProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4096DF173B1651004D4D83 /* SSProduct.m */; };
 		8A4922E31733C88A00158AEB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4922E21733C88A00158AEB /* CFNetwork.framework */; };
 		8A4922E51733C89B00158AEB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4922E41733C89B00158AEB /* Security.framework */; };
@@ -76,6 +77,8 @@
 		8A1C76DB173DAB380042B9B6 /* SSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSMainViewController.m; path = Classes/SSMainViewController.m; sourceTree = "<group>"; };
 		8A1C76FF173DC4BB0042B9B6 /* SSSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSearchViewController.h; path = Classes/SSSearchViewController.h; sourceTree = "<group>"; };
 		8A1C7700173DC4BB0042B9B6 /* SSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSearchViewController.m; path = Classes/SSSearchViewController.m; sourceTree = "<group>"; };
+		8A2450271752B70700342B8D /* SSPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSPrice.h; path = Classes/SSPrice.h; sourceTree = "<group>"; };
+		8A2450281752B70700342B8D /* SSPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSPrice.m; path = Classes/SSPrice.m; sourceTree = "<group>"; };
 		8A4096DE173B1651004D4D83 /* SSProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSProduct.h; path = Classes/SSProduct.h; sourceTree = "<group>"; };
 		8A4096DF173B1651004D4D83 /* SSProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSProduct.m; path = Classes/SSProduct.m; sourceTree = "<group>"; };
 		8A4922E21733C88A00158AEB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -296,6 +299,8 @@
 				8ACFC68E174D080000771E12 /* SSImage.m */,
 				8A9394B1174FB9F50061CFE2 /* SSComment.h */,
 				8A9394B2174FB9F50061CFE2 /* SSComment.m */,
+				8A2450271752B70700342B8D /* SSPrice.h */,
+				8A2450281752B70700342B8D /* SSPrice.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -540,6 +545,7 @@
 				8A7D1F6717448320009E7536 /* SSScanViewController.m in Sources */,
 				8ACFC68F174D080000771E12 /* SSImage.m in Sources */,
 				8A9394B3174FB9F50061CFE2 /* SSComment.m in Sources */,
+				8A2450291752B70700342B8D /* SSPrice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,7 +575,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Maxime Bornemann (MAR7RR85NZ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Julien DUMAS (Y4K94FKLM4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -585,7 +591,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "7431E06A-45F5-437A-87D3-D1682F8C1FB9";
+				PROVISIONING_PROFILE = "9B86828C-E92F-4755-BFD8-46FADF729992";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

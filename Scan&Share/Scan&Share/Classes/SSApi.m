@@ -82,12 +82,11 @@ static SSApi *sharedApi = nil;
      @"types": @"types",
      @"prices": @"prices"}];
     
-    RKObjectMapping *imageMapping = [RKObjectMapping mappingForClass:[SSProduct class]];
+    RKObjectMapping *imageMapping = [RKObjectMapping mappingForClass:[SSImage class]];
     [imageMapping addAttributeMappingsFromDictionary:@{@"url": @"imageURL",
      @"buffer":@"imageBuffer"}];
     
-    [productMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"photo" toKeyPath:@"imageURL" withMapping:imageMapping]];
-    [productMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"photo" toKeyPath:@"imageBuffer" withMapping:imageMapping]];
+    [productMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"photo" toKeyPath:@"image" withMapping:imageMapping]];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:productMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     

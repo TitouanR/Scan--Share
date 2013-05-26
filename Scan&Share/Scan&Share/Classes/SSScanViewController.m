@@ -7,6 +7,7 @@
 //
 
 #import "SSScanViewController.h"
+#import "SSProduct.h"
 
 @interface SSScanViewController ()
 
@@ -31,15 +32,20 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    ZBarImageScanner *scanner = [[ZBarImageScanner alloc] init];
-    [scanner setSymbology:ZBAR_EAN13 config:ZBAR_CFG_ENABLE to:0];
-    readerView = [[ZBarReaderView alloc] initWithImageScanner:scanner];
+//    ZBarImageScanner *scanner = [[ZBarImageScanner alloc] init];
+//    [scanner setSymbology:ZBAR_EAN13 config:ZBAR_CFG_ENABLE to:0];
+//    readerView = [[ZBarReaderView alloc] initWithImageScanner:scanner];
     readerView.readerDelegate = self;
-    readerView.zoom = 1.0;
+//    readerView.zoom = 1.0;
+//    
     
     
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     [readerView start];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,6 +61,20 @@
      didReadSymbols: (ZBarSymbolSet*) symbols
           fromImage: (UIImage*) image
 {
+       NSString *ean;
+  
+    for(ZBarSymbol *sym in symbols) {
+        ean = sym.data;
+        NSLog(@"code : %@", ean);
+        break;
+    }
     
+    [[SSApi sharedApi] getProductWithEAN:ean withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
+        RKLogInfo(@"Load collection of Products: %@", product);
+        //Push View
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        // Handle erros
+    }];
 }
 @end

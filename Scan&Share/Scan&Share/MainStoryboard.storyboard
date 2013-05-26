@@ -9,6 +9,7 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="etw-dD-TfA" customClass="SSMainViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="fdJ-PN-Wf3">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -37,12 +38,37 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Gat-or-Szj" kind="push" id="t1z-YX-hDb"/>
+                        <segue destination="EpY-OE-YcY" kind="push" id="hFz-ca-per"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tLv-Xd-wAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="402" y="-334"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="5Rb-h2-mS2">
+            <objects>
+                <viewController id="EpY-OE-YcY" customClass="SSSearchViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WF7-nW-vbg">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background@2x.png" id="t2I-1C-toX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yDq-dy-SQA"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <segue destination="Gat-or-Szj" kind="push" id="JRv-WG-FLt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ggs-BG-Nbh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="862" y="-334"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="o6C-NQ-2of">
@@ -65,7 +91,7 @@
             <objects>
                 <viewController id="WVC-2B-r0g" customClass="SSScanViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uO9-ef-hpf">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background@2x.png" id="fmf-Qh-MnJ">
@@ -75,17 +101,17 @@
                                 <rect key="frame" x="60" y="0.0" width="201" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" id="Gwb-LW-piZ" customClass="ZBarReaderView">
-                                <rect key="frame" x="46" y="126" width="228" height="155"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" id="9Km-2U-xEP" customClass="ZBarReaderView">
+                                <rect key="frame" x="7" y="104" width="305" height="166"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Scan" id="vCL-44-Uho"/>
                     <connections>
-                        <outlet property="readerView" destination="Gwb-LW-piZ" id="3cL-WU-gQu"/>
+                        <outlet property="readerView" destination="9Km-2U-xEP" id="qZF-J3-8Tr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kH8-aQ-Oi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -113,7 +139,7 @@
             <objects>
                 <viewController id="exN-ix-DTy" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zVc-aG-ENc">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background@2x.png" id="C74-84-EvT">
@@ -133,7 +159,7 @@
             <objects>
                 <viewController id="lrE-Uo-LVn" sceneMemberID="viewController">
                     <imageView key="view" userInteractionEnabled="NO" contentMode="scaleToFill" image="background@2x.png" id="VeC-0L-6NG">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
                     <navigationItem key="navigationItem" id="eVA-7M-QqD"/>
@@ -180,7 +206,7 @@
             <objects>
                 <viewController id="Gat-or-Szj" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JCJ-qE-a8G">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background@2x.png" id="GO5-Jp-2q5">
@@ -194,7 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hJ-5a-WrP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="940" y="-997"/>
+            <point key="canvasLocation" x="1390" y="-997"/>
         </scene>
     </scenes>
     <resources>
@@ -211,6 +237,9 @@
                 <relationship kind="outlet" name="readerView" candidateClass="ZBarReaderView"/>
             </relationships>
         </class>
+        <class className="SSSearchViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSSearchViewController.h"/>
+        </class>
         <class className="ZBarReaderView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ZBarReaderView.h"/>
         </class>
@@ -221,6 +250,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="t1z-YX-hDb"/>
+        <segue reference="JRv-WG-FLt"/>
     </inferredMetricsTieBreakers>
 </document>

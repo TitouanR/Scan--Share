@@ -13,4 +13,5 @@
     #import <Foundation/Foundation.h>
     #import <RestKit/RestKit.h>
     #import "SSWSConfiguration.h"
+    #import "SSApi.h"
 #endif
