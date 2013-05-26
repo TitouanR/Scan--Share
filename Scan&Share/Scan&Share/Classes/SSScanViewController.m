@@ -37,6 +37,7 @@
     readerView.readerDelegate = self;
     readerView.zoom = 1.0;
     
+    
     [readerView start];
     
 }

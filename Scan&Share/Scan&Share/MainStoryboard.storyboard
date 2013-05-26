@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="nnZ-L0-USa" kind="relationship" relationship="rootViewController" id="5aH-zc-GUi"/>
+                        <segue destination="Gat-or-Szj" kind="push" id="t1z-YX-hDb"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tLv-Xd-wAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -78,7 +78,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" id="Gwb-LW-piZ" customClass="ZBarReaderView">
                                 <rect key="frame" x="46" y="126" width="228" height="155"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -158,27 +158,6 @@
             </objects>
             <point key="canvasLocation" x="402" y="1687"/>
         </scene>
-        <!--Search View Controller-->
-        <scene sceneID="imT-eX-0jm">
-            <objects>
-                <viewController storyboardIdentifier="SearchViewController" id="nnZ-L0-USa" customClass="SSSearchViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ORe-av-bcF">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background@2x.png" id="BYB-Ci-r97">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Fb3-zY-cjM"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4VH-GP-5Xb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="878" y="-334"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="My4-MA-ikz">
             <objects>
@@ -215,7 +194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hJ-5a-WrP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878" y="-997"/>
+            <point key="canvasLocation" x="940" y="-997"/>
         </scene>
     </scenes>
     <resources>
@@ -232,9 +211,6 @@
                 <relationship kind="outlet" name="readerView" candidateClass="ZBarReaderView"/>
             </relationships>
         </class>
-        <class className="SSSearchViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSSearchViewController.h"/>
-        </class>
         <class className="ZBarReaderView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ZBarReaderView.h"/>
         </class>
@@ -244,4 +220,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="t1z-YX-hDb"/>
+    </inferredMetricsTieBreakers>
 </document>

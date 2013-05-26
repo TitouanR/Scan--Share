@@ -37,6 +37,7 @@
 		8A7D1F6217448200009E7536 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7D1F6117448200009E7536 /* QuartzCore.framework */; };
 		8A7D1F641744820B009E7536 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7D1F631744820B009E7536 /* libiconv.dylib */; };
 		8A7D1F6717448320009E7536 /* SSScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D1F6617448320009E7536 /* SSScanViewController.m */; };
+		8A9394B3174FB9F50061CFE2 /* SSComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9394B2174FB9F50061CFE2 /* SSComment.m */; };
 		8ACFC68F174D080000771E12 /* SSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFC68E174D080000771E12 /* SSImage.m */; };
 		8AEAE2241742FDBC007E00DE /* tabBar_Background2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AEAE21E1742FDBC007E00DE /* tabBar_Background2.png */; };
 		8AEAE2251742FDBC007E00DE /* tabBar_Background2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AEAE21F1742FDBC007E00DE /* tabBar_Background2@2x.png */; };
@@ -118,6 +119,8 @@
 		8A7D1F631744820B009E7536 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		8A7D1F6517448320009E7536 /* SSScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSScanViewController.h; path = Classes/SSScanViewController.h; sourceTree = "<group>"; };
 		8A7D1F6617448320009E7536 /* SSScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSScanViewController.m; path = Classes/SSScanViewController.m; sourceTree = "<group>"; };
+		8A9394B1174FB9F50061CFE2 /* SSComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSComment.h; path = Classes/SSComment.h; sourceTree = "<group>"; };
+		8A9394B2174FB9F50061CFE2 /* SSComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSComment.m; path = Classes/SSComment.m; sourceTree = "<group>"; };
 		8ACFC68D174D080000771E12 /* SSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSImage.h; path = Classes/SSImage.h; sourceTree = "<group>"; };
 		8ACFC68E174D080000771E12 /* SSImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSImage.m; path = Classes/SSImage.m; sourceTree = "<group>"; };
 		8AEAE21E1742FDBC007E00DE /* tabBar_Background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBar_Background2.png; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 				8A4096DF173B1651004D4D83 /* SSProduct.m */,
 				8ACFC68D174D080000771E12 /* SSImage.h */,
 				8ACFC68E174D080000771E12 /* SSImage.m */,
+				8A9394B1174FB9F50061CFE2 /* SSComment.h */,
+				8A9394B2174FB9F50061CFE2 /* SSComment.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -534,6 +539,7 @@
 				8A1C7701173DC4BB0042B9B6 /* SSSearchViewController.m in Sources */,
 				8A7D1F6717448320009E7536 /* SSScanViewController.m in Sources */,
 				8ACFC68F174D080000771E12 /* SSImage.m in Sources */,
+				8A9394B3174FB9F50061CFE2 /* SSComment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
