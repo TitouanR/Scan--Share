@@ -7,7 +7,12 @@
 //
 
 #import "SSScanViewController.h"
+
+//Object
 #import "SSProduct.h"
+
+//View Controller
+#import "SSProductViewController.h"
 
 @interface SSScanViewController ()
 
@@ -30,6 +35,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //Load background
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background@2x.png"]];
+    
 	// Do any additional setup after loading the view.
     
 //    ZBarImageScanner *scanner = [[ZBarImageScanner alloc] init];
@@ -54,6 +62,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    
+    if ([[segue identifier] isEqualToString:@"fromScanToProductSegue"]) {
+        
+        // Get the destination view controller
+        SSProductViewController *productVC = [segue destinationViewController];
+        
+        // Get the product to send from (id)sender 
+        SSProduct *productToShow =(SSProduct*)sender;
+        
+        // Set the product object in the destination VC
+        [productVC setProduct:productToShow];
+    }
+    
+}
+
 #pragma mark -
 #pragma mark ZBarView Delegate
 
@@ -72,9 +98,29 @@
     [[SSApi sharedApi] getProductWithEAN:ean withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
         RKLogInfo(@"Load collection of Products: %@", product);
-        //Push View
+        [self performSegueWithIdentifier:@"fromScanToProductSegue" sender:product];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         // Handle erros
     }];
+}
+- (void)viewDidUnload {
+   
+    [super viewDidUnload];
+}
+- (IBAction)testButtonPressed:(id)sender {
+    
+    NSString *ean = @"3068320052007";
+    [[SSApi sharedApi] getProductWithEAN:ean withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
+        RKLogInfo(@"Load collection of Products: %@", product);
+        
+        [self performSegueWithIdentifier:@"fromScanToProductSegue" sender:product];
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error in getting the data");
+    }];
+
+    
 }
 @end

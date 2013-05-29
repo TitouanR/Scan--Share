@@ -13,4 +13,7 @@
 
 @property (nonatomic, strong) IBOutlet ZBarReaderView *readerView;
 
+- (IBAction)testButtonPressed:(id)sender;
+
+
 @end

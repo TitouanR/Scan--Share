@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BCC60A8175624F90096FFC2 /* SSProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC60A7175624F90096FFC2 /* SSProductViewController.m */; };
 		8A0F8AB817315F0F00974581 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0F8AB717315F0F00974581 /* UIKit.framework */; };
 		8A0F8ABA17315F0F00974581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0F8AB917315F0F00974581 /* Foundation.framework */; };
 		8A0F8ABC17315F0F00974581 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0F8ABB17315F0F00974581 /* CoreGraphics.framework */; };
@@ -58,6 +59,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5BCC60A6175624F90096FFC2 /* SSProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSProductViewController.h; path = Classes/SSProductViewController.h; sourceTree = "<group>"; };
+		5BCC60A7175624F90096FFC2 /* SSProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSProductViewController.m; path = Classes/SSProductViewController.m; sourceTree = "<group>"; };
 		733F9113697B41B4BF2970D3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0F8AB417315F0F00974581 /* Scan&Share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scan&Share.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0F8AB717315F0F00974581 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -167,6 +170,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BCC60A9175625000096FFC2 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				5BCC60A6175624F90096FFC2 /* SSProductViewController.h */,
+				5BCC60A7175624F90096FFC2 /* SSProductViewController.m */,
+			);
+			name = Product;
+			sourceTree = "<group>";
+		};
 		8A0F8AAB17315F0F00974581 = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +351,7 @@
 				8A1C76DB173DAB380042B9B6 /* SSMainViewController.m */,
 				8A1C76D9173DAB050042B9B6 /* Scan */,
 				8A1C76FE173DC4870042B9B6 /* Search */,
+				5BCC60A9175625000096FFC2 /* Product */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -546,6 +559,7 @@
 				8ACFC68F174D080000771E12 /* SSImage.m in Sources */,
 				8A9394B3174FB9F50061CFE2 /* SSComment.m in Sources */,
 				8A2450291752B70700342B8D /* SSPrice.m in Sources */,
+				5BCC60A8175624F90096FFC2 /* SSProductViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
