@@ -42,8 +42,6 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-   [self.tabBarController.tabBar setHidden:YES];
-    
     //Set the VC title
     self.title =product.name;
     
@@ -57,10 +55,6 @@
     thumbImageView.image = [UIImage imageWithData:product.image.imageBuffer];
 }
 
-
-- (void)viewWillDisappear: (BOOL)animated {
-    [self.tabBarController.tabBar setHidden:NO];
-}
 
 - (void)viewDidUnload {
     [self setThumbImageView:nil];

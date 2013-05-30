@@ -18,13 +18,14 @@
     // Setting Tab Bar
     SSMainViewController *tabBarController = (SSMainViewController *)self.window.rootViewController;
     [tabBarController setDelegate:self];
-    [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background1.png"]];
+    [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background.png"]];
     [tabBarController.tabBar setSelectionIndicatorImage:[[UIImage alloc] init]];
     [tabBarController setSelectedIndex:2];
+    /*
     CGRect frame = tabBarController.tabBar.frame;
     frame.size.height -= 20;
     tabBarController.tabBar.frame = frame;
-    
+    */
     // Setting Nav Bar
     UIImage *navBackgroundImage = [UIImage imageNamed:@"navbar.png"];
     [[UINavigationBar appearance] setBackgroundImage:navBackgroundImage forBarMetrics:UIBarMetricsDefault];
@@ -65,24 +66,24 @@
 {
     switch (tabBarController.selectedIndex) {
         case 0:
-              [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background2.png"]];
+              [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background1.png"]];
             break;
         case 1:
-            [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background3.png"]];
+            [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background2.png"]];
             break;
         case 2:
-            [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background1.png"]];
+            [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background.png"]];
             break;
         case 3:
-            [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background4.png"]];
+            [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background3.png"]];
             break;
         case 4:
-            [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background5.png"]];
+            [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background4.png"]];
             break;
             
             
         default:
-            [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background1.png"]];
+            [tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabBar_Background.png"]];
             break;
     }
 
