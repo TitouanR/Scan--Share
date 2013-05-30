@@ -11,6 +11,9 @@
 #import "JSONKit.h"
 #import "SSProduct.h"
 #import "SSImage.h"
+#import "SSComment.h"
+#import "SSPrice.h"
+
 @implementation SSApi
 
 static SSApi *sharedApi = nil;
@@ -32,20 +35,31 @@ static SSApi *sharedApi = nil;
 - (void)getProductWithEAN:(NSString *)eanID
 {
     // Create mapping between JSON and Objective-C class
+    
+    // Product Mapping (Root element from JSON)
     RKObjectMapping *productMapping = [RKObjectMapping mappingForClass:[SSProduct class]];
     [productMapping addAttributeMappingsFromDictionary:@{
      @"ean": @"ean",
      @"name": @"name",
      @"description": @"description",
      @"rating": @"rating",
-     @"gps": @"gps",
-     @"types": @"types",
-     @"prices": @"prices"}];
+     @"types": @"types"}];
     
+    // Image Mapping (Internal JSON in JSON)
     RKObjectMapping *imageMapping = [RKObjectMapping mappingForClass:[SSImage class]];
     [imageMapping addAttributeMappingsFromDictionary:@{@"url": @"imageURL",
-    @"buffer":@"imageBuffer"}];
+     @"buffer":@"imageBuffer"}];
     
+    // Comments Mapping (Internal Array of JSON)
+    RKObjectMapping *commentMapping = [RKObjectMapping mappingForClass:[SSComment class]];
+    [commentMapping addAttributeMappingsFromDictionary:@{@"name": @"author", @"content" : @"content", @"date" : @"date"}];
+    
+    // Prices Mapping (Internal Array of JSON)
+    RKObjectMapping *priceMapping = [RKObjectMapping mappingForClass:[SSPrice class]];
+    [priceMapping addAttributeMappingsFromDictionary:@{@"price": @"value", @"gps" : @"location"}];
+    
+    [productMapping addRelationshipMappingWithSourceKeyPath:@"prices" mapping:priceMapping];
+    [productMapping addRelationshipMappingWithSourceKeyPath:@"comments" mapping:commentMapping];
     [productMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"photo" toKeyPath:@"image" withMapping:imageMapping]];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:productMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -72,20 +86,31 @@ static SSApi *sharedApi = nil;
                   failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure
 {
     // Create mapping between JSON and Objective-C class
+    
+    // Product Mapping (Root element from JSON)
     RKObjectMapping *productMapping = [RKObjectMapping mappingForClass:[SSProduct class]];
     [productMapping addAttributeMappingsFromDictionary:@{
      @"ean": @"ean",
      @"name": @"name",
      @"description": @"description",
      @"rating": @"rating",
-     @"gps": @"gps",
-     @"types": @"types",
-     @"prices": @"prices"}];
+     @"types": @"types"}];
     
+    // Image Mapping (Internal JSON in JSON)
     RKObjectMapping *imageMapping = [RKObjectMapping mappingForClass:[SSImage class]];
     [imageMapping addAttributeMappingsFromDictionary:@{@"url": @"imageURL",
      @"buffer":@"imageBuffer"}];
     
+    // Comments Mapping (Internal Array of JSON)
+    RKObjectMapping *commentMapping = [RKObjectMapping mappingForClass:[SSComment class]];
+    [commentMapping addAttributeMappingsFromDictionary:@{@"name": @"author", @"content" : @"content", @"date" : @"date"}];
+    
+    // Prices Mapping (Internal Array of JSON)
+    RKObjectMapping *priceMapping = [RKObjectMapping mappingForClass:[SSPrice class]];
+    [priceMapping addAttributeMappingsFromDictionary:@{@"price": @"value", @"gps" : @"location"}];
+  
+    [productMapping addRelationshipMappingWithSourceKeyPath:@"prices" mapping:priceMapping];
+    [productMapping addRelationshipMappingWithSourceKeyPath:@"comments" mapping:commentMapping];
     [productMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"photo" toKeyPath:@"image" withMapping:imageMapping]];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:productMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];

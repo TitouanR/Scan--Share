@@ -37,4 +37,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setSearchTextField:nil];
+    [self setSearchButton:nil];
+    [self setAroundMeButton:nil];
+    [super viewDidUnload];
+}
+
+- (IBAction)search:(id)sender {
+}
+
+- (IBAction)aroundMe:(id)sender {
+}
+
 @end

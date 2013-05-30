@@ -10,4 +10,8 @@
 
 @interface SSSearchViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITextField *searchTextField;
+@property (strong, nonatomic) IBOutlet UIButton *searchButton;
+@property (strong, nonatomic) IBOutlet UIButton *aroundMeButton;
+
 @end

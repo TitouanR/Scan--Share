@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSNumber *rating;
 @property (nonatomic, strong) SSImage* image;
-@property (nonatomic, strong) NSArray *gps;
+@property (nonatomic, strong) NSArray *comments;
 @property (nonatomic, strong) NSArray *types;
 @property (nonatomic, strong) NSArray *prices;
 

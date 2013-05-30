@@ -10,4 +10,7 @@
 
 @interface SSPrice : NSObject
 
+@property (nonatomic, strong) NSNumber *value;
+@property (nonatomic, strong) NSString *location;
+
 @end

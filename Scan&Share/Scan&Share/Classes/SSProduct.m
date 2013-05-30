@@ -10,7 +10,7 @@
 
 @implementation SSProduct
 
-@synthesize ean, name, description, image, rating, gps, types, prices;
+@synthesize ean, name, description, image, rating, comments, types, prices;
 
 //TODO
 -(SSPrice*)getMinimumPrice{
