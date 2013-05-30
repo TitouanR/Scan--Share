@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SSImage.h"
+#import "SSPrice.h"
 
 @interface SSProduct : NSObject
 
@@ -21,5 +22,9 @@
 @property (nonatomic, strong) NSArray *prices;
 
 // TO DO : Add Comments
+
+-(SSPrice*)getMinimumPrice;
+-(SSPrice*)getMaximumPrice;
+-(SSPrice*)getPricesMean;
 
 @end

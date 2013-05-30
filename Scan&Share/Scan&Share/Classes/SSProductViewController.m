@@ -16,7 +16,7 @@
 
 @implementation SSProductViewController
 
-@synthesize product, thumbImageView, nameLabel, menu;
+@synthesize product, menu, contentView, scrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,9 +31,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"escheresque_ste.png"]];
     
-    //Load Background
-     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background@2x.png"]];
+    
+    [scrollView setContentSize:CGSizeMake(320, 832)];
+    contentView = [[[NSBundle mainBundle] loadNibNamed:@"SSProductView" owner:self options:nil] objectAtIndex:0];
+    
+    contentView.backgroundColor  = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background@2x.png"]];
+    
+    [scrollView addSubview:contentView];
+    
     
     REMenuItem *addToListItem = [[REMenuItem alloc] initWithTitle:@"Ajouter à ma liste"
                                                     subtitle:@"Pour faciliter vos courses"
@@ -85,7 +92,6 @@
 
 
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -96,20 +102,15 @@
     //Set the VC title
     self.title =product.name;
     
-    //Set the UI Component of the view with product attributs
-    [nameLabel setText:product.name];
-    
-    
-    NSURL *imageUrl = [NSURL URLWithString:product.image.imageURL];
-    NSLog(@"URL : %@", imageUrl);
-    product.image.imageBuffer = [NSData dataWithContentsOfURL:imageUrl];
-    thumbImageView.image = [UIImage imageWithData:product.image.imageBuffer];
+    [contentView.nameLabel setText:product.name];
+
+  
 }
 
 
 - (void)viewDidUnload {
-    [self setThumbImageView:nil];
-    [self setNameLabel:nil];
+   
+    [self setScrollView:nil];
     [super viewDidUnload];
 }
 
@@ -120,5 +121,13 @@
     
     [menu showFromRect:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)
                       inView:self.view];
+}
+
+
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    NSLog(@"SCROLLL");
 }
 @end

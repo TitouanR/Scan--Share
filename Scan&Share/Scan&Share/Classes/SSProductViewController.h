@@ -8,17 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "REMenu.h"
+#import "SSProductContentView.h"
 //Objet
 #import "SSProduct.h"
 
-@interface SSProductViewController : UIViewController
+@interface SSProductViewController : UIViewController <UIScrollViewDelegate>
 
 //Object
 @property (strong, nonatomic) SSProduct *product;
 
-//UI Component
-@property (strong, nonatomic) IBOutlet UIImageView *thumbImageView;
-@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (strong, nonatomic) SSProductContentView* contentView;
+
 
 @property (strong, nonatomic) REMenu *menu;
 - (IBAction)testPressed:(id)sender;

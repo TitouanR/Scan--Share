@@ -12,6 +12,15 @@
 
 @synthesize ean, name, description, image, rating, gps, types, prices;
 
-
+//TODO
+-(SSPrice*)getMinimumPrice{
+    return NULL;
+}
+-(SSPrice*)getMaximumPrice{
+    return NULL;
+}
+-(SSPrice*)getPricesMean{
+    return NULL;
+}
 
 @end
