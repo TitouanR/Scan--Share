@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "REMenu.h"
 //Objet
 #import "SSProduct.h"
 
@@ -19,5 +19,8 @@
 //UI Component
 @property (strong, nonatomic) IBOutlet UIImageView *thumbImageView;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (strong, nonatomic) REMenu *menu;
+- (IBAction)testPressed:(id)sender;
 
 @end
