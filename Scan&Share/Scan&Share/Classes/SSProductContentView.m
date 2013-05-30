@@ -10,7 +10,7 @@
 
 @implementation SSProductContentView
 
-@synthesize nameLabel;
+@synthesize nameLabel, thumbImage;
 
 - (id)initWithFrame:(CGRect)frame
 {

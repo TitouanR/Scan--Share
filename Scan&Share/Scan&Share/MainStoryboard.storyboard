@@ -306,11 +306,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="w3t-OC-eLs">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
-                                        <size key="value" width="320" height="832"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="delegate" destination="oQJ-RJ-ip3" id="7IN-Yr-6T7"/>
                                 </connections>
@@ -342,7 +337,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="scrollView" destination="w3t-OC-eLs" id="v9u-mn-rgI"/>
+                        <outlet property="globalScrollView" destination="w3t-OC-eLs" id="ceE-5V-ecz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g6Q-Zj-AIo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -384,7 +379,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SSProductViewController.h"/>
             <relationships>
                 <relationship kind="action" name="testPressed:"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="globalScrollView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
         <class className="SSScanViewController" superclassName="UIViewController">

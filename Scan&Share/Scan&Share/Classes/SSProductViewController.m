@@ -16,7 +16,7 @@
 
 @implementation SSProductViewController
 
-@synthesize product, menu, contentView, scrollView;
+@synthesize product, menu, contentView, globalScrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,13 +34,15 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"escheresque_ste.png"]];
     
     
-    [scrollView setContentSize:CGSizeMake(320, 832)];
+    [globalScrollView setContentSize:CGSizeMake(320, 812)];
+    NSLog(@"width : %f, height : %f", globalScrollView.contentSize.width, globalScrollView.contentSize.height);
+    
     contentView = [[[NSBundle mainBundle] loadNibNamed:@"SSProductView" owner:self options:nil] objectAtIndex:0];
     
     contentView.backgroundColor  = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background@2x.png"]];
     
-    [scrollView addSubview:contentView];
-    
+    [globalScrollView addSubview:contentView];
+   
     
     REMenuItem *addToListItem = [[REMenuItem alloc] initWithTitle:@"Ajouter à ma liste"
                                                     subtitle:@"Pour faciliter vos courses"
@@ -103,6 +105,23 @@
     self.title =product.name;
     
     [contentView.nameLabel setText:product.name];
+    
+    NSData *imageData = [NSData alloc];
+    //TODO check pk data != null 
+   /* if (product.image.imageBuffer){
+        NSLog(@"%@", product.image.imageBuffer);
+        NSLog(@"Image data");
+        imageData = product.image.imageBuffer;
+    }
+    else{*/
+        
+        NSURL *imageUrl = [NSURL URLWithString:product.image.imageURL];
+        imageData = [NSData dataWithContentsOfURL:imageUrl];
+    //}
+
+(void)[contentView.thumbImage initWithImage:[UIImage imageWithData:imageData] ];
+    
+    
 
   
 }
@@ -110,7 +129,7 @@
 
 - (void)viewDidUnload {
    
-    [self setScrollView:nil];
+    [self setGlobalScrollView:nil];
     [super viewDidUnload];
 }
 
@@ -123,11 +142,32 @@
                       inView:self.view];
 }
 
-
-
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    
+    if (scrollView.contentOffset.y < 208){
+        
+        CGPoint productViewPoint = CGPointMake(0, 0);
+        NSLog(@"to Product");
+        [UIView animateWithDuration:0.4 animations:^ {
+            [scrollView setContentOffset:productViewPoint animated:NO];
+        }];
+    }
+    
+    else if (scrollView.contentOffset.y >= 208) {
+        CGPoint commentsViewPoint = CGPointMake(0, 396);
+        NSLog(@"to Comments");
+       
+        [UIView animateWithDuration:0.4 animations:^ {
+            [scrollView setContentOffset:commentsViewPoint animated:NO];
+        }];
+        
+    }
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
-    NSLog(@"SCROLLL");
+      
+    
+   // NSLog(@"%f", scrollView.contentOffset.y);
 }
 @end

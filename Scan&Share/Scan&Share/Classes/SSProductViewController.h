@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "REMenu.h"
 #import "SSProductContentView.h"
+
+
 //Objet
 #import "SSProduct.h"
 
@@ -18,7 +20,7 @@
 @property (strong, nonatomic) SSProduct *product;
 
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView *globalScrollView;
 
 @property (strong, nonatomic) SSProductContentView* contentView;
 
