@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SSSearchViewController : UIViewController
+@interface SSSearchViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *searchTextField;
 @property (strong, nonatomic) IBOutlet UIButton *searchButton;
 @property (strong, nonatomic) IBOutlet UIButton *aroundMeButton;
+
 
 @end

@@ -28,6 +28,9 @@
 		8A1C76DC173DAB380042B9B6 /* SSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C76DB173DAB380042B9B6 /* SSMainViewController.m */; };
 		8A1C7701173DC4BB0042B9B6 /* SSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C7700173DC4BB0042B9B6 /* SSSearchViewController.m */; };
 		8A2450291752B70700342B8D /* SSPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2450281752B70700342B8D /* SSPrice.m */; };
+		8A37AB841758C51300C9362D /* SSSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A37AB831758C51300C9362D /* SSSearchResultCell.m */; };
+		8A37AB871758C71100C9362D /* SSResultList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A37AB861758C71100C9362D /* SSResultList.m */; };
+		8A37AB8A1758C9E700C9362D /* SSSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A37AB891758C9E700C9362D /* SSSearchResultViewController.m */; };
 		8A4096E0173B1651004D4D83 /* SSProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4096DF173B1651004D4D83 /* SSProduct.m */; };
 		8A4922E31733C88A00158AEB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4922E21733C88A00158AEB /* CFNetwork.framework */; };
 		8A4922E51733C89B00158AEB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4922E41733C89B00158AEB /* Security.framework */; };
@@ -95,6 +98,12 @@
 		8A1C7700173DC4BB0042B9B6 /* SSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSearchViewController.m; path = Classes/SSSearchViewController.m; sourceTree = "<group>"; };
 		8A2450271752B70700342B8D /* SSPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSPrice.h; path = Classes/SSPrice.h; sourceTree = "<group>"; };
 		8A2450281752B70700342B8D /* SSPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSPrice.m; path = Classes/SSPrice.m; sourceTree = "<group>"; };
+		8A37AB821758C51300C9362D /* SSSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSearchResultCell.h; path = Classes/SSSearchResultCell.h; sourceTree = "<group>"; };
+		8A37AB831758C51300C9362D /* SSSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSearchResultCell.m; path = Classes/SSSearchResultCell.m; sourceTree = "<group>"; };
+		8A37AB851758C71100C9362D /* SSResultList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSResultList.h; path = Classes/SSResultList.h; sourceTree = "<group>"; };
+		8A37AB861758C71100C9362D /* SSResultList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSResultList.m; path = Classes/SSResultList.m; sourceTree = "<group>"; };
+		8A37AB881758C9E700C9362D /* SSSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSearchResultViewController.h; path = Classes/SSSearchResultViewController.h; sourceTree = "<group>"; };
+		8A37AB891758C9E700C9362D /* SSSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSearchResultViewController.m; path = Classes/SSSearchResultViewController.m; sourceTree = "<group>"; };
 		8A4096DE173B1651004D4D83 /* SSProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSProduct.h; path = Classes/SSProduct.h; sourceTree = "<group>"; };
 		8A4096DF173B1651004D4D83 /* SSProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSProduct.m; path = Classes/SSProduct.m; sourceTree = "<group>"; };
 		8A4922E21733C88A00158AEB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -306,10 +315,22 @@
 		8A1C76FE173DC4870042B9B6 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				8A37AB811758C4F800C9362D /* Cells */,
 				8A1C76FF173DC4BB0042B9B6 /* SSSearchViewController.h */,
 				8A1C7700173DC4BB0042B9B6 /* SSSearchViewController.m */,
+				8A37AB881758C9E700C9362D /* SSSearchResultViewController.h */,
+				8A37AB891758C9E700C9362D /* SSSearchResultViewController.m */,
 			);
 			name = Search;
+			sourceTree = "<group>";
+		};
+		8A37AB811758C4F800C9362D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8A37AB821758C51300C9362D /* SSSearchResultCell.h */,
+				8A37AB831758C51300C9362D /* SSSearchResultCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		8A4922E817345A2500158AEB /* Classes */ = {
@@ -342,6 +363,8 @@
 				8A9394B2174FB9F50061CFE2 /* SSComment.m */,
 				8A2450271752B70700342B8D /* SSPrice.h */,
 				8A2450281752B70700342B8D /* SSPrice.m */,
+				8A37AB851758C71100C9362D /* SSResultList.h */,
+				8A37AB861758C71100C9362D /* SSResultList.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -590,6 +613,9 @@
 				5B730C9E17589A6800ADA166 /* REMenuContainerView.m in Sources */,
 				5B730C9F17589A6800ADA166 /* REMenuItem.m in Sources */,
 				5B730CA017589A6800ADA166 /* REMenuItemView.m in Sources */,
+				8A37AB841758C51300C9362D /* SSSearchResultCell.m in Sources */,
+				8A37AB871758C71100C9362D /* SSResultList.m in Sources */,
+				8A37AB8A1758C9E700C9362D /* SSSearchResultViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
