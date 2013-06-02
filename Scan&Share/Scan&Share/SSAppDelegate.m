@@ -29,6 +29,7 @@
     // Setting Nav Bar
     UIImage *navBackgroundImage = [UIImage imageNamed:@"navbar.png"];
     [[UINavigationBar appearance] setBackgroundImage:navBackgroundImage forBarMetrics:UIBarMetricsDefault];
+//    [[[UINavigationBar appearance] backBarButtonItem] setImage:[UIImage imageNamed:@"backButton.png"]];
     return YES;
 }
 

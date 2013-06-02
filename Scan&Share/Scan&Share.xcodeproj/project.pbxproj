@@ -62,6 +62,9 @@
 		8A7D1F6217448200009E7536 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7D1F6117448200009E7536 /* QuartzCore.framework */; };
 		8A7D1F641744820B009E7536 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7D1F631744820B009E7536 /* libiconv.dylib */; };
 		8A7D1F6717448320009E7536 /* SSScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D1F6617448320009E7536 /* SSScanViewController.m */; };
+		8A89ACE3175B81500072167D /* AMRatingControl.h in Resources */ = {isa = PBXBuildFile; fileRef = 8A89ACE0175B81500072167D /* AMRatingControl.h */; };
+		8A89ACE4175B81500072167D /* AMRatingControl.m in Resources */ = {isa = PBXBuildFile; fileRef = 8A89ACE1175B81500072167D /* AMRatingControl.m */; };
+		8A89ACE6175B82FF0072167D /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A89ACE5175B82FF0072167D /* backButton@2x.png */; };
 		8A9394B3174FB9F50061CFE2 /* SSComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9394B2174FB9F50061CFE2 /* SSComment.m */; };
 		8ACFC68F174D080000771E12 /* SSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFC68E174D080000771E12 /* SSImage.m */; };
 		8AEAE2251742FDBC007E00DE /* tabBar_Background2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AEAE21F1742FDBC007E00DE /* tabBar_Background2@2x.png */; };
@@ -175,6 +178,9 @@
 		8A7D1F631744820B009E7536 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		8A7D1F6517448320009E7536 /* SSScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSScanViewController.h; path = Classes/SSScanViewController.h; sourceTree = "<group>"; };
 		8A7D1F6617448320009E7536 /* SSScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSScanViewController.m; path = Classes/SSScanViewController.m; sourceTree = "<group>"; };
+		8A89ACE0175B81500072167D /* AMRatingControl.h */ = {isa = PBXFileReference; lastKnownFileType = file; name = AMRatingControl.h; path = AMRatingControl/Classes/AMRatingControl.h; sourceTree = "<group>"; };
+		8A89ACE1175B81500072167D /* AMRatingControl.m */ = {isa = PBXFileReference; lastKnownFileType = file; name = AMRatingControl.m; path = AMRatingControl/Classes/AMRatingControl.m; sourceTree = "<group>"; };
+		8A89ACE5175B82FF0072167D /* backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButton@2x.png"; sourceTree = "<group>"; };
 		8A9394B1174FB9F50061CFE2 /* SSComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSComment.h; path = Classes/SSComment.h; sourceTree = "<group>"; };
 		8A9394B2174FB9F50061CFE2 /* SSComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSComment.m; path = Classes/SSComment.m; sourceTree = "<group>"; };
 		8ACFC68D174D080000771E12 /* SSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSImage.h; path = Classes/SSImage.h; sourceTree = "<group>"; };
@@ -283,6 +289,7 @@
 		8A0F8AB617315F0F00974581 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A89ACE2175B81500072167D /* AMRatingControl */,
 				5B730C9417589A6800ADA166 /* REMenu */,
 				8A7D1F38174481C3009E7536 /* ZBarSDK */,
 				8A4922F31735BCE400158AEB /* JSONKit */,
@@ -339,6 +346,7 @@
 		8A1C76DD173DAC700042B9B6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8A89ACE5175B82FF0072167D /* backButton@2x.png */,
 				5BB95C20175B5BF400EFB5D4 /* blueButton.png */,
 				5BB95C21175B5BF400EFB5D4 /* blueButton@2x.png */,
 				5BB95C22175B5BF400EFB5D4 /* blueButtonHighlight.png */,
@@ -533,6 +541,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		8A89ACE2175B81500072167D /* AMRatingControl */ = {
+			isa = PBXGroup;
+			children = (
+				8A89ACE0175B81500072167D /* AMRatingControl.h */,
+				8A89ACE1175B81500072167D /* AMRatingControl.m */,
+			);
+			name = AMRatingControl;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -619,6 +637,9 @@
 				5BB95C25175B5BF400EFB5D4 /* blueButton@2x.png in Resources */,
 				5BB95C26175B5BF400EFB5D4 /* blueButtonHighlight.png in Resources */,
 				5BB95C27175B5BF400EFB5D4 /* blueButtonHighlight@2x.png in Resources */,
+				8A89ACE3175B81500072167D /* AMRatingControl.h in Resources */,
+				8A89ACE4175B81500072167D /* AMRatingControl.m in Resources */,
+				8A89ACE6175B82FF0072167D /* backButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
