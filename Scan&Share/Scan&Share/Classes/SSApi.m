@@ -174,7 +174,6 @@ static SSApi *sharedApi = nil;
     
     // Set blocks for request response
     [objectRequestOperation setCompletionBlockWithSuccess:success failure:failure];
-    
     // Launch request
     [objectRequestOperation start];
 }

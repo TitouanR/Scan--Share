@@ -9,6 +9,7 @@
 #import "SSSearchResultViewController.h"
 #import "SSSearchResultCell.h"
 #import "SSProduct.h"
+#import "SSMapViewController.h"
 
 @interface SSSearchResultViewController ()
 
@@ -31,6 +32,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self.navigationController setHidesBottomBarWhenPushed:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,6 +68,25 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+}
+
+- (IBAction)aroundMe:(id)sender {
+    
+    [self performSegueWithIdentifier:@"searchResultToMapView" sender:resultList];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([[segue identifier] isEqualToString:@"searchResultToMapView"]) {
+        
+        // Get the destination view controller
+        SSMapViewController *mapViewController = [segue destinationViewController];
+        
+        
+        // Set the product object in the destination VC
+        mapViewController.product = [resultList.result objectAtIndex:0];
+    }
     
 }
 

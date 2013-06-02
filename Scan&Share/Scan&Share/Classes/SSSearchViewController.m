@@ -34,6 +34,7 @@
 	// Do any additional setup after loading the view.
     
     searchTextField.delegate = self;
+    [self.navigationController setHidesBottomBarWhenPushed:YES];
   
 }
 
