@@ -13,6 +13,19 @@
 		5B730C9F17589A6800ADA166 /* REMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B730C9A17589A6800ADA166 /* REMenuItem.m */; };
 		5B730CA017589A6800ADA166 /* REMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B730C9C17589A6800ADA166 /* REMenuItemView.m */; };
 		5B730CA217589AC100ADA166 /* SSProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B730CA117589AC100ADA166 /* SSProductView.xib */; };
+		5B9C2589175A35C60004446F /* SSCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C2588175A35C60004446F /* SSCommentCell.m */; };
+		5B9C258B175A35E30004446F /* SSCommentCellUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B9C258A175A35E30004446F /* SSCommentCellUI.xib */; };
+		5B9C258F175A43ED0004446F /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B9C258E175A43ED0004446F /* plusButton.png */; };
+		5BB95C15175B547E00EFB5D4 /* arrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB95C13175B547E00EFB5D4 /* arrowUp.png */; };
+		5BB95C16175B547E00EFB5D4 /* arrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB95C14175B547E00EFB5D4 /* arrowDown.png */; };
+		5BB95C1B175B577A00EFB5D4 /* pictoRateVeryGood@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB95C17175B577A00EFB5D4 /* pictoRateVeryGood@2x.png */; };
+		5BB95C1C175B577A00EFB5D4 /* pictoRateBof@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB95C18175B577A00EFB5D4 /* pictoRateBof@2x.png */; };
+		5BB95C1D175B577A00EFB5D4 /* pictoRateGood@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB95C19175B577A00EFB5D4 /* pictoRateGood@2x.png */; };
+		5BB95C1E175B577A00EFB5D4 /* pictoRateBad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB95C1A175B577A00EFB5D4 /* pictoRateBad@2x.png */; };
+		5BB95C24175B5BF400EFB5D4 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB95C20175B5BF400EFB5D4 /* blueButton.png */; };
+		5BB95C25175B5BF400EFB5D4 /* blueButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB95C21175B5BF400EFB5D4 /* blueButton@2x.png */; };
+		5BB95C26175B5BF400EFB5D4 /* blueButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB95C22175B5BF400EFB5D4 /* blueButtonHighlight.png */; };
+		5BB95C27175B5BF400EFB5D4 /* blueButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB95C23175B5BF400EFB5D4 /* blueButtonHighlight@2x.png */; };
 		5BCC60A8175624F90096FFC2 /* SSProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC60A7175624F90096FFC2 /* SSProductViewController.m */; };
 		8A0F8AB817315F0F00974581 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0F8AB717315F0F00974581 /* UIKit.framework */; };
 		8A0F8ABA17315F0F00974581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0F8AB917315F0F00974581 /* Foundation.framework */; };
@@ -74,6 +87,21 @@
 		5B730C9B17589A6800ADA166 /* REMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenuItemView.h; sourceTree = "<group>"; };
 		5B730C9C17589A6800ADA166 /* REMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenuItemView.m; sourceTree = "<group>"; };
 		5B730CA117589AC100ADA166 /* SSProductView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSProductView.xib; path = Classes/SSProductView.xib; sourceTree = "<group>"; };
+		5B730CA51758AC5400ADA166 /* SSButtonSubViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SSButtonSubViewProtocol.h; path = Classes/SSButtonSubViewProtocol.h; sourceTree = "<group>"; };
+		5B9C2587175A35C60004446F /* SSCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSCommentCell.h; path = "Scan&Share/Classes/SSCommentCell.h"; sourceTree = "<group>"; };
+		5B9C2588175A35C60004446F /* SSCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSCommentCell.m; path = "Scan&Share/Classes/SSCommentCell.m"; sourceTree = "<group>"; };
+		5B9C258A175A35E30004446F /* SSCommentCellUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSCommentCellUI.xib; path = "Scan&Share/Classes/SSCommentCellUI.xib"; sourceTree = "<group>"; };
+		5B9C258E175A43ED0004446F /* plusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusButton.png; sourceTree = "<group>"; };
+		5BB95C13175B547E00EFB5D4 /* arrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowUp.png; sourceTree = "<group>"; };
+		5BB95C14175B547E00EFB5D4 /* arrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowDown.png; sourceTree = "<group>"; };
+		5BB95C17175B577A00EFB5D4 /* pictoRateVeryGood@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pictoRateVeryGood@2x.png"; sourceTree = "<group>"; };
+		5BB95C18175B577A00EFB5D4 /* pictoRateBof@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pictoRateBof@2x.png"; sourceTree = "<group>"; };
+		5BB95C19175B577A00EFB5D4 /* pictoRateGood@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pictoRateGood@2x.png"; sourceTree = "<group>"; };
+		5BB95C1A175B577A00EFB5D4 /* pictoRateBad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pictoRateBad@2x.png"; sourceTree = "<group>"; };
+		5BB95C20175B5BF400EFB5D4 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
+		5BB95C21175B5BF400EFB5D4 /* blueButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueButton@2x.png"; sourceTree = "<group>"; };
+		5BB95C22175B5BF400EFB5D4 /* blueButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButtonHighlight.png; sourceTree = "<group>"; };
+		5BB95C23175B5BF400EFB5D4 /* blueButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueButtonHighlight@2x.png"; sourceTree = "<group>"; };
 		5BCC60A6175624F90096FFC2 /* SSProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSProductViewController.h; path = Classes/SSProductViewController.h; sourceTree = "<group>"; };
 		5BCC60A7175624F90096FFC2 /* SSProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSProductViewController.m; path = Classes/SSProductViewController.m; sourceTree = "<group>"; };
 		733F9113697B41B4BF2970D3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +217,7 @@
 		5B4E286A1757B830004C0684 /* Content */ = {
 			isa = PBXGroup;
 			children = (
+				5BB95C1F175B5A7300EFB5D4 /* Cell */,
 				5B730CA117589AC100ADA166 /* SSProductView.xib */,
 				5B4E286B1757B88D004C0684 /* SSProductContentView.h */,
 				5B4E286C1757B88E004C0684 /* SSProductContentView.m */,
@@ -211,9 +240,21 @@
 			path = REMenu;
 			sourceTree = "<group>";
 		};
+		5BB95C1F175B5A7300EFB5D4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5B9C2587175A35C60004446F /* SSCommentCell.h */,
+				5B9C2588175A35C60004446F /* SSCommentCell.m */,
+				5B9C258A175A35E30004446F /* SSCommentCellUI.xib */,
+			);
+			name = Cell;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		5BCC60A9175625000096FFC2 /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				5B730CA51758AC5400ADA166 /* SSButtonSubViewProtocol.h */,
 				5B4E286A1757B830004C0684 /* Content */,
 				5BCC60A6175624F90096FFC2 /* SSProductViewController.h */,
 				5BCC60A7175624F90096FFC2 /* SSProductViewController.m */,
@@ -298,6 +339,17 @@
 		8A1C76DD173DAC700042B9B6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5BB95C20175B5BF400EFB5D4 /* blueButton.png */,
+				5BB95C21175B5BF400EFB5D4 /* blueButton@2x.png */,
+				5BB95C22175B5BF400EFB5D4 /* blueButtonHighlight.png */,
+				5BB95C23175B5BF400EFB5D4 /* blueButtonHighlight@2x.png */,
+				5BB95C17175B577A00EFB5D4 /* pictoRateVeryGood@2x.png */,
+				5BB95C18175B577A00EFB5D4 /* pictoRateBof@2x.png */,
+				5BB95C19175B577A00EFB5D4 /* pictoRateGood@2x.png */,
+				5BB95C1A175B577A00EFB5D4 /* pictoRateBad@2x.png */,
+				5BB95C13175B547E00EFB5D4 /* arrowUp.png */,
+				5BB95C14175B547E00EFB5D4 /* arrowDown.png */,
+				5B9C258E175A43ED0004446F /* plusButton.png */,
 				8A104E5F175662BF00EF7C69 /* tabBar_Background@2x.png */,
 				8A7D1F3617447DD2009E7536 /* logoScan&Share@2x.png */,
 				8AEAE23E17430916007E00DE /* navbar.png */,
@@ -555,6 +607,18 @@
 				8A7D1F5A174481C3009E7536 /* zbar-samples.png in Resources */,
 				8A104E60175662BF00EF7C69 /* tabBar_Background@2x.png in Resources */,
 				5B730CA217589AC100ADA166 /* SSProductView.xib in Resources */,
+				5B9C258B175A35E30004446F /* SSCommentCellUI.xib in Resources */,
+				5B9C258F175A43ED0004446F /* plusButton.png in Resources */,
+				5BB95C15175B547E00EFB5D4 /* arrowUp.png in Resources */,
+				5BB95C16175B547E00EFB5D4 /* arrowDown.png in Resources */,
+				5BB95C1B175B577A00EFB5D4 /* pictoRateVeryGood@2x.png in Resources */,
+				5BB95C1C175B577A00EFB5D4 /* pictoRateBof@2x.png in Resources */,
+				5BB95C1D175B577A00EFB5D4 /* pictoRateGood@2x.png in Resources */,
+				5BB95C1E175B577A00EFB5D4 /* pictoRateBad@2x.png in Resources */,
+				5BB95C24175B5BF400EFB5D4 /* blueButton.png in Resources */,
+				5BB95C25175B5BF400EFB5D4 /* blueButton@2x.png in Resources */,
+				5BB95C26175B5BF400EFB5D4 /* blueButtonHighlight.png in Resources */,
+				5BB95C27175B5BF400EFB5D4 /* blueButtonHighlight@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +680,7 @@
 				8A37AB841758C51300C9362D /* SSSearchResultCell.m in Sources */,
 				8A37AB871758C71100C9362D /* SSResultList.m in Sources */,
 				8A37AB8A1758C9E700C9362D /* SSSearchResultViewController.m in Sources */,
+				5B9C2589175A35C60004446F /* SSCommentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

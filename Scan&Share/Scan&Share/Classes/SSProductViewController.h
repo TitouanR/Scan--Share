@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "REMenu.h"
 #import "SSProductContentView.h"
-
+#import "SSComment.h"
+#import "SSCommentCell.h"
+#import "AMRatingControl.h"
 
 //Objet
 #import "SSProduct.h"
 
-@interface SSProductViewController : UIViewController <UIScrollViewDelegate>
+@interface SSProductViewController : UIViewController <SSButtonSubViewProtocol, UITableViewDelegate, UITableViewDataSource>
 
 //Object
 @property (strong, nonatomic) SSProduct *product;
@@ -24,8 +26,10 @@
 
 @property (strong, nonatomic) SSProductContentView* contentView;
 
-
+@property (strong, nonatomic) UIBarButtonItem *showMenuButtonItem;
+@property (strong, nonatomic) UIBarButtonItem *addCommentButtonItem;
 @property (strong, nonatomic) REMenu *menu;
-- (IBAction)testPressed:(id)sender;
+@property (strong, nonatomic) AMRatingControl *ratingControl;
 
+-(void)addCommentButtonPressed;
 @end

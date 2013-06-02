@@ -112,7 +112,7 @@
     NSString *ean = @"3068320052007";
     [[SSApi sharedApi] getProductWithEAN:ean withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
-        RKLogInfo(@"Load collection of Products: %@", product);
+        RKLogInfo(@"Load collection of Products: %@", product.comments);
         
         [self performSegueWithIdentifier:@"fromScanToProductSegue" sender:product];
         
