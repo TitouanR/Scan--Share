@@ -7,7 +7,7 @@
 //
 
 #import "SSProductViewController.h"
-
+#import "SSMapViewController.h"
 
 
 @interface SSProductViewController ()
@@ -228,10 +228,32 @@
                 inView:self.view];
 }
 
+/**
+  *  aroundMe: Display MapViewController for around me products
+ **/
+
+- (IBAction)aroundMe:(id)sender {
+    [self performSegueWithIdentifier:@"searchResultToMapView" sender:self.product];
+}
+
 -(void)addCommentButtonPressed{
     [self performSegueWithIdentifier:@"addCommentModalSegue" sender:NULL];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([[segue identifier] isEqualToString:@"searchResultToMapView"]) {
+        
+        // Get the destination view controller
+        SSMapViewController *mapViewController = [segue destinationViewController];
+        
+        // Get the product to send from (id)sender
+        SSProduct *productToShow =(SSProduct*)sender;
+        
+        // Set the product object in the destination VC
+        mapViewController.product = productToShow;
+    }
+}
 
 -(void)buttonClicked:(UIButton*)button inView:(UIView*)view {
     

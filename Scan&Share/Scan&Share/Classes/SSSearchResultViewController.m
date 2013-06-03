@@ -9,6 +9,7 @@
 #import "SSSearchResultViewController.h"
 #import "SSSearchResultCell.h"
 #import "SSProduct.h"
+#import "SSProductViewController.h"
 #import "SSMapViewController.h"
 
 @interface SSSearchResultViewController ()
@@ -66,26 +67,23 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [self performSegueWithIdentifier:@"resultToProductPush" sender:[resultList.result objectAtIndex:indexPath.row]];
 }
 
-- (IBAction)aroundMe:(id)sender {
-    
-    [self performSegueWithIdentifier:@"searchResultToMapView" sender:resultList];
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    if ([[segue identifier] isEqualToString:@"searchResultToMapView"]) {
+    if ([[segue identifier] isEqualToString:@"resultToProductPush"]) {
         
         // Get the destination view controller
-        SSMapViewController *mapViewController = [segue destinationViewController];
+        SSProductViewController *productViewController = [segue destinationViewController];
         
+        // Get the product to send from (id)sender
+        SSProduct *productToShow =(SSProduct*)sender;
         
         // Set the product object in the destination VC
-        mapViewController.product = [resultList.result objectAtIndex:0];
+        productViewController.product = productToShow;
     }
     
 }

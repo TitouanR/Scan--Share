@@ -56,6 +56,19 @@
         SSResultList *resultList = (SSResultList *)[mappingResult.array objectAtIndex:0];
         RKLogInfo(@"Load collection of Products: %@", resultList);
         
+        NSArray *userHistory = (NSArray *)[[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
+        NSMutableArray *history = [NSMutableArray array];
+       
+        if(userHistory)
+        {
+            [history addObjectsFromArray:userHistory];
+           
+        }   
+        
+        [history addObject:searchTextField.text];
+        [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
         [self performSegueWithIdentifier:@"searchToResultPush" sender:resultList];
 
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -63,8 +76,6 @@
     }];
 }
 
-- (IBAction)aroundMe:(id)sender {
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     

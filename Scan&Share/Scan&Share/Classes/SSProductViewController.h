@@ -31,5 +31,7 @@
 @property (strong, nonatomic) REMenu *menu;
 @property (strong, nonatomic) AMRatingControl *ratingControl;
 
--(void)addCommentButtonPressed;
+
+- (void)addCommentButtonPressed;
+- (IBAction)aroundMe:(id)sender;
 @end
