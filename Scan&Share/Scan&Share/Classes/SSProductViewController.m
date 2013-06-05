@@ -40,10 +40,7 @@
     
     contentView.delegate =self;
     
-    //Loading NavBar Button
-    
-    
-    
+    //Loading right navBar items
     // Show menu
     UIButton *showMenuButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [showMenuButton setFrame:CGRectMake(0, 0, 36, 28)];
@@ -71,28 +68,31 @@
     
     [self.contentView addSubview:contentView.commentsTable];
    
+    
+    //Init contentView buttons
     UIImage *buttonImage = [[UIImage imageNamed:@"blueButton"]
                             resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     UIImage *buttonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight"]
                                      resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    // Set the background for any states you plan to use
+    
+    
     [contentView.rateButton setBackgroundImage:buttonImage forState:UIControlStateNormal]
     ;
-    [contentView.rateButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-    
+    [contentView.showMapButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+    [contentView.showMapButton setBackgroundImage:buttonImage forState:UIControlStateNormal]
+    ;
+    [contentView.showMapButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
 
+    //Rating control
+    ratingControl = [[AMRatingControl alloc] initWithLocation:CGPointMake(18, 150)
+                                                   emptyImage:[UIImage imageNamed:@"dot.png"]
+                                                   solidImage:[UIImage imageNamed:@"satr.png"]
+                                                 andMaxRating:5];
     
-    //Rating module
+   
     
-    ratingControl = [[AMRatingControl alloc] initWithLocation:CGPointMake(20, 160)
-                                                                          emptyImage:[UIImage imageNamed:@"dot.png"]
-                                                                          solidImage:[UIImage imageNamed:@"satr.png"]
-                                                                        andMaxRating:5];
-
-   // [ratingControl addTarget:self action:@selector(updateRating:) forControlEvents:UIControlEventEditingChanged];
+    
     [self.contentView addSubview:ratingControl];
-    
-    
     
     
     self.view = contentView;
@@ -298,8 +298,15 @@
     
     else if (button.tag == 1) //Rate button
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Noter ce produit" message:[NSString stringWithFormat:@"Vous souhaitez donner la note de %d à ce produit, est-ce qu'on valide?",ratingControl.rating] delegate:self cancelButtonTitle:@"Annuler" otherButtonTitles:@"Valider", nil];
-        [alert show];
+       UIAlertView *rate = [[UIAlertView alloc] initWithTitle:@"Noter le produit" message:[NSString stringWithFormat:@"Vous êtes sur le point de donner la note de %d à ce produit", ratingControl.rating] delegate:self cancelButtonTitle:@"Annuler" otherButtonTitles:@"Valider", nil];
+        
+        [rate show];
+    }
+    
+    else if (button.tag == 2) //show map Button
+    {
+        [self performSegueWithIdentifier:@"productToMapPush" sender:nil];
+        
     }
     
 }
@@ -371,8 +378,6 @@
         [cell.contentLabel setText:comment.content];
         
         [cell.authorDateLabel setText:[NSString stringWithFormat:@"%@, le %@",comment.author, comment.date ]];
-    
-        
 
     return cell;
     

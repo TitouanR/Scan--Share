@@ -10,7 +10,7 @@
 
 @implementation SSProductContentView
 
-@synthesize nameLabel, thumbImage, commentsTable, delegate, commentCellNib, descriptionTextView, rateLabel, pictoRateImage;
+@synthesize nameLabel, thumbImage, commentsTable, delegate, commentCellNib, descriptionTextView, rateLabel, pictoRateImage, showMapButton;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -22,14 +22,7 @@
     return self;
 }
 
-- (IBAction)commentsButtonPressed:(id)sender {
-    NSLog(@"COMMENTS BUTTON PRESSED IN SUBVIEW");
+- (IBAction)buttonPressed:(id)sender{
     [self.delegate buttonClicked:(UIButton*)sender inView:self];
-}
-
-- (IBAction)rateButtonClicked:(id)sender {
-    
-    [self.delegate buttonClicked:(UIButton*)sender inView:self];
-
 }
 @end

@@ -18,11 +18,12 @@
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (strong, nonatomic) IBOutlet UIImageView *pictoRateImage;
 @property (strong, nonatomic) IBOutlet UIButton *rateButton;
+@property (strong, nonatomic) IBOutlet UIButton *showMapButton;
 
 @property (strong, nonatomic) IBOutlet UITableView *commentsTable;
 
 @property (strong, nonatomic) UINib *commentCellNib;
-- (IBAction)commentsButtonPressed:(id)sender;
-- (IBAction)rateButtonClicked:(id)sender;
+- (IBAction)buttonPressed:(id)sender;
+
 
 @end
