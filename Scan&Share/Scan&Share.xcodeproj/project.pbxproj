@@ -76,6 +76,7 @@
 		8A89ACEA175B8D570072167D /* SSMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A89ACE9175B8D570072167D /* SSMapViewController.m */; };
 		8A89ACEC175B8E1E0072167D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A89ACEB175B8E1E0072167D /* MapKit.framework */; };
 		8A9394B3174FB9F50061CFE2 /* SSComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9394B2174FB9F50061CFE2 /* SSComment.m */; };
+		8AA95B0B175FD070009BBEA6 /* SSProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA95B0A175FD070009BBEA6 /* SSProfileViewController.m */; };
 		8ACFC68F174D080000771E12 /* SSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFC68E174D080000771E12 /* SSImage.m */; };
 		8AEAE2251742FDBC007E00DE /* tabBar_Background2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AEAE21F1742FDBC007E00DE /* tabBar_Background2@2x.png */; };
 		8AEAE2271742FDBC007E00DE /* tabBar_Background3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AEAE2211742FDBC007E00DE /* tabBar_Background3@2x.png */; };
@@ -206,6 +207,8 @@
 		8A89ACEB175B8E1E0072167D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8A9394B1174FB9F50061CFE2 /* SSComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSComment.h; path = Classes/SSComment.h; sourceTree = "<group>"; };
 		8A9394B2174FB9F50061CFE2 /* SSComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSComment.m; path = Classes/SSComment.m; sourceTree = "<group>"; };
+		8AA95B09175FD070009BBEA6 /* SSProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSProfileViewController.h; path = Classes/SSProfileViewController.h; sourceTree = "<group>"; };
+		8AA95B0A175FD070009BBEA6 /* SSProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSProfileViewController.m; path = Classes/SSProfileViewController.m; sourceTree = "<group>"; };
 		8ACFC68D174D080000771E12 /* SSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSImage.h; path = Classes/SSImage.h; sourceTree = "<group>"; };
 		8ACFC68E174D080000771E12 /* SSImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSImage.m; path = Classes/SSImage.m; sourceTree = "<group>"; };
 		8AEAE21F1742FDBC007E00DE /* tabBar_Background2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBar_Background2@2x.png"; sourceTree = "<group>"; };
@@ -503,6 +506,7 @@
 				8A1C76D6173D226A0042B9B6 /* MainStoryboard.storyboard */,
 				8A1C76DA173DAB380042B9B6 /* SSMainViewController.h */,
 				8A1C76DB173DAB380042B9B6 /* SSMainViewController.m */,
+				8AA95B08175FD049009BBEA6 /* Profile */,
 				8A89ACE7175B8D3B0072167D /* Map */,
 				8A1C76D9173DAB050042B9B6 /* Scan */,
 				8A1C76FE173DC4870042B9B6 /* Search */,
@@ -603,6 +607,15 @@
 				8A41942B175B92BF009C9E88 /* SSLocation.m */,
 			);
 			name = Map;
+			sourceTree = "<group>";
+		};
+		8AA95B08175FD049009BBEA6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8AA95B09175FD070009BBEA6 /* SSProfileViewController.h */,
+				8AA95B0A175FD070009BBEA6 /* SSProfileViewController.m */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -764,6 +777,7 @@
 				8A89ACEA175B8D570072167D /* SSMapViewController.m in Sources */,
 				8A41942C175B92BF009C9E88 /* SSLocation.m in Sources */,
 				5B2FEF7A175DD269002A7F88 /* SSAddCommentViewController.m in Sources */,
+				8AA95B0B175FD070009BBEA6 /* SSProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

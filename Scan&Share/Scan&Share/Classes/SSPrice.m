@@ -10,6 +10,7 @@
 
 @implementation SSPrice
 
+@synthesize value, location;
 
 
 @end

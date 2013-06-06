@@ -10,5 +10,6 @@
 
 @implementation SSComment
 
+@synthesize author, content, date;
 
 @end
