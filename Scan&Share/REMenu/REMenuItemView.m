@@ -144,16 +144,82 @@
         return;
 
     if (self.item.action) {
-        if (_menu.waitUntilAnimationIsComplete) {
+        
+        if (self.item.tag == 1) {
+            //Share button clicked
+            
+            
+            UIView *shareView = [[UIView alloc] initWithFrame:CGRectMake(320, 0, 320, 50)];
+            shareView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cross_scratches.png"]];
+            
+            //FB ICO
+            UIImageView *fbImage = [[UIImageView alloc] initWithFrame:CGRectMake(30, 2, 46, 44)];
+            fbImage.image = [UIImage imageNamed:@"fbIco.png"];
+            [shareView addSubview:fbImage];
+            fbImage.userInteractionEnabled = YES;
+            
+            UIButton *fbBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            fbBtn.frame = fbImage.bounds;
+            fbBtn.tag = 0;
+            [fbBtn addTarget:self action:@selector(shareButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [fbImage addSubview:fbBtn];
+            
+            //TWITTER ICO
+            UIImageView *twitterImage = [[UIImageView alloc] initWithFrame:CGRectMake(140, 1, 46, 46)];
+            twitterImage.image = [UIImage imageNamed:@"twitterIco.png"];
+            [shareView addSubview:twitterImage];
+             twitterImage.userInteractionEnabled = YES;
+            
+            UIButton *twBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            twBtn.frame = twitterImage.bounds;
+            twBtn.tag = 1;
+            [twBtn addTarget:self action:@selector(shareButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [twitterImage addSubview:twBtn];
+            
+            //Mail ICO
+            UIImageView *mailImage = [[UIImageView alloc] initWithFrame:CGRectMake(250, 1, 46, 46)];
+            mailImage.image = [UIImage imageNamed:@"mailIco.png"];
+             [shareView addSubview:mailImage];
+            mailImage.userInteractionEnabled = YES;
+            
+            UIButton *mlBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            mlBtn.frame = mailImage.bounds;
+            mlBtn.tag = 2;
+            [mlBtn addTarget:self action:@selector(shareButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [mailImage addSubview:mlBtn];
+
+           [self addSubview:shareView];
+            
+            CGRect finalFrame = shareView.frame;
+            finalFrame.origin.x -= 320;
+            
+            [UIView animateWithDuration:0.3
+                                  delay:0.0
+                                options: UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 [shareView setFrame:finalFrame];
+                             }
+                             completion:^(BOOL finished){
+                                 
+                             }];
+
+           
+        }
+        else if (_menu.waitUntilAnimationIsComplete) {
             __typeof (&*self) __weak weakSelf = self;
             [_menu closeWithCompletion:^{
                 weakSelf.item.action(weakSelf.item);
             }];
-        } else {
+        } else if (!_menu.waitUntilAnimationIsComplete) {
             [_menu close];
             self.item.action(self.item);
         }
     }
+}
+
+-(void) shareButtonClicked:(id)sender{
+   
+    [self.menu shareButtonClicked:sender];
 }
 
 @end

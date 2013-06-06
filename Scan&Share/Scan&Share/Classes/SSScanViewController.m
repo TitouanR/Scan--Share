@@ -100,7 +100,7 @@
         RKLogInfo(@"Load collection of Products: %@", product);
         [self performSegueWithIdentifier:@"fromScanToProductSegue" sender:product];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        // Handle erros
+       
     }];
 }
 - (void)viewDidUnload {

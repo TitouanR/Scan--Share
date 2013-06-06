@@ -27,10 +27,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import "REMenuItem.h"
 #import "REMenuContainerView.h"
-
+#import "SSButtonSubViewProtocol.h"
 @class REMenuItem;
 
 @interface REMenu : NSObject {
+     __weak id<SSButtonSubViewProtocol> delegate;
     UIView *_menuView;
     UIView *_menuWrapperView;
     REMenuContainerView *_containerView;
@@ -38,6 +39,7 @@
     UIButton *_backgroundButton;
 }
 
+@property (weak) id<SSButtonSubViewProtocol> delegate;
 // Data
 //
 @property (strong, readwrite, nonatomic) NSArray *items;
@@ -84,11 +86,14 @@
 @property (assign, readwrite, nonatomic) BOOL bounce;
 
 - (id)initWithItems:(NSArray *)items;
+- (id)initWithItems:(NSArray *)items andDelegate:(id)deleg;
 - (void)showFromRect:(CGRect)rect inView:(UIView *)view;
 - (void)showInView:(UIView *)view;
 - (void)showFromNavigationController:(UINavigationController *)navigationController;
 - (void)setNeedsLayout;
 - (void)closeWithCompletion:(void (^)(void))completion;
 - (void)close;
+
+-(void)shareButtonClicked:(id)sender;
 
 @end

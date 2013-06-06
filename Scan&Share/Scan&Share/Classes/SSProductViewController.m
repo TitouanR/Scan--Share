@@ -36,7 +36,7 @@
     
     contentView.backgroundColor  = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background@2x.png"]];
    
-    NSLog(@"width : %f and height : %f", self.view.frame.size.width, self.view.frame.size.height);
+
     
     contentView.delegate =self;
     
@@ -100,10 +100,6 @@
     
     
     
-    
-    
-    
-    
     //Init Menu
     REMenuItem *addToListItem = [[REMenuItem alloc] initWithTitle:@"Ajouter à ma liste"
                                                     subtitle:@"Pour faciliter vos courses"
@@ -143,7 +139,7 @@
     showOccasions.tag = 2;
     addOccasion.tag = 3;
     
-    menu = [[REMenu alloc] initWithItems:@[addToListItem, shareItem, showOccasions, addOccasion]];
+    menu = [[REMenu alloc] initWithItems:@[addToListItem, shareItem, showOccasions, addOccasion] andDelegate:self];
     menu.cornerRadius = 4;
     menu.shadowRadius = 4;
     menu.shadowColor = [UIColor blackColor];
@@ -210,6 +206,16 @@
     }
     
     (void)[contentView.pictoRateImage initWithImage:pictoImage];
+    
+    if ([product.comments count] == 0) {
+        //Hide the comments table when there is no comment
+        contentView.commentsTable.hidden = YES;
+        contentView.indicationNoCommentLabel.hidden = NO;
+    }
+    else{
+        contentView.commentsTable.hidden = NO;
+        contentView.indicationNoCommentLabel.hidden = YES;
+    }
 }
 
 
@@ -256,12 +262,11 @@
 }
 
 -(void)buttonClicked:(UIButton*)button inView:(UIView*)view {
-    
+    NSLog( @"DELEGETE OK");
     
     if (button.tag == 0) //Comments button
     {
         CGRect myFrame = self.view.frame;
-        NSLog(@"view.frame.origin.y = %f and height : %f", myFrame.origin.y, myFrame.size.height);
         myFrame.size.height = 812;
         if (myFrame.origin.y >= 0){
         
@@ -309,6 +314,92 @@
         
     }
     
+  
+    
+    
+}
+
+-(void)buttonClicked:(UIButton*)sender {
+    //Share action
+    if (sender.tag == 0){
+        //Share by Facebook
+    }
+    
+    else if(sender.tag == 1){
+        //Share by Twitter
+    }
+    
+    
+    else if(sender.tag == 2){
+        
+        //Share by Mail
+        
+        
+        if ([MFMailComposeViewController canSendMail])
+        {
+            MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+            
+            mailer.mailComposeDelegate = self;
+            
+            
+            
+            NSString *emailBody = [[NSString alloc]init];
+            
+            emailBody = [self.product name];
+            emailBody = [emailBody stringByAppendingString:@"\n\n"];
+            
+            if ([self.product description]){
+                
+                
+                emailBody = [emailBody stringByAppendingString:[self.product description]];
+                emailBody = [emailBody stringByAppendingString:@"\n\n\n"];
+            }
+            NSString* postByString =@"Envoyé depuis Scan&Share";
+            emailBody = [emailBody stringByAppendingString:postByString];
+            [mailer setMessageBody:emailBody isHTML:NO];
+            
+            [self presentModalViewController:mailer animated:YES];
+            
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Impossible d'envoyé le mail"
+                                                            message:@ "Vous ne pouvez pas envoyer de mail..."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK, dommage!"
+                                                  otherButtonTitles: nil];
+            [alert show];
+        }
+    }
+}
+
+
+
+#pragma mark - MFMailComposeController delegate
+
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+	switch (result)
+	{
+		case MFMailComposeResultCancelled:
+			NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued");
+			break;
+		case MFMailComposeResultSaved:
+			NSLog(@"Mail saved: you saved the email message in the Drafts folder");
+			break;
+		case MFMailComposeResultSent:
+			NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send the next time the user connects to email");
+			break;
+		case MFMailComposeResultFailed:
+			NSLog(@"Mail failed: the email message was nog saved or queued, possibly due to an error");
+			break;
+		default:
+			NSLog(@"Mail not sent");
+			break;
+	}
+    
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -359,7 +450,6 @@
     
    if(cell == nil)
     {
-        NSLog(@"Cell nil");
         cell = [[contentView.commentCellNib instantiateWithOwner:self options:nil] objectAtIndex:0];
     }
     

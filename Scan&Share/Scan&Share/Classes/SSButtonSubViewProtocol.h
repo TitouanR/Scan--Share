@@ -10,4 +10,5 @@
 
 @protocol SSButtonSubViewProtocol <NSObject>
  -(void)buttonClicked:(UIButton*)button inView:(UIView*)view;
+-(void)buttonClicked:(UIButton*)button;
 @end

@@ -10,7 +10,7 @@
 
 @implementation SSProductContentView
 
-@synthesize nameLabel, thumbImage, commentsTable, delegate, commentCellNib, descriptionTextView, rateLabel, pictoRateImage, showMapButton;
+@synthesize nameLabel, thumbImage, commentsTable, delegate, commentCellNib, descriptionTextView, rateLabel, pictoRateImage, showMapButton, indicationNoCommentLabel;
 
 - (id)initWithFrame:(CGRect)frame
 {

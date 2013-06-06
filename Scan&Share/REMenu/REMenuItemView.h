@@ -38,4 +38,6 @@
 
 - (id)initWithFrame:(CGRect)frame menu:(REMenu *)menu hasSubtitle:(BOOL)hasSubtitle;
 
+-(void) shareButtonClicked:(id)sender;
+
 @end

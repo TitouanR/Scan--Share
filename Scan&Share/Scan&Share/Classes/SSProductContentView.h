@@ -11,7 +11,6 @@
 @interface SSProductContentView : UIView
 
 @property (nonatomic, strong) id<SSButtonSubViewProtocol> delegate;
-
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *rateLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *thumbImage;
@@ -21,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *showMapButton;
 
 @property (strong, nonatomic) IBOutlet UITableView *commentsTable;
+@property (strong, nonatomic) IBOutlet UILabel *indicationNoCommentLabel;
 
 @property (strong, nonatomic) UINib *commentCellNib;
 - (IBAction)buttonPressed:(id)sender;

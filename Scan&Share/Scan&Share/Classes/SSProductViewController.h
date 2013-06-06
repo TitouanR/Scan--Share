@@ -12,11 +12,13 @@
 #import "SSComment.h"
 #import "SSCommentCell.h"
 #import "AMRatingControl.h"
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 //Objet
 #import "SSProduct.h"
 
-@interface SSProductViewController : UIViewController <SSButtonSubViewProtocol, UITableViewDelegate, UITableViewDataSource>
+@interface SSProductViewController : UIViewController <SSButtonSubViewProtocol, MFMailComposeViewControllerDelegate,UITableViewDelegate, UITableViewDataSource>
 
 //Object
 @property (strong, nonatomic) SSProduct *product;

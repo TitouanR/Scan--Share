@@ -26,12 +26,11 @@
 #import "REMenu.h"
 #import "REMenuItem.h"
 #import "REMenuItemView.h"
-
+#import "SSButtonSubViewProtocol.h"
 
 @interface REMenuItem ()
 
 @property (assign, nonatomic) REMenuItemView *itemView;
-
 @end
 
 @interface REMenu ()
@@ -45,13 +44,13 @@
 @end
 
 @implementation REMenu
+@synthesize delegate;
 
 - (id)init
 {
     self = [super init];
     if (!self)
         return nil;
-    
     self.itemHeight = 48;
     self.separatorHeight = 2;
     self.waitUntilAnimationIsComplete = YES;
@@ -99,6 +98,16 @@
     
     self.items = items;
 
+    return self;
+}
+
+- (id)initWithItems:(NSArray *)items andDelegate:(id)deleg{
+    self = [self init];
+    if (!self)
+        return nil;
+    
+    self.items = items;
+    self.delegate = deleg;
     return self;
 }
 
@@ -287,6 +296,14 @@
     UIGraphicsEndImageContext();
     
     return [UIImage imageWithCGImage:outputImage.CGImage scale:2.0 orientation:UIImageOrientationUp];
+}
+
+
+-(void)shareButtonClicked:(id)sender{
+    UIButton* buttonSender = (UIButton*)sender;
+    NSLog(@"Tag : %d", buttonSender.tag);
+    [self.delegate buttonClicked:buttonSender];
+    
 }
 
 @end
