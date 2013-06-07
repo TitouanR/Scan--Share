@@ -13,6 +13,8 @@
 
 @implementation SSAppDelegate
 
+@synthesize token;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Setting Tab Bar
@@ -31,6 +33,7 @@
     [[UINavigationBar appearance] setBackgroundImage:navBackgroundImage forBarMetrics:UIBarMetricsDefault];
 //    UIImage *backButtonImage = [UIImage imageNamed:@"backButton.png"];
 //    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage  forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    token = @"a8f153ae42f608d38e696478de6ebf3cf2c8a5893d743cb320ec3dd289f7c059c43148f403290fa04b31c4a7852dd54ec8d1c755b8315c7722d4d13e70251b76";
     return YES;
 }
 

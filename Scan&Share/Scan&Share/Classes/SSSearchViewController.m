@@ -10,6 +10,7 @@
 #import "SSApi.h"
 #import "SSResultList.h"
 #import "SSSearchResultViewController.h"
+#import "SSHistory.h"
 
 @interface SSSearchViewController ()
 
@@ -65,7 +66,12 @@
            
         }   
         
-        [history addObject:searchTextField.text];
+        SSHistory *historyObject = [[SSHistory alloc] init];
+        historyObject.content = searchTextField.text;
+        historyObject.type = @"Recherche";
+        historyObject.date = [NSDate date];
+        
+        [history addObject:historyObject];
         [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         

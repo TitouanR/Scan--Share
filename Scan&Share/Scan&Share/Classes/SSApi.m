@@ -14,6 +14,7 @@
 #import "SSComment.h"
 #import "SSPrice.h"
 #import "SSResultList.h"
+#import "SSAppDelegate.h"
 
 @implementation SSApi
 
@@ -231,16 +232,17 @@ static SSApi *sharedApi = nil;
 
 - (void)getLoggedInWithUsername:(NSString *)name andPassword:(NSString *)password withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
                       failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure
-{
-    // Create url request for asking API
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@product?username=%@&password=%@", SSBaseURL, name, password]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:nil];
+{    
+    // Create the base URL
+    NSURL *url = [NSURL URLWithString:SSBaseURL];
+    // Setting response content type
+    [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/plain"];
     
-    // Set blocks for request response
-    [objectRequestOperation setCompletionBlockWithSuccess:success failure:failure];
-    // Launch request
-    [objectRequestOperation start];
+    // Setting POST Request
+    RKObjectManager *manager = [RKObjectManager managerWithBaseURL:url];
+    NSString *token = [[NSString alloc] init];
+    [manager getObject:token path:[NSString stringWithFormat:@"%@login?username=%@&password=%@", SSBaseURL, name, password] parameters:nil success:success failure:failure];
+    
 }
 
 - (void)getCommentsFromProduct:(NSString *)ean fromStartIndex:(int)index withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
@@ -270,6 +272,32 @@ static SSApi *sharedApi = nil;
     [objectRequestOperation start];
 }
 
+- (void)getSalesFromProduct:(NSString *)ean withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
+                       failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure
+{
+//    // Create mapping between JSON and Objective-C class
+//    
+//    // Result Mapping (Root element from JSON)
+//    RKObjectMapping *resultMapping = [RKObjectMapping mappingForClass:[SSComment class]];
+//    
+//    // Comments Mapping (Internal Array of JSON)
+//    RKObjectMapping *commentMapping = [RKObjectMapping mappingForClass:[SSComment class]];
+//    [commentMapping addAttributeMappingsFromDictionary:@{@"name": @"author", @"content" : @"content", @"date" : @"date"}];
+//    
+//    [resultMapping addRelationshipMappingWithSourceKeyPath:@"comment" mapping:commentMapping];
+//    
+//    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:resultMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+//    
+//    // Create url request for asking API
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@product?id=%@&commentsstartindex=%d", SSBaseURL, ean, index]];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
+//    
+//    // Set blocks for request response
+//    [objectRequestOperation setCompletionBlockWithSuccess:success failure:failure];
+//    // Launch request
+//    [objectRequestOperation start];
+}
 
 /**
   * POST Methods
@@ -314,7 +342,8 @@ static SSApi *sharedApi = nil;
     
     // Setting POST Request
     RKObjectManager *manager = [RKObjectManager managerWithBaseURL:url];
-    [manager postObject:nil path:[NSString stringWithFormat:@"product?id=%@&comment", ean] parameters:@{@"rating":rate, @"comment[name]":comment.author, @"comment[date]":comment.date, @"comment[content]":comment.content}  success:success failure:failure];
+    SSAppDelegate *appDelegate = (SSAppDelegate *)[UIApplication sharedApplication].delegate;
+    [manager postObject:nil path:[NSString stringWithFormat:@"product?id=%@&comment&token=%@", ean, appDelegate.token] parameters:@{@"rating":rate, @"comment[name]":comment.author, @"comment[date]":comment.date, @"comment[content]":comment.content}  success:success failure:failure];
 }
 
 - (void)modifyProduct:(NSString *)ean withPrice:(SSPrice *)price withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success

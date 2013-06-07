@@ -63,6 +63,9 @@
 		8A4922E71733C8B700158AEB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4922E61733C8B700158AEB /* MobileCoreServices.framework */; };
 		8A4922F117345C7D00158AEB /* SSApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4922F017345C7D00158AEB /* SSApi.m */; };
 		8A4922F61735BD0400158AEB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4922F41735BD0400158AEB /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8A4CD43117620E84006A8B26 /* SSProfileViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD43017620E84006A8B26 /* SSProfileViewCell.m */; };
+		8A4CD43417620EB8006A8B26 /* SSSale.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD43317620EB8006A8B26 /* SSSale.m */; };
+		8A4CD43717620ECD006A8B26 /* SSHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD43617620ECD006A8B26 /* SSHistory.m */; };
 		8A7D1F3717447DD2009E7536 /* logoScan&Share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D1F3617447DD2009E7536 /* logoScan&Share@2x.png */; };
 		8A7D1F56174481C3009E7536 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7D1F50174481C3009E7536 /* libzbar.a */; };
 		8A7D1F57174481C3009E7536 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D1F52174481C3009E7536 /* zbar-back.png */; };
@@ -176,6 +179,12 @@
 		8A4922F217345E9100158AEB /* SSWSConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSWSConfiguration.h; sourceTree = "<group>"; };
 		8A4922F41735BD0400158AEB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		8A4922F51735BD0400158AEB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		8A4CD42F17620E84006A8B26 /* SSProfileViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSProfileViewCell.h; path = Classes/SSProfileViewCell.h; sourceTree = "<group>"; };
+		8A4CD43017620E84006A8B26 /* SSProfileViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSProfileViewCell.m; path = Classes/SSProfileViewCell.m; sourceTree = "<group>"; };
+		8A4CD43217620EB8006A8B26 /* SSSale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSale.h; path = Classes/SSSale.h; sourceTree = "<group>"; };
+		8A4CD43317620EB8006A8B26 /* SSSale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSale.m; path = Classes/SSSale.m; sourceTree = "<group>"; };
+		8A4CD43517620ECD006A8B26 /* SSHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSHistory.h; path = Classes/SSHistory.h; sourceTree = "<group>"; };
+		8A4CD43617620ECD006A8B26 /* SSHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSHistory.m; path = Classes/SSHistory.m; sourceTree = "<group>"; };
 		8A7D1F3617447DD2009E7536 /* logoScan&Share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoScan&Share@2x.png"; sourceTree = "<group>"; };
 		8A7D1F3C174481C3009E7536 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		8A7D1F3D174481C3009E7536 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
@@ -487,6 +496,10 @@
 				8A2450281752B70700342B8D /* SSPrice.m */,
 				8A37AB851758C71100C9362D /* SSResultList.h */,
 				8A37AB861758C71100C9362D /* SSResultList.m */,
+				8A4CD43217620EB8006A8B26 /* SSSale.h */,
+				8A4CD43317620EB8006A8B26 /* SSSale.m */,
+				8A4CD43517620ECD006A8B26 /* SSHistory.h */,
+				8A4CD43617620ECD006A8B26 /* SSHistory.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -539,6 +552,15 @@
 				8A4922F51735BD0400158AEB /* JSONKit.h */,
 			);
 			name = JSONKit;
+			sourceTree = "<group>";
+		};
+		8A4CD42E17620E68006A8B26 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8A4CD42F17620E84006A8B26 /* SSProfileViewCell.h */,
+				8A4CD43017620E84006A8B26 /* SSProfileViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		8A7D1F38174481C3009E7536 /* ZBarSDK */ = {
@@ -629,6 +651,7 @@
 		8AA95B08175FD049009BBEA6 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				8A4CD42E17620E68006A8B26 /* Cells */,
 				8AA95B09175FD070009BBEA6 /* SSProfileViewController.h */,
 				8AA95B0A175FD070009BBEA6 /* SSProfileViewController.m */,
 			);
@@ -798,6 +821,9 @@
 				8A41942C175B92BF009C9E88 /* SSLocation.m in Sources */,
 				5B2FEF7A175DD269002A7F88 /* SSAddCommentViewController.m in Sources */,
 				8AA95B0B175FD070009BBEA6 /* SSProfileViewController.m in Sources */,
+				8A4CD43117620E84006A8B26 /* SSProfileViewCell.m in Sources */,
+				8A4CD43417620EB8006A8B26 /* SSSale.m in Sources */,
+				8A4CD43717620ECD006A8B26 /* SSHistory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

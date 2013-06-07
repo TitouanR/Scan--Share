@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SSProfileViewController : UIViewController
+@interface SSProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *history;
 @end

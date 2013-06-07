@@ -10,6 +10,7 @@
 
 //Object
 #import "SSProduct.h"
+#import "SSHistory.h"
 
 //View Controller
 #import "SSProductViewController.h"
@@ -97,7 +98,26 @@
     
     [[SSApi sharedApi] getProductWithEAN:ean withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
+        
+        NSArray *userHistory = (NSArray *)[[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
+        NSMutableArray *history = [NSMutableArray array];
+        
+        if(userHistory)
+        {
+            [history addObjectsFromArray:userHistory];
+            
+        }
+        
+        SSHistory *historyObject = [[SSHistory alloc] init];
+        historyObject.content = product.name;
+        historyObject.type = @"Scan";
+        historyObject.date = [NSDate date];
+        
+        [history addObject:historyObject];
+        [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         RKLogInfo(@"Load collection of Products: %@", product);
+        
         [self performSegueWithIdentifier:@"fromScanToProductSegue" sender:product];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
        
@@ -114,6 +134,16 @@
         SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
         RKLogInfo(@"Load collection of Products: %@", product.comments);
         
+       
+        RKLogInfo(@"Load collection of Products: %@", product);
+        
+        SSHistory *historyObject = [[SSHistory alloc] init];
+        historyObject.content = product.name;
+        historyObject.type = @"Scan";
+        historyObject.date = [NSDate date];
+        
+        [self saveCustomObjectInHistory:historyObject];
+        
         [self performSegueWithIdentifier:@"fromScanToProductSegue" sender:product];
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -122,5 +152,21 @@
     }];
 
     
+}
+
+- (void)saveCustomObjectInHistory:(SSHistory *)obj {
+    NSArray *userHistory = (NSArray *)[[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
+    NSMutableArray *history = [NSMutableArray array];
+    
+    if(userHistory)
+    {
+        [history addObjectsFromArray:userHistory];
+        
+    }
+    
+     NSData *myEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:obj];
+    [history addObject:myEncodedObject];
+    [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 @end
