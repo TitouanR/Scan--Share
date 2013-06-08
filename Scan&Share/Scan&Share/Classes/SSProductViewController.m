@@ -7,6 +7,7 @@
 //
 
 #import "SSProductViewController.h"
+#import "ASDepthModalViewController.h"
 #import "SSMapViewController.h"
 
 
@@ -147,6 +148,14 @@
     menu.shadowOpacity = 1;
     menu.imageOffset = CGSizeMake(5, -1);
     menu.waitUntilAnimationIsComplete = NO;
+    
+    // Set up Login View
+    
+    self.loginView.layer.cornerRadius = 12;
+    self.loginView.layer.shadowOpacity = 0.7;
+    self.loginView.layer.shadowOffset = CGSizeMake(6, 6);
+    self.loginView.layer.shouldRasterize = YES;
+    self.loginView.layer.rasterizationScale = [[UIScreen mainScreen] scale];
 }
 
 
@@ -486,4 +495,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return (30.0 + labelSize.height);
 }
 
+- (void)showLoginView{
+    
+    UIColor *color = nil;
+    ASDepthModalOptions style = ASDepthModalOptionAnimationGrow;
+    ASDepthModalOptions options = style | ASDepthModalOptionBlurNone;
+    
+    [ASDepthModalViewController presentView:self.loginView backgroundColor:color options:options completionHandler:^{
+        
+    }];
+    
+}
 @end

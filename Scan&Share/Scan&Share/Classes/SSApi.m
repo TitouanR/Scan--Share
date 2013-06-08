@@ -232,7 +232,8 @@ static SSApi *sharedApi = nil;
 
 - (void)getLoggedInWithUsername:(NSString *)name andPassword:(NSString *)password withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
                       failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure
-{    
+{
+#warning Change Token TO DO : Add Mapping
     // Create the base URL
     NSURL *url = [NSURL URLWithString:SSBaseURL];
     // Setting response content type
@@ -343,7 +344,7 @@ static SSApi *sharedApi = nil;
     // Setting POST Request
     RKObjectManager *manager = [RKObjectManager managerWithBaseURL:url];
     SSAppDelegate *appDelegate = (SSAppDelegate *)[UIApplication sharedApplication].delegate;
-    [manager postObject:nil path:[NSString stringWithFormat:@"product?id=%@&comment&token=%@", ean, appDelegate.token] parameters:@{@"rating":rate, @"comment[name]":comment.author, @"comment[date]":comment.date, @"comment[content]":comment.content}  success:success failure:failure];
+    [manager postObject:nil path:[NSString stringWithFormat:@"product?id=%@&comment&token=%@", ean, appDelegate.currentLoggedAccount.token] parameters:@{@"rating":rate, @"comment[name]":comment.author, @"comment[date]":comment.date, @"comment[content]":comment.content}  success:success failure:failure];
 }
 
 - (void)modifyProduct:(NSString *)ean withPrice:(SSPrice *)price withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success

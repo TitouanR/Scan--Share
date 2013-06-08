@@ -12,6 +12,7 @@
 #import "SSComment.h"
 #import "SSCommentCell.h"
 #import "AMRatingControl.h"
+#import "SSLoginView.h"
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
@@ -32,6 +33,9 @@
 @property (strong, nonatomic) UIBarButtonItem *addCommentButtonItem;
 @property (strong, nonatomic) REMenu *menu;
 @property (strong, nonatomic) AMRatingControl *ratingControl;
+
+// Login Popup
+@property (strong, nonatomic) IBOutlet SSLoginView *loginView;
 
 - (void)addCommentButtonPressed;
 - (IBAction)aroundMe:(id)sender;

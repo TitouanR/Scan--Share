@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SSAccount.h"
 
 @interface SSAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) NSString *token;
+@property (strong, nonatomic) SSAccount *currentLoggedAccount;
 
 @end

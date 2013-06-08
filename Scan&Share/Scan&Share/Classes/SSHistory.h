@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *content;
-@property (nonatomic, strong) NSString *date;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSString *scanID;
 
 @end

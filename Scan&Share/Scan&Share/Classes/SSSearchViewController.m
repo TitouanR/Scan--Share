@@ -68,12 +68,10 @@
         
         SSHistory *historyObject = [[SSHistory alloc] init];
         historyObject.content = searchTextField.text;
-        historyObject.type = @"Recherche";
+        historyObject.type = @"NameSearch";
         historyObject.date = [NSDate date];
         
-        [history addObject:historyObject];
-        [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self saveCustomObjectInHistory:historyObject];
         
         [self performSegueWithIdentifier:@"searchToResultPush" sender:resultList];
 
@@ -98,6 +96,22 @@
         resultViewController.resultList = resultList;
     }
     
+}
+
+- (void)saveCustomObjectInHistory:(SSHistory *)obj {
+    NSArray *userHistory = (NSArray *)[[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
+    NSMutableArray *history = [NSMutableArray array];
+    
+    if(userHistory)
+    {
+        [history addObjectsFromArray:userHistory];
+        
+    }
+    
+    NSData *myEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:obj];
+    [history addObject:myEncodedObject];
+    [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark -

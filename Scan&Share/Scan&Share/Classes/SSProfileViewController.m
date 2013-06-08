@@ -12,6 +12,10 @@
 #import "SSPrice.h"
 #import "SSProfileViewCell.h"
 #import "SSHistory.h"
+#import "SSProduct.h"
+#import "SSProductViewController.h"
+#import "SSResultList.h"
+#import "SSSearchResultViewController.h"
 
 @interface SSProfileViewController ()
 
@@ -39,9 +43,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    history = [self loadCustomObjectWithKey:@"history"];
-
-    [self.tableView reloadData];
+    [self reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,14 +101,46 @@
     
     cell.contentLabel.text = [(SSHistory *)[history objectAtIndex:indexPath.row] content];
     cell.typeLabel.text = [(SSHistory *)[history objectAtIndex:indexPath.row] type];
-    cell.dateLabel.text = [(SSHistory *)[history objectAtIndex:indexPath.row] date];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM/yy"];
+    NSString *showDate = [dateFormatter stringFromDate:[(SSHistory *)[history objectAtIndex:indexPath.row] date]];
+    cell.dateLabel.text = showDate;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SSHistory *historyObject = [history objectAtIndex:indexPath.row];
+    if ([historyObject.type isEqualToString:@"Scan"]) {
+        [[SSApi sharedApi] getProductWithEAN:historyObject.scanID withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
+            [self performSegueWithIdentifier:@"historyToProductPush" sender:product];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            
+        }];
+    } else if ([historyObject.type isEqualToString:@"NameSearch"]){
+        [[SSApi sharedApi] searchProductWithName:historyObject.content withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            SSResultList *resultList = (SSResultList *)[mappingResult.array objectAtIndex:0];
+            [self performSegueWithIdentifier:@"historyToResultPush" sender:resultList];
+            
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            
+        }];
+    }
 }
 
 - (void)viewDidUnload {
     [self setTableView:nil];
     [super viewDidUnload];
+}
+
+- (void)reloadData
+{
+    history = [self loadCustomObjectWithKey:@"history"];
+    
+    [self.tableView reloadData];
 }
 
 - (NSArray *)loadCustomObjectWithKey:(NSString *)key {
@@ -120,5 +154,33 @@
     }
     
     return result;
+}
+
+- (IBAction)clearHistory:(id)sender {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"history"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self reloadData];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    
+    if ([[segue identifier] isEqualToString:@"historyToProductPush"]) {
+        
+        // Get the destination view controller
+        SSProductViewController *productVC = [segue destinationViewController];
+        
+        // Get the product to send from (id)sender
+        SSProduct *productToShow =(SSProduct*)sender;
+        
+        // Set the product object in the destination VC
+        [productVC setProduct:productToShow];
+    } else if ([[segue identifier] isEqualToString:@"historyToResultPush"]) {
+        SSSearchResultViewController *resultViewController = [segue destinationViewController];
+        SSResultList *resultList = (SSResultList *)sender;
+        resultViewController.resultList = resultList;
+    }
+    
 }
 @end

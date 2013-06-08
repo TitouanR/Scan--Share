@@ -112,10 +112,9 @@
         historyObject.content = product.name;
         historyObject.type = @"Scan";
         historyObject.date = [NSDate date];
+        historyObject.scanID = [product ean];
         
-        [history addObject:historyObject];
-        [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self saveCustomObjectInHistory:historyObject];
         RKLogInfo(@"Load collection of Products: %@", product);
         
         [self performSegueWithIdentifier:@"fromScanToProductSegue" sender:product];
@@ -141,6 +140,7 @@
         historyObject.content = product.name;
         historyObject.type = @"Scan";
         historyObject.date = [NSDate date];
+        historyObject.scanID = ean;
         
         [self saveCustomObjectInHistory:historyObject];
         

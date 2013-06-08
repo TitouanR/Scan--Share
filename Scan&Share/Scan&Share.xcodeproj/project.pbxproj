@@ -66,6 +66,13 @@
 		8A4CD43117620E84006A8B26 /* SSProfileViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD43017620E84006A8B26 /* SSProfileViewCell.m */; };
 		8A4CD43417620EB8006A8B26 /* SSSale.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD43317620EB8006A8B26 /* SSSale.m */; };
 		8A4CD43717620ECD006A8B26 /* SSHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD43617620ECD006A8B26 /* SSHistory.m */; };
+		8A4CD43C1762D18F006A8B26 /* SSParameterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD43B1762D18F006A8B26 /* SSParameterViewController.m */; };
+		8A4CD4481762D490006A8B26 /* ASDepthModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD4451762D490006A8B26 /* ASDepthModalViewController.m */; };
+		8A4CD4491762D490006A8B26 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD4471762D490006A8B26 /* UIImage+Blur.m */; };
+		8A4CD44C1762D4CF006A8B26 /* SSLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD44B1762D4CF006A8B26 /* SSLoginView.m */; };
+		8A4CD44E1762D933006A8B26 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4CD44D1762D933006A8B26 /* CoreImage.framework */; };
+		8A4CD4501762D988006A8B26 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4CD44F1762D987006A8B26 /* Accelerate.framework */; };
+		8A4CD4551762E307006A8B26 /* SSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD4541762E307006A8B26 /* SSAccount.m */; };
 		8A7D1F3717447DD2009E7536 /* logoScan&Share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D1F3617447DD2009E7536 /* logoScan&Share@2x.png */; };
 		8A7D1F56174481C3009E7536 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7D1F50174481C3009E7536 /* libzbar.a */; };
 		8A7D1F57174481C3009E7536 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D1F52174481C3009E7536 /* zbar-back.png */; };
@@ -185,6 +192,18 @@
 		8A4CD43317620EB8006A8B26 /* SSSale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSale.m; path = Classes/SSSale.m; sourceTree = "<group>"; };
 		8A4CD43517620ECD006A8B26 /* SSHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSHistory.h; path = Classes/SSHistory.h; sourceTree = "<group>"; };
 		8A4CD43617620ECD006A8B26 /* SSHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSHistory.m; path = Classes/SSHistory.m; sourceTree = "<group>"; };
+		8A4CD43A1762D18F006A8B26 /* SSParameterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSParameterViewController.h; path = Classes/SSParameterViewController.h; sourceTree = "<group>"; };
+		8A4CD43B1762D18F006A8B26 /* SSParameterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSParameterViewController.m; path = Classes/SSParameterViewController.m; sourceTree = "<group>"; };
+		8A4CD4441762D490006A8B26 /* ASDepthModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDepthModalViewController.h; sourceTree = "<group>"; };
+		8A4CD4451762D490006A8B26 /* ASDepthModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDepthModalViewController.m; sourceTree = "<group>"; };
+		8A4CD4461762D490006A8B26 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
+		8A4CD4471762D490006A8B26 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
+		8A4CD44A1762D4CF006A8B26 /* SSLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSLoginView.h; path = Classes/SSLoginView.h; sourceTree = "<group>"; };
+		8A4CD44B1762D4CF006A8B26 /* SSLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSLoginView.m; path = Classes/SSLoginView.m; sourceTree = "<group>"; };
+		8A4CD44D1762D933006A8B26 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		8A4CD44F1762D987006A8B26 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		8A4CD4531762E307006A8B26 /* SSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSAccount.h; path = Classes/SSAccount.h; sourceTree = "<group>"; };
+		8A4CD4541762E307006A8B26 /* SSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSAccount.m; path = Classes/SSAccount.m; sourceTree = "<group>"; };
 		8A7D1F3617447DD2009E7536 /* logoScan&Share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoScan&Share@2x.png"; sourceTree = "<group>"; };
 		8A7D1F3C174481C3009E7536 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		8A7D1F3D174481C3009E7536 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
@@ -246,6 +265,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A4CD4501762D988006A8B26 /* Accelerate.framework in Frameworks */,
+				8A4CD44E1762D933006A8B26 /* CoreImage.framework in Frameworks */,
+				8A0F8ABC17315F0F00974581 /* CoreGraphics.framework in Frameworks */,
 				5BA1337F1760992800A33F62 /* MessageUI.framework in Frameworks */,
 				5BA1337D1760989000A33F62 /* Social.framework in Frameworks */,
 				8A41942E175B9392009C9E88 /* AddressBook.framework in Frameworks */,
@@ -260,7 +282,6 @@
 				8A4922E31733C88A00158AEB /* CFNetwork.framework in Frameworks */,
 				8A0F8AB817315F0F00974581 /* UIKit.framework in Frameworks */,
 				8A0F8ABA17315F0F00974581 /* Foundation.framework in Frameworks */,
-				8A0F8ABC17315F0F00974581 /* CoreGraphics.framework in Frameworks */,
 				99D1440E4CE14C78B80DBD3D /* libPods.a in Frameworks */,
 				8A7D1F56174481C3009E7536 /* libzbar.a in Frameworks */,
 			);
@@ -348,11 +369,14 @@
 		8A0F8AB617315F0F00974581 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A4CD4431762D490006A8B26 /* ASDepthModal */,
 				8A89ACE2175B81500072167D /* AMRatingControl */,
 				5B730C9417589A6800ADA166 /* REMenu */,
 				8A7D1F38174481C3009E7536 /* ZBarSDK */,
 				8A4922F31735BCE400158AEB /* JSONKit */,
 				8A7D1F631744820B009E7536 /* libiconv.dylib */,
+				8A4CD44F1762D987006A8B26 /* Accelerate.framework */,
+				8A4CD44D1762D933006A8B26 /* CoreImage.framework */,
 				5BA1337E1760992800A33F62 /* MessageUI.framework */,
 				5BA1337C1760988F00A33F62 /* Social.framework */,
 				8A41942D175B9391009C9E88 /* AddressBook.framework */,
@@ -500,6 +524,8 @@
 				8A4CD43317620EB8006A8B26 /* SSSale.m */,
 				8A4CD43517620ECD006A8B26 /* SSHistory.h */,
 				8A4CD43617620ECD006A8B26 /* SSHistory.m */,
+				8A4CD4531762E307006A8B26 /* SSAccount.h */,
+				8A4CD4541762E307006A8B26 /* SSAccount.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -536,6 +562,8 @@
 				8A1C76D6173D226A0042B9B6 /* MainStoryboard.storyboard */,
 				8A1C76DA173DAB380042B9B6 /* SSMainViewController.h */,
 				8A1C76DB173DAB380042B9B6 /* SSMainViewController.m */,
+				8A4CD4391762D15A006A8B26 /* Login */,
+				8A4CD4381762D149006A8B26 /* Parameters */,
 				8AA95B08175FD049009BBEA6 /* Profile */,
 				8A89ACE7175B8D3B0072167D /* Map */,
 				8A1C76D9173DAB050042B9B6 /* Scan */,
@@ -561,6 +589,35 @@
 				8A4CD43017620E84006A8B26 /* SSProfileViewCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		8A4CD4381762D149006A8B26 /* Parameters */ = {
+			isa = PBXGroup;
+			children = (
+				8A4CD43A1762D18F006A8B26 /* SSParameterViewController.h */,
+				8A4CD43B1762D18F006A8B26 /* SSParameterViewController.m */,
+			);
+			name = Parameters;
+			sourceTree = "<group>";
+		};
+		8A4CD4391762D15A006A8B26 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8A4CD44A1762D4CF006A8B26 /* SSLoginView.h */,
+				8A4CD44B1762D4CF006A8B26 /* SSLoginView.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		8A4CD4431762D490006A8B26 /* ASDepthModal */ = {
+			isa = PBXGroup;
+			children = (
+				8A4CD4441762D490006A8B26 /* ASDepthModalViewController.h */,
+				8A4CD4451762D490006A8B26 /* ASDepthModalViewController.m */,
+				8A4CD4461762D490006A8B26 /* UIImage+Blur.h */,
+				8A4CD4471762D490006A8B26 /* UIImage+Blur.m */,
+			);
+			path = ASDepthModal;
 			sourceTree = "<group>";
 		};
 		8A7D1F38174481C3009E7536 /* ZBarSDK */ = {
@@ -824,6 +881,11 @@
 				8A4CD43117620E84006A8B26 /* SSProfileViewCell.m in Sources */,
 				8A4CD43417620EB8006A8B26 /* SSSale.m in Sources */,
 				8A4CD43717620ECD006A8B26 /* SSHistory.m in Sources */,
+				8A4CD43C1762D18F006A8B26 /* SSParameterViewController.m in Sources */,
+				8A4CD4481762D490006A8B26 /* ASDepthModalViewController.m in Sources */,
+				8A4CD4491762D490006A8B26 /* UIImage+Blur.m in Sources */,
+				8A4CD44C1762D4CF006A8B26 /* SSLoginView.m in Sources */,
+				8A4CD4551762E307006A8B26 /* SSAccount.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
