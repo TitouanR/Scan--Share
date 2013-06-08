@@ -114,12 +114,16 @@
 {
     SSHistory *historyObject = [history objectAtIndex:indexPath.row];
     if ([historyObject.type isEqualToString:@"Scan"]) {
-        [[SSApi sharedApi] getProductWithEAN:historyObject.scanID withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
-            [self performSegueWithIdentifier:@"historyToProductPush" sender:product];
-        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            
-        }];
+        if(historyObject.scanID)
+        {
+            [[SSApi sharedApi] getProductWithEAN:historyObject.scanID withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
+                [self performSegueWithIdentifier:@"historyToProductPush" sender:product];
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                
+            }];
+        }
+
     } else if ([historyObject.type isEqualToString:@"NameSearch"]){
         [[SSApi sharedApi] searchProductWithName:historyObject.content withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             SSResultList *resultList = (SSResultList *)[mappingResult.array objectAtIndex:0];

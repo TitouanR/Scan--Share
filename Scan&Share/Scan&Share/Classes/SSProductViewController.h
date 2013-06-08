@@ -39,4 +39,5 @@
 
 - (void)addCommentButtonPressed;
 - (IBAction)aroundMe:(id)sender;
+- (void)showLoginView;
 @end

@@ -10,13 +10,14 @@
 
 @implementation SSHistory
 
-@synthesize content, date, type;
+@synthesize content, date, type, scanID;
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
     //Encode properties, other class variables, etc
     [encoder encodeObject:self.content forKey:@"content"];
     [encoder encodeObject:self.date forKey:@"date"];
     [encoder encodeObject:self.type forKey:@"type"];
+    [encoder encodeObject:self.scanID forKey:@"scanID"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -25,7 +26,8 @@
         self.content = [decoder decodeObjectForKey:@"content"];
         self.date = [decoder decodeObjectForKey:@"date"];
         self.type = [decoder decodeObjectForKey:@"type"];
-    }
+        self.scanID = [decoder decodeObjectForKey:@"scanID"];
+}
     return self;
 }
 
