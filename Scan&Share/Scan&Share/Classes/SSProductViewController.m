@@ -9,7 +9,7 @@
 #import "SSProductViewController.h"
 #import "ASDepthModalViewController.h"
 #import "SSMapViewController.h"
-
+#import "SSAppDelegate.h"
 
 @interface SSProductViewController ()
 
@@ -195,7 +195,7 @@
     
     [contentView.descriptionTextView setText:product.description];
    
-    [contentView.rateLabel setText:[NSString stringWithFormat:@"Note : %@/5", product.rating]];
+    [contentView.rateLabel setText:[NSString stringWithFormat:@"Note : %.2f/5", [product.rating floatValue]]];
     
     UIImage *pictoImage;
     if (product.rating.integerValue <= 1.5 ){
@@ -215,6 +215,13 @@
     }
     
     (void)[contentView.pictoRateImage initWithImage:pictoImage];
+    
+    
+    [contentView.priceUpLabel setText:[NSString stringWithFormat:@"%@€", [[product getMaximumPrice] value]]];
+    
+    [contentView.priceDownLabel setText:[NSString stringWithFormat:@"%@€", [[product getMinimumPrice] value]]];
+    
+     [contentView.meanPriceLabel setText:[NSString stringWithFormat:@"Prix moyen : %.2f€", [product getPricesMean]]];
     
     if ([product.comments count] == 0) {
         //Hide the comments table when there is no comment
@@ -271,7 +278,6 @@
 }
 
 -(void)buttonClicked:(UIButton*)button inView:(UIView*)view {
-    NSLog( @"DELEGETE OK");
     
     if (button.tag == 0) //Comments button
     {
@@ -420,7 +426,22 @@
         
         //Send rate
         
+        [[SSApi sharedApi] rateProduct:product.ean withRate:[NSString stringWithFormat:@"%d", ratingControl.rating] andComment:NULL withCompletionBlockSucceed: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            
+            float oldRate = [product.rating floatValue];
+            oldRate += ratingControl.rating;
+            oldRate/=2;
+            [contentView.rateLabel setText:[NSString stringWithFormat:@"Note : %.2f/5",oldRate]];
+         
+        }
+            failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+                
+                NSLog(@"Rate action fail");
+                                   
+        }];
         
+        
+
     }
     
     
@@ -429,7 +450,6 @@
 
 #pragma mark -
 #pragma mark Table Data Source Methods
-
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {

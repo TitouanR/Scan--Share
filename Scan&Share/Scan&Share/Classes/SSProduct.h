@@ -25,6 +25,6 @@
 
 -(SSPrice*)getMinimumPrice;
 -(SSPrice*)getMaximumPrice;
--(SSPrice*)getPricesMean;
+-(float)getPricesMean;
 
 @end

@@ -133,6 +133,7 @@
 		5BA1337617607CC000A33F62 /* twitterIco@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitterIco@2x.png"; sourceTree = "<group>"; };
 		5BA1337C1760988F00A33F62 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5BA1337E1760992800A33F62 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		5BA133801761E49900A33F62 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5BB95C13175B547E00EFB5D4 /* arrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowUp.png; sourceTree = "<group>"; };
 		5BB95C14175B547E00EFB5D4 /* arrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowDown.png; sourceTree = "<group>"; };
 		5BB95C17175B577A00EFB5D4 /* pictoRateVeryGood@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pictoRateVeryGood@2x.png"; sourceTree = "<group>"; };
@@ -369,6 +370,7 @@
 		8A0F8AB617315F0F00974581 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5BA133801761E49900A33F62 /* CoreLocation.framework */,
 				8A4CD4431762D490006A8B26 /* ASDepthModal */,
 				8A89ACE2175B81500072167D /* AMRatingControl */,
 				5B730C9417589A6800ADA166 /* REMenu */,

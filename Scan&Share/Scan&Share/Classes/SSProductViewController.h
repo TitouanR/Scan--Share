@@ -15,11 +15,15 @@
 #import "SSLoginView.h"
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import <CoreLocation/CoreLocation.h>
 
 //Objet
 #import "SSProduct.h"
 
-@interface SSProductViewController : UIViewController <SSButtonSubViewProtocol, MFMailComposeViewControllerDelegate,UITableViewDelegate, UITableViewDataSource>
+@interface SSProductViewController : UIViewController <SSButtonSubViewProtocol, MFMailComposeViewControllerDelegate,UITableViewDelegate, UITableViewDataSource,CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+}
+
 
 //Object
 @property (strong, nonatomic) SSProduct *product;

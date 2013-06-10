@@ -14,13 +14,51 @@
 
 //TODO
 -(SSPrice*)getMinimumPrice{
-    return NULL;
+    
+    if ([self.prices count] > 0){
+        SSPrice *min = [self.prices objectAtIndex:0];
+        
+        for (SSPrice *p in self.prices) {
+            if (p.value < min.value){
+                min = p;
+            }
+        }
+        return min;
+    }
+        
+    return 0;
 }
+
 -(SSPrice*)getMaximumPrice{
-    return NULL;
+    
+    if ([self.prices count] > 0){
+        SSPrice *max = [self.prices objectAtIndex:0];
+    
+        for (SSPrice *p in self.prices) {
+            if (p.value > max.value){
+                max = p;
+            }
+        }
+        return max;
+    }
+    
+    return 0;
 }
--(SSPrice*)getPricesMean{
-    return NULL;
+
+
+-(float)getPricesMean{
+    
+    if ([self.prices count] > 0){
+        float somme =0;
+        for (SSPrice *p in self.prices) {
+            somme += [p.value floatValue];
+        }
+        
+        somme /=[self.prices count];
+        
+        return somme;
+    }
+    return 0;
 }
 
 @end

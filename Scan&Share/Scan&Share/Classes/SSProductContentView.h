@@ -21,6 +21,9 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *commentsTable;
 @property (strong, nonatomic) IBOutlet UILabel *indicationNoCommentLabel;
+@property (strong, nonatomic) IBOutlet UILabel *priceUpLabel;
+@property (strong, nonatomic) IBOutlet UILabel *priceDownLabel;
+@property (strong, nonatomic) IBOutlet UILabel *meanPriceLabel;
 
 @property (strong, nonatomic) UINib *commentCellNib;
 - (IBAction)buttonPressed:(id)sender;
