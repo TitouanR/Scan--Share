@@ -8,6 +8,7 @@
 
 #import "SSParameterViewController.h"
 #import "ASDepthModalViewController.h"
+#import "SSPrice.h"
 #import  <QuartzCore/QuartzCore.h>
 
 @interface SSParameterViewController ()
@@ -21,7 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.loginView = [[SSLoginView alloc] init];
+
         
      
     }
@@ -32,12 +33,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    self.loginView.layer.cornerRadius = 12;
-    self.loginView.layer.shadowOpacity = 0.7;
-    self.loginView.layer.shadowOffset = CGSizeMake(6, 6);
-    self.loginView.layer.shouldRasterize = YES;
-    self.loginView.layer.rasterizationScale = [[UIScreen mainScreen] scale];
     
 }
 
@@ -51,15 +46,23 @@
     [super viewDidUnload];
 }
 
-- (IBAction)showLoginView:(id)sender {
-    
-    UIColor *color = nil;
-    ASDepthModalOptions style = ASDepthModalOptionAnimationGrow;
-    ASDepthModalOptions options = style | ASDepthModalOptionBlurNone;
 
-    [ASDepthModalViewController presentView:self.loginView backgroundColor:color options:options completionHandler:^{
+
+- (IBAction)clearHistory:(id)sender {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"history"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (IBAction)test:(id)sender {
+    
+    SSPrice *price = [[SSPrice alloc] init];
+    price.value = [NSNumber numberWithFloat:0.64];
+    price.location = @"35.2:16.3";
+    
+    [[SSApi sharedApi] modifyProduct:@"3068320052007" withPrice:price withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         
     }];
-  
 }
 @end

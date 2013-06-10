@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SSLoginView.h"
+
 
 @interface SSParameterViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet SSLoginView *loginView;
-
-- (IBAction)showLoginView:(id)sender;
 
 
 @end

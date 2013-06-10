@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SSLoginView.h"
 
 @interface SSProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *history;
+@property (nonatomic, strong) IBOutlet SSLoginView *loginView;
 
 @end

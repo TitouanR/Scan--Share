@@ -16,6 +16,7 @@
 #import "SSProductViewController.h"
 #import "SSResultList.h"
 #import "SSSearchResultViewController.h"
+#import "ASDepthModalViewController.h"
 
 @interface SSProfileViewController ()
 
@@ -30,6 +31,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.loginView = [[SSLoginView alloc] init];
       
     }
     return self;
@@ -39,6 +41,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.loginView.layer.cornerRadius = 12;
+    self.loginView.layer.shadowOpacity = 0.7;
+    self.loginView.layer.shadowOffset = CGSizeMake(6, 6);
+    self.loginView.layer.shouldRasterize = YES;
+    self.loginView.layer.rasterizationScale = [[UIScreen mainScreen] scale];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -160,12 +168,7 @@
     return result;
 }
 
-- (IBAction)clearHistory:(id)sender {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"history"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    [self reloadData];
-}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
@@ -187,4 +190,17 @@
     }
     
 }
+
+- (IBAction)showLoginView:(id)sender {
+    
+    UIColor *color = nil;
+    ASDepthModalOptions style = ASDepthModalOptionAnimationGrow;
+    ASDepthModalOptions options = style | ASDepthModalOptionBlurNone;
+    
+    [ASDepthModalViewController presentView:self.loginView backgroundColor:color options:options completionHandler:^{
+        
+    }];
+    
+}
+
 @end
