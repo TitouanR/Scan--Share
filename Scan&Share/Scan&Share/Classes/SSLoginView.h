@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SSLoginView : UIView
+@interface SSLoginView : UIView <UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet UITextField *loginTextField;
 @property (nonatomic, strong) IBOutlet UITextField *passwordTextField;
+@property (nonatomic, assign) BOOL isLoggedIn;
 
 - (IBAction)login:(id)sender;
 

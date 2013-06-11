@@ -20,7 +20,7 @@
 //Objet
 #import "SSProduct.h"
 
-@interface SSProductViewController : UIViewController <SSButtonSubViewProtocol, MFMailComposeViewControllerDelegate,UITableViewDelegate, UITableViewDataSource,CLLocationManagerDelegate> {
+@interface SSProductViewController : UIViewController <SSButtonSubViewProtocol, MFMailComposeViewControllerDelegate,UITableViewDelegate, UITableViewDataSource,CLLocationManagerDelegate, UIAlertViewDelegate> {
     CLLocationManager *locationManager;
 }
 

@@ -51,6 +51,8 @@
 		8A1C76D7173D226A0042B9B6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1C76D6173D226A0042B9B6 /* MainStoryboard.storyboard */; };
 		8A1C76DC173DAB380042B9B6 /* SSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C76DB173DAB380042B9B6 /* SSMainViewController.m */; };
 		8A1C7701173DC4BB0042B9B6 /* SSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C7700173DC4BB0042B9B6 /* SSSearchViewController.m */; };
+		8A1C8E6B17670F0500558141 /* SSShoppingListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C8E6A17670F0500558141 /* SSShoppingListCell.m */; };
+		8A1C8E6E17670FB300558141 /* SSShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C8E6D17670FB200558141 /* SSShoppingListViewController.m */; };
 		8A2450291752B70700342B8D /* SSPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2450281752B70700342B8D /* SSPrice.m */; };
 		8A37AB841758C51300C9362D /* SSSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A37AB831758C51300C9362D /* SSSearchResultCell.m */; };
 		8A37AB871758C71100C9362D /* SSResultList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A37AB861758C71100C9362D /* SSResultList.m */; };
@@ -166,6 +168,10 @@
 		8A1C76DB173DAB380042B9B6 /* SSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSMainViewController.m; path = Classes/SSMainViewController.m; sourceTree = "<group>"; };
 		8A1C76FF173DC4BB0042B9B6 /* SSSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSearchViewController.h; path = Classes/SSSearchViewController.h; sourceTree = "<group>"; };
 		8A1C7700173DC4BB0042B9B6 /* SSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSearchViewController.m; path = Classes/SSSearchViewController.m; sourceTree = "<group>"; };
+		8A1C8E6917670F0500558141 /* SSShoppingListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSShoppingListCell.h; path = Classes/SSShoppingListCell.h; sourceTree = "<group>"; };
+		8A1C8E6A17670F0500558141 /* SSShoppingListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSShoppingListCell.m; path = Classes/SSShoppingListCell.m; sourceTree = "<group>"; };
+		8A1C8E6C17670FB200558141 /* SSShoppingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSShoppingListViewController.h; path = Classes/SSShoppingListViewController.h; sourceTree = "<group>"; };
+		8A1C8E6D17670FB200558141 /* SSShoppingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSShoppingListViewController.m; path = Classes/SSShoppingListViewController.m; sourceTree = "<group>"; };
 		8A2450271752B70700342B8D /* SSPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSPrice.h; path = Classes/SSPrice.h; sourceTree = "<group>"; };
 		8A2450281752B70700342B8D /* SSPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSPrice.m; path = Classes/SSPrice.m; sourceTree = "<group>"; };
 		8A37AB821758C51300C9362D /* SSSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSearchResultCell.h; path = Classes/SSSearchResultCell.h; sourceTree = "<group>"; };
@@ -343,8 +349,8 @@
 				5B2FEF77175DD25D002A7F88 /* Add comment */,
 				5B730CA51758AC5400ADA166 /* SSButtonSubViewProtocol.h */,
 				5B4E286A1757B830004C0684 /* Content */,
-				5BCC60A7175624F90096FFC2 /* SSProductViewController.m */,
 				5BCC60A6175624F90096FFC2 /* SSProductViewController.h */,
+				5BCC60A7175624F90096FFC2 /* SSProductViewController.m */,
 			);
 			name = Product;
 			sourceTree = "<group>";
@@ -481,6 +487,25 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
+		8A1C8E6717670ECC00558141 /* Shopping List */ = {
+			isa = PBXGroup;
+			children = (
+				8A1C8E6817670EE000558141 /* Cells */,
+				8A1C8E6C17670FB200558141 /* SSShoppingListViewController.h */,
+				8A1C8E6D17670FB200558141 /* SSShoppingListViewController.m */,
+			);
+			name = "Shopping List";
+			sourceTree = "<group>";
+		};
+		8A1C8E6817670EE000558141 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8A1C8E6917670F0500558141 /* SSShoppingListCell.h */,
+				8A1C8E6A17670F0500558141 /* SSShoppingListCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		8A37AB811758C4F800C9362D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,6 +589,7 @@
 				8A1C76D6173D226A0042B9B6 /* MainStoryboard.storyboard */,
 				8A1C76DA173DAB380042B9B6 /* SSMainViewController.h */,
 				8A1C76DB173DAB380042B9B6 /* SSMainViewController.m */,
+				8A1C8E6717670ECC00558141 /* Shopping List */,
 				8A4CD4391762D15A006A8B26 /* Login */,
 				8A4CD4381762D149006A8B26 /* Parameters */,
 				8AA95B08175FD049009BBEA6 /* Profile */,
@@ -888,6 +914,8 @@
 				8A4CD4491762D490006A8B26 /* UIImage+Blur.m in Sources */,
 				8A4CD44C1762D4CF006A8B26 /* SSLoginView.m in Sources */,
 				8A4CD4551762E307006A8B26 /* SSAccount.m in Sources */,
+				8A1C8E6B17670F0500558141 /* SSShoppingListCell.m in Sources */,
+				8A1C8E6E17670FB300558141 /* SSShoppingListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

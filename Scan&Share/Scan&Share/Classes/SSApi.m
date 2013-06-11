@@ -233,16 +233,22 @@ static SSApi *sharedApi = nil;
 - (void)getLoggedInWithUsername:(NSString *)name andPassword:(NSString *)password withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
                       failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure
 {
-#warning Change Token TO DO : Add Mapping
-    // Create the base URL
+   // Create the base URL
     NSURL *url = [NSURL URLWithString:SSBaseURL];
     // Setting response content type
     [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/plain"];
     
-    // Setting POST Request
+    RKObjectMapping *accountMapping = [RKObjectMapping mappingForClass:[SSAccount class]];
+    [accountMapping addAttributeMappingsFromArray:@[@"token", @"email", @"username", @"age", @"job"]];
+    
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:accountMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
     RKObjectManager *manager = [RKObjectManager managerWithBaseURL:url];
-    NSString *token = [[NSString alloc] init];
-    [manager getObject:token path:[NSString stringWithFormat:@"%@login?username=%@&password=%@", SSBaseURL, name, password] parameters:nil success:success failure:failure];
+    [manager addResponseDescriptor:responseDescriptor];
+    SSAccount *account = [[SSAccount alloc] init];
+    [manager getObject:account path:[NSString stringWithFormat:@"login?username=%@&password=%@", name, password] parameters:nil success:success failure:failure];
+    
+    
     
 }
 

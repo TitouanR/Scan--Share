@@ -34,6 +34,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    UIImage *buttonImage = [[UIImage imageNamed:@"blueButton"]
+                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    
+    [self.clearHistoryButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,6 +48,7 @@
 }
 
 - (void)viewDidUnload {
+    [self setClearHistoryButton:nil];
     [super viewDidUnload];
 }
 

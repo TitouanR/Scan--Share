@@ -11,5 +11,13 @@
 @interface SSAccount : NSObject
 
 @property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) NSNumber *age;
+@property (nonatomic, strong) NSString *job;
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *username;
+
+
+
+
 
 @end

@@ -1,5 +1,5 @@
 //
-//  SSProfileViewController.m
+//  ;
 //  Scan&Share
 //
 //  Created by Karim CHEBBOUR on 05/06/13.
@@ -17,6 +17,7 @@
 #import "SSResultList.h"
 #import "SSSearchResultViewController.h"
 #import "ASDepthModalViewController.h"
+#import "SSAppDelegate.h"
 
 @interface SSProfileViewController ()
 
@@ -24,7 +25,7 @@
 
 @implementation SSProfileViewController
 
-@synthesize history;
+@synthesize history, headerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,6 +42,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+
     
     self.loginView.layer.cornerRadius = 12;
     self.loginView.layer.shadowOpacity = 0.7;
@@ -143,8 +145,22 @@
     }
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Historique";
+}
+
+
 - (void)viewDidUnload {
     [self setTableView:nil];
+    [self setHeaderView:nil];
+    [self setUsernameLabel:nil];
+    [self setEmailLabel:nil];
+    [self setAgeLabel:nil];
+    [self setUsernameLabel:nil];
+    [self setEmailLabel:nil];
+    [self setAgeLabel:nil];
+    [self setJobLabel:nil];
     [super viewDidUnload];
 }
 
@@ -192,15 +208,57 @@
 }
 
 - (IBAction)showLoginView:(id)sender {
-    
-    UIColor *color = nil;
-    ASDepthModalOptions style = ASDepthModalOptionAnimationGrow;
-    ASDepthModalOptions options = style | ASDepthModalOptionBlurNone;
-    
-    [ASDepthModalViewController presentView:self.loginView backgroundColor:color options:options completionHandler:^{
+    if ([self.navigationItem.rightBarButtonItem.title isEqualToString:@"Logout"]) {
+        SSAppDelegate *appDelegate = (SSAppDelegate *)[UIApplication sharedApplication].delegate;
+        appDelegate.currentLoggedAccount = nil;
         
-    }];
+        self.loginView.isLoggedIn = false;
     
+        [UIView animateWithDuration:0.5 animations:^{
+            CGRect frame = self.tableView.frame;
+            frame.origin.y -= 170;
+            [self.tableView setFrame:frame];
+        }];
+        
+        self.usernameLabel.text = @"";
+        self.emailLabel.text = @"";
+        self.ageLabel.text = @"";
+        self.jobLabel.text = @"";
+        
+        [self.navigationItem.rightBarButtonItem setTitle:@"Login"];
+
+        
+    } else {
+        UIColor *color = nil;
+        ASDepthModalOptions style = ASDepthModalOptionAnimationGrow;
+        ASDepthModalOptions options = style | ASDepthModalOptionBlurNone;
+        
+        [ASDepthModalViewController presentView:self.loginView backgroundColor:color options:options completionHandler:^{
+            if (self.loginView.isLoggedIn) {
+                [self revealHeaderView];
+            }
+        }];
+    }
+}
+
+- (void)revealHeaderView
+{
+    SSAppDelegate *appDelegate = (SSAppDelegate *)[UIApplication sharedApplication].delegate;
+    SSAccount *account = appDelegate.currentLoggedAccount;
+    
+    self.usernameLabel.text = [NSString stringWithFormat:@"Username : %@", account.username];
+    self.emailLabel.text = [NSString stringWithFormat:@"Email : %@", account.email];
+    self.ageLabel.text = [NSString stringWithFormat:@"Age : %d", [account.age intValue]];
+    self.jobLabel.text = [NSString stringWithFormat:@"Job : %@", account.job];
+    
+    [self.navigationItem.rightBarButtonItem setTitle:@"Logout"];
+    
+    [UIView animateWithDuration:0.5 animations:^{        
+       CGRect frame = self.tableView.frame;
+        frame.origin.y += 170;
+        [self.tableView setFrame:frame];
+    }];
+ 
 }
 
 @end

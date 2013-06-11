@@ -9,10 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "SSLoginView.h"
 
-@interface SSProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SSProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *history;
 @property (nonatomic, strong) IBOutlet SSLoginView *loginView;
+@property (strong, nonatomic) IBOutlet UIView *headerView;
+@property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *emailLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ageLabel;
+@property (strong, nonatomic) IBOutlet UILabel *jobLabel;
+
 
 @end

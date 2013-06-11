@@ -526,4 +526,17 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }];
     
 }
+
+- (void)loginSuccess:(NSNotification *)notification
+{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connexion réussie !" message:@"La connexion a été établie avec succès." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [ASDepthModalViewController dismiss];
+}
 @end

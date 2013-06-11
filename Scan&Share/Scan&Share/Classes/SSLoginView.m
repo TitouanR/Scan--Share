@@ -8,10 +8,13 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "SSLoginView.h"
+#import "SSAccount.h"
+#import "SSAppDelegate.h"
+#import "ASDepthModalViewController.h"
 
 @implementation SSLoginView
 
-@synthesize loginTextField, passwordTextField;
+@synthesize loginTextField, passwordTextField, isLoggedIn;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -19,7 +22,11 @@
     if (self) {
         // Initialization code
     
-
+        loginTextField.delegate = self;
+        passwordTextField.delegate = self;
+        passwordTextField.secureTextEntry = YES;
+        isLoggedIn = false;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:@"loginSuccessNotification" object:nil];
     }
     return self;
 }
@@ -38,6 +45,15 @@
     if(!([loginTextField.text isEqualToString:@""] && [passwordTextField.text isEqualToString:@""]))
     {
         [[SSApi sharedApi] getLoggedInWithUsername:loginTextField.text andPassword:passwordTextField.text withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            SSAccount *account = (SSAccount *)[mappingResult.array objectAtIndex:0];
+            SSAppDelegate *appDelegate = (SSAppDelegate *)[UIApplication sharedApplication].delegate;
+            appDelegate.currentLoggedAccount = account;
+            
+            isLoggedIn = true;
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connexion réussie !" message:@"La connexion a été établie avec succès." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+          //  [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccessNotification" object:nil];
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             
@@ -48,4 +64,35 @@
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if([textField isEqual:passwordTextField]){
+       [UIView animateWithDuration:0.2 animations:^{
+           CGRect frame = self.frame;
+           frame.origin.y -= 50;
+           [self setFrame:frame];}];
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if([textField isEqual:passwordTextField]){
+        [UIView animateWithDuration:0.2 animations:^{
+            CGRect frame = self.frame;
+            frame.origin.y += 50;
+            [self setFrame:frame];}];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [ASDepthModalViewController dismiss];
+}
 @end
