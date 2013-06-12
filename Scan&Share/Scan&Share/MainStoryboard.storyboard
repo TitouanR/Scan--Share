@@ -350,6 +350,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="exN-ix-DTy" id="Jad-37-Yre"/>
+                                    <outlet property="delegate" destination="exN-ix-DTy" id="e1R-n0-xZ3"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -361,6 +365,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="of4-Qa-b8M" id="lXJ-dZ-NFY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7e-JW-mkT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,5 +12,19 @@
 
 @synthesize value, location;
 
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    //Encode properties, other class variables, etc
+    [encoder encodeObject:self.value forKey:@"value"];
+    [encoder encodeObject:self.location forKey:@"location"];
 
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    if((self = [super init])) {
+        //decode properties, other class vars
+        self.value = [decoder decodeObjectForKey:@"value"];
+        self.location = [decoder decodeObjectForKey:@"location"];
+    }
+    return self;
+}
 @end

@@ -43,6 +43,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.shoppingList count];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SSShoppingListCell *cell = (SSShoppingListCell *)[tableView dequeueReusableCellWithIdentifier:@"shoppingListCell"];
@@ -51,7 +56,7 @@
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:product.image.imageURL]];
     [cell.imageView setImage:[UIImage imageWithData:data]];
     cell.productNameLabel.text = product.name;
-    cell.priceLabel.text = [NSString stringWithFormat:@"%f€", product.getPricesMean];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%.2f€", product.getPricesMean];
     
     return cell;
 }
@@ -77,7 +82,7 @@
         total = total + product.getPricesMean;
     }
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Total des courses" message:[NSString stringWithFormat:@"Le total de vos courses est de : %f", total] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Total des courses" message:[NSString stringWithFormat:@"Le total de vos courses est de : %.2f€", total] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertView show];
 }
 @end

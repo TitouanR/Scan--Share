@@ -157,17 +157,17 @@
 
 - (void)saveCustomObjectInHistory:(SSProduct *)obj {
     NSArray *userHistory = (NSArray *)[[NSUserDefaults standardUserDefaults] objectForKey:@"shoppingList"];
-    NSMutableArray *history = [NSMutableArray array];
+    NSMutableArray *shoppingList = [NSMutableArray array];
     
     if(userHistory)
     {
-        [history addObjectsFromArray:userHistory];
+        [shoppingList addObjectsFromArray:userHistory];
         
     }
     
     NSData *myEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:obj];
-    [history addObject:myEncodedObject];
-    [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
+    [shoppingList addObject:myEncodedObject];
+    [[NSUserDefaults standardUserDefaults] setObject:shoppingList forKey:@"shoppingList"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 - (void)didReceiveMemoryWarning
