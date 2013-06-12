@@ -19,7 +19,7 @@
 @property (nonatomic, strong) SSImage* image;
 @property (nonatomic, strong) NSArray *comments;
 @property (nonatomic, strong) NSArray *types;
-@property (nonatomic, strong) NSArray *prices;
+@property (nonatomic, strong) NSMutableArray *prices;
 
 // TO DO : Add Comments
 

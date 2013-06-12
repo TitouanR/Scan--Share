@@ -17,7 +17,7 @@
 
 @implementation SSProductViewController
 
-@synthesize product, menu, contentView, globalScrollView, showMenuButtonItem, addCommentButtonItem, ratingControl;
+@synthesize product, menu, contentView, showMenuButtonItem, addCommentButtonItem, ratingControl, currentLocation, priceToAdd;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -96,6 +96,13 @@
     [self.contentView addSubview:ratingControl];
     
     
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.contentView addGestureRecognizer:tap];
+    
     self.view = contentView;
     
     
@@ -153,6 +160,14 @@
     // Set up Login View
     
     [self.loginView setUp];
+    
+    
+    //Set up location manager
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 }
 
 - (void)saveCustomObjectInHistory:(SSProduct *)obj {
@@ -242,12 +257,13 @@
         contentView.commentsTable.hidden = NO;
         contentView.indicationNoCommentLabel.hidden = YES;
     }
+    
+    [locationManager startUpdatingLocation];
 }
 
 
 - (void)viewDidUnload {
    
-    [self setGlobalScrollView:nil];
     [super viewDidUnload];
 }
 
@@ -268,8 +284,18 @@
     [self performSegueWithIdentifier:@"searchResultToMapView" sender:self.product];
 }
 
+
+
 -(void)addCommentButtonPressed{
-    [self performSegueWithIdentifier:@"addCommentModalSegue" sender:NULL];
+     SSAppDelegate *appDelegate = (SSAppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    if (appDelegate.currentLoggedAccount){
+        //User already registred
+        [self performSegueWithIdentifier:@"addCommentModalSegue" sender:NULL];
+    }
+    else{
+        [self showLoginView];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -328,9 +354,9 @@
     
     else if (button.tag == 1) //Rate button
     {
-       UIAlertView *rate = [[UIAlertView alloc] initWithTitle:@"Noter le produit" message:[NSString stringWithFormat:@"Vous êtes sur le point de donner la note de %d à ce produit", ratingControl.rating] delegate:self cancelButtonTitle:@"Annuler" otherButtonTitles:@"Valider", nil];
-        
-        [rate show];
+       UIAlertView *rateAlertView = [[UIAlertView alloc] initWithTitle:@"Noter le produit" message:[NSString stringWithFormat:@"Vous êtes sur le point de donner la note de %d à ce produit", ratingControl.rating] delegate:self cancelButtonTitle:@"Annuler" otherButtonTitles:@"Valider", nil];
+        rateAlertView.tag = 1;
+       [rateAlertView show];
     }
     
     else if (button.tag == 2) //show map Button
@@ -339,10 +365,47 @@
         
     }
     
+    else if(button.tag == 3) //Add Price Button
+    {
+        
+        if([contentView.addPriceTextField.text isEqualToString:@""])
+        {
+            UIAlertView *addPriceEmptyAlert = [[UIAlertView alloc] initWithTitle:@"Pas de prix spécifié" message:@"Veuillez entrer un prix dans le champs spécifié" delegate:self cancelButtonTitle:@"Ok, j'y cours" otherButtonTitles: nil];
+            
+            [self dismissKeyboard];
+            [addPriceEmptyAlert show];
+            
+            return;
+        }
+        
+        if (!priceToAdd){
+            priceToAdd = [[SSPrice alloc] init];
+        }
+        
+            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+            [f setNumberStyle:NSNumberFormatterDecimalStyle];
+           priceToAdd.value = [f numberFromString:contentView.addPriceTextField.text];
+        
+        
+        
+        priceToAdd.location = [NSString stringWithFormat:@"%f:%f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude];
+        
+        UIAlertView *addPriceValidationAlert = [[UIAlertView alloc] initWithTitle:@"Nouveau prix" message:@"Vous êtes sur le point d'ajouter un prix au produit" delegate:self cancelButtonTitle:@"Annuler" otherButtonTitles: @"Valider", nil];
+        addPriceValidationAlert.tag = 2;
+        
+        [self dismissKeyboard];
+        
+        [addPriceValidationAlert show];
+        
+    }
+    
   
     
     
 }
+
+
+/* SHARE ACTIONS */
 
 -(void)buttonClicked:(UIButton*)sender {
     //Share action
@@ -358,16 +421,10 @@
     else if(sender.tag == 2){
         
         //Share by Mail
-        
-        
         if ([MFMailComposeViewController canSendMail])
         {
             MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
-            
             mailer.mailComposeDelegate = self;
-            
-            
-            
             NSString *emailBody = [[NSString alloc]init];
             
             emailBody = [self.product name];
@@ -393,16 +450,14 @@
                                                            delegate:nil
                                                   cancelButtonTitle:@"OK, dommage!"
                                                   otherButtonTitles: nil];
-            [alert show];
+           
+           [alert show];
         }
     }
 }
 
 
-
 #pragma mark - MFMailComposeController delegate
-
-
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 {
 	switch (result)
@@ -428,39 +483,74 @@
 }
 
 
+
+/* Alert Views ACTIONS */
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     //u need to change 0 to other value(,1,2,3) if u have more buttons.then u can check which button was pressed.
-    
-    if (buttonIndex == 1) {
-        
-        //Send rate
-        
-        [[SSApi sharedApi] rateProduct:product.ean withRate:[NSString stringWithFormat:@"%d", ratingControl.rating] andComment:NULL withCompletionBlockSucceed: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            
-            float oldRate = [product.rating floatValue];
-            oldRate += ratingControl.rating;
-            oldRate/=2;
-            [contentView.rateLabel setText:[NSString stringWithFormat:@"Note : %.2f/5",oldRate]];
-         
+    if (alertView.tag == 1) //Send Rate Validation AlertView
+    {
+        if (buttonIndex == 1) {
+            //Send rate Action
+            [[SSApi sharedApi] rateProduct:product.ean withRate:[NSString stringWithFormat:@"%d", ratingControl.rating] andComment:NULL withCompletionBlockSucceed: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                
+                float oldRate = [product.rating floatValue];
+                
+                if (oldRate == 0.0){
+                    oldRate = ratingControl.rating;
+                }else{
+                    oldRate += ratingControl.rating;
+                    oldRate/=2;
+                }
+                [contentView.rateLabel setText:[NSString stringWithFormat:@"Note : %.2f/5",oldRate]];
+                
+            }
+                                   failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+                                       
+                                       NSLog(@"Rate action fail");
+                                       
+                                   }];
         }
-            failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+            failure: (void)^(RKObjectRequestOperation *operation, NSError *error) {
                 [[SSApi sharedApi] errorHTTPHandler:error];
                 NSLog(@"Rate action fail");
                                    
-        }];
+        };
         
         
 
     }
     
+    else if (alertView.tag == 2 && buttonIndex == 1) //Send Price Action
+    {
+        NSLog(@"Validate : Prix : %@ and loc : %@", priceToAdd.value, priceToAdd.location);
+        
+        
+      [[SSApi sharedApi] modifyProduct:product.ean withPrice:self.priceToAdd withCompletionBlockSucceed: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+          
+          if (priceToAdd.value.floatValue < [product getMinimumPrice].value.floatValue){
+              [contentView.priceDownLabel setText :[NSString stringWithFormat:@"%@€", [[product getMinimumPrice] value]]];
+          }
+          else if(priceToAdd.value.floatValue < [product getMaximumPrice].value.floatValue){
+              [contentView.priceUpLabel setText :[NSString stringWithFormat:@"%@€", [[product getMaximumPrice] value]]];
+          }
+          
+          [product.prices addObject:priceToAdd];
+         
+          
+        [contentView.meanPriceLabel setText:[NSString stringWithFormat:@"Prix moyen : %.2f€", [product getPricesMean]]];
+        
+              
     
+      }
+    failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+    }];
     
+    }
 }
 
 #pragma mark -
 #pragma mark Table Data Source Methods
-
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
     
@@ -471,9 +561,6 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    
     
     static NSString *CommentCellTableIdentifier = @"commentCellIdentifier";
     static BOOL nibsRegistered = NO;
@@ -525,6 +612,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return (30.0 + labelSize.height);
 }
 
+
+
 - (void)showLoginView{
     
     UIColor *color = nil;
@@ -548,5 +637,22 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     [ASDepthModalViewController dismiss];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations {
+    CLLocation *location = [locations lastObject];
+    
+    if (!self.currentLocation ){
+        self.currentLocation = [[CLLocation alloc] init];
+    }
+    
+    self.currentLocation = location;
+    [locationManager stopUpdatingLocation];
+}
+
+
+-(void)dismissKeyboard{
+    [contentView.addPriceTextField resignFirstResponder];
 }
 @end

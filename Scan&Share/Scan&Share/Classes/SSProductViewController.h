@@ -27,21 +27,26 @@
 
 //Object
 @property (strong, nonatomic) SSProduct *product;
-
-
-@property (strong, nonatomic) IBOutlet UIScrollView *globalScrollView;
-
+//Content View
 @property (strong, nonatomic) SSProductContentView* contentView;
-
+//The 2 different right nav bar button
 @property (strong, nonatomic) UIBarButtonItem *showMenuButtonItem;
 @property (strong, nonatomic) UIBarButtonItem *addCommentButtonItem;
+
 @property (strong, nonatomic) REMenu *menu;
 @property (strong, nonatomic) AMRatingControl *ratingControl;
 
+//Current location of the user
+@property (strong, nonatomic) CLLocation *currentLocation;
+
+
+//New Price
+@property (strong, nonatomic) SSPrice *priceToAdd;
 // Login Popup
 @property (strong, nonatomic) IBOutlet SSLoginView *loginView;
 
 - (void)addCommentButtonPressed;
 - (IBAction)aroundMe:(id)sender;
 - (void)showLoginView;
+-(void)dismissKeyboard;
 @end

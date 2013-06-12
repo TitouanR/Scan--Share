@@ -31,7 +31,7 @@
 
 -(SSPrice*)getMaximumPrice{
     
-    if ([self.prices count] > 0){
+    if ( self.prices && [self.prices count] > 0){
         SSPrice *max = [self.prices objectAtIndex:0];
     
         for (SSPrice *p in self.prices) {
@@ -48,7 +48,7 @@
 
 -(float)getPricesMean{
     
-    if ([self.prices count] > 0){
+    if ( self.prices && [self.prices count] > 0){
         float somme =0;
         for (SSPrice *p in self.prices) {
             somme += [p.value floatValue];

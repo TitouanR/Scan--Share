@@ -24,9 +24,11 @@
 @property (strong, nonatomic) IBOutlet UILabel *priceUpLabel;
 @property (strong, nonatomic) IBOutlet UILabel *priceDownLabel;
 @property (strong, nonatomic) IBOutlet UILabel *meanPriceLabel;
+@property (strong, nonatomic) IBOutlet UITextField *addPriceTextField;
 
 @property (strong, nonatomic) UINib *commentCellNib;
 - (IBAction)buttonPressed:(id)sender;
+
 
 
 @end

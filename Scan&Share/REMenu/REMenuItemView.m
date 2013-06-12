@@ -148,7 +148,6 @@
         if (self.item.tag == 1) {
             //Share button clicked
             
-            
             UIView *shareView = [[UIView alloc] initWithFrame:CGRectMake(320, 0, 320, 50)];
             shareView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cross_scratches.png"]];
             
