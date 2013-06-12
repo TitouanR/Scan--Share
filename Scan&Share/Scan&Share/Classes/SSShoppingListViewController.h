@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SSShoppingListViewController : UIViewController
+@interface SSShoppingListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) NSArray *shoppingList;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+
+- (IBAction)getTotal:(id)sender;
 @end

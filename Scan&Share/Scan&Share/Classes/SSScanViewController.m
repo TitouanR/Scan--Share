@@ -119,7 +119,7 @@
         
         [self performSegueWithIdentifier:@"fromScanToProductSegue" sender:product];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-       
+       [[SSApi sharedApi] errorHTTPHandler:error];
     }];
 }
 - (void)viewDidUnload {
@@ -147,7 +147,7 @@
         [self performSegueWithIdentifier:@"fromScanToProductSegue" sender:product];
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        
+        [[SSApi sharedApi] errorHTTPHandler:error];
         NSLog(@"Error in getting the data");
     }];
 

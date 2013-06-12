@@ -374,4 +374,13 @@ static SSApi *sharedApi = nil;
     [manager postObject:nil path:[NSString stringWithFormat:@"product?id=%@&price", ean] parameters:@{@"price":price.value, @"gps":price.location}  success:success failure:failure];
 }
 
+#pragma mark - Handler Errors
+
+- (void)errorHTTPHandler:(NSError *)error
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Error %d", error.code] message:error.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [alertView show];
+}
+
 @end

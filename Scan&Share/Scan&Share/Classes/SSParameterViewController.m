@@ -68,7 +68,7 @@
     [[SSApi sharedApi] modifyProduct:@"3068320052007" withPrice:price withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        
+        [[SSApi sharedApi] errorHTTPHandler:error];
     }];
 }
 @end

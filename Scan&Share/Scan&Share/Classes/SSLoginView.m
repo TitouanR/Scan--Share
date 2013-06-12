@@ -21,12 +21,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-    
-        loginTextField.delegate = self;
-        passwordTextField.delegate = self;
-        passwordTextField.secureTextEntry = YES;
-        isLoggedIn = false;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:@"loginSuccessNotification" object:nil];
+
     }
     return self;
 }
@@ -39,6 +34,21 @@
     // Drawing code
 }
 */
+
+- (void)setUp
+{
+    self.layer.cornerRadius = 12;
+    self.layer.shadowOpacity = 0.7;
+    self.layer.shadowOffset = CGSizeMake(6, 6);
+    self.layer.shouldRasterize = YES;
+    self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    
+    loginTextField.delegate = self;
+    passwordTextField.delegate = self;
+    passwordTextField.secureTextEntry = YES;
+    isLoggedIn = false;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:@"loginSuccessNotification" object:nil];
+}
 
 - (IBAction)login:(id)sender
 {
@@ -56,7 +66,7 @@
           //  [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccessNotification" object:nil];
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            
+            [[SSApi sharedApi] errorHTTPHandler:error];
         }];
     }
     else {

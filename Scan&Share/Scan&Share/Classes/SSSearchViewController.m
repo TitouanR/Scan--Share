@@ -76,7 +76,7 @@
         [self performSegueWithIdentifier:@"searchToResultPush" sender:resultList];
 
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        
+        [[SSApi sharedApi] errorHTTPHandler:error];
     }];
 }
 

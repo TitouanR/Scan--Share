@@ -27,7 +27,7 @@
         self.date = [decoder decodeObjectForKey:@"date"];
         self.type = [decoder decodeObjectForKey:@"type"];
         self.scanID = [decoder decodeObjectForKey:@"scanID"];
-}
+    }
     return self;
 }
 

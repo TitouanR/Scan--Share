@@ -47,4 +47,9 @@ withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMapp
             failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
 
 - (void)modifyProduct:(NSString *)ean withPrice:(SSPrice *)price withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
+
+// ERRORS
+
+- (void)errorHTTPHandler:(NSError *)error;
+
 @end

@@ -43,12 +43,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    
-    self.loginView.layer.cornerRadius = 12;
-    self.loginView.layer.shadowOpacity = 0.7;
-    self.loginView.layer.shadowOffset = CGSizeMake(6, 6);
-    self.loginView.layer.shouldRasterize = YES;
-    self.loginView.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    [self.loginView setUp];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -130,7 +126,7 @@
                 SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
                 [self performSegueWithIdentifier:@"historyToProductPush" sender:product];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                
+                [[SSApi sharedApi] errorHTTPHandler:error];
             }];
         }
 
@@ -140,7 +136,7 @@
             [self performSegueWithIdentifier:@"historyToResultPush" sender:resultList];
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            
+            [[SSApi sharedApi] errorHTTPHandler:error];
         }];
     }
 }

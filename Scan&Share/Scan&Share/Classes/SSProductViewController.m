@@ -107,6 +107,7 @@
                                                        image:[UIImage imageNamed:@"addToListIco.png"]
                                             highlightedImage:nil
                                                       action:^(REMenuItem *item) {
+                                                          [self saveCustomObjectInHistory:self.product];
                                                           NSLog(@"Item: %@", item);
                                                       }];
     
@@ -151,15 +152,24 @@
     
     // Set up Login View
     
-    self.loginView.layer.cornerRadius = 12;
-    self.loginView.layer.shadowOpacity = 0.7;
-    self.loginView.layer.shadowOffset = CGSizeMake(6, 6);
-    self.loginView.layer.shouldRasterize = YES;
-    self.loginView.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    [self.loginView setUp];
 }
 
-
-
+- (void)saveCustomObjectInHistory:(SSProduct *)obj {
+    NSArray *userHistory = (NSArray *)[[NSUserDefaults standardUserDefaults] objectForKey:@"shoppingList"];
+    NSMutableArray *history = [NSMutableArray array];
+    
+    if(userHistory)
+    {
+        [history addObjectsFromArray:userHistory];
+        
+    }
+    
+    NSData *myEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:obj];
+    [history addObject:myEncodedObject];
+    [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -264,7 +274,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    if ([[segue identifier] isEqualToString:@"searchResultToMapView"]) {
+    if ([[segue identifier] isEqualToString:@"productToMapPush"]) {
         
         // Get the destination view controller
         SSMapViewController *mapViewController = [segue destinationViewController];
@@ -435,7 +445,7 @@
          
         }
             failure: ^(RKObjectRequestOperation *operation, NSError *error) {
-                
+                [[SSApi sharedApi] errorHTTPHandler:error];
                 NSLog(@"Rate action fail");
                                    
         }];

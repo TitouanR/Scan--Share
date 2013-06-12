@@ -61,4 +61,28 @@
     return 0;
 }
 
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    //Encode properties, other class variables, etc
+    [encoder encodeObject:self.ean forKey:@"ean"];
+    [encoder encodeObject:self.name forKey:@"name"];
+    [encoder encodeObject:self.prices forKey:@"prices"];
+    [encoder encodeObject:self.description forKey:@"description"];
+    [encoder encodeObject:self.rating forKey:@"rating"];
+    [encoder encodeObject:self.comments forKey:@"comments"];
+    [encoder encodeObject:self.types forKey:@"types"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    if((self = [super init])) {
+        //decode properties, other class vars
+        self.ean = [decoder decodeObjectForKey:@"ean"];
+        self.name = [decoder decodeObjectForKey:@"name"];
+        self.prices = [decoder decodeObjectForKey:@"type"];
+        self.description = [decoder decodeObjectForKey:@"description"];
+        self.rating = [decoder decodeObjectForKey:@"rating"];
+        self.comments = [decoder decodeObjectForKey:@"comments"];
+        self.types = [decoder decodeObjectForKey:@"types"];
+    }
+    return self;
+}
 @end

@@ -15,5 +15,6 @@
 @property (nonatomic, assign) BOOL isLoggedIn;
 
 - (IBAction)login:(id)sender;
+- (void)setUp;
 
 @end
