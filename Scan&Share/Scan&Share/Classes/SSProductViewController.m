@@ -97,11 +97,14 @@
     
     
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+    /*
+     //Bug on REMenu when TapGestureRecognizer is on
+     
+     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
     
-    [self.contentView addGestureRecognizer:tap];
+    [self.contentView addGestureRecognizer:tap];*/
     
     self.view = contentView;
     
@@ -120,7 +123,7 @@
     
     REMenuItem *shareItem = [[REMenuItem alloc] initWithTitle:@"Partager"
                                                        subtitle:@"Sur vos réseaux sociaux préférés"
-                                                          image:[UIImage imageNamed:@"Icon_Explore"]
+                                                          image:[UIImage imageNamed:@"shareIco.png"]
                                                highlightedImage:nil
                                                          action:^(REMenuItem *item) {
                                                              NSLog(@"Item: %@", item);
@@ -128,7 +131,7 @@
     
     REMenuItem *showOccasions = [[REMenuItem alloc] initWithTitle:@"Voir les occasions"
                                                         subtitle:@""
-                                                           image:[UIImage imageNamed:@"Icon_Activity"]
+                                                           image:[UIImage imageNamed:@"eyeIco.png"]
                                                 highlightedImage:nil
                                                           action:^(REMenuItem *item) {
                                                               NSLog(@"Item: %@", item);
@@ -136,7 +139,7 @@
                                                           }];
     
     REMenuItem *addOccasion = [[REMenuItem alloc] initWithTitle:@"Ajouter une occasion"
-                                                          image:[UIImage imageNamed:@"Icon_Profile"]
+                                                          image:[UIImage imageNamed:@"+Ico.png"]
                                                highlightedImage:nil
                                                          action:^(REMenuItem *item) {
                                                              NSLog(@"Item: %@", item);
@@ -260,16 +263,6 @@
     
     [locationManager startUpdatingLocation];
     
-    
-    //TESTING
-    
-    for (SSPrice *p in product.prices) {
-        NSLog(@"Price : %f and loc : %@\n", p.value.floatValue, p.location);
-    }
-
-   
-    
-    
 }
 
 
@@ -302,7 +295,7 @@
     
     if (appDelegate.currentLoggedAccount){
         //User already registred
-        [self performSegueWithIdentifier:@"addCommentModalSegue" sender:NULL];
+        [self performSegueWithIdentifier:@"productToAddCommentPush" sender:NULL];
     }
     else{
         [self showLoginView];

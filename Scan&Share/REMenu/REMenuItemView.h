@@ -34,7 +34,11 @@
 @property (strong, nonatomic) UILabel *titleLabel;
 @property (strong, nonatomic) UILabel *subtitleLabel;
 @property (strong, nonatomic) UIImageView *imageView;
+
 @property (strong, nonatomic) REMenuItem *item;
+
+
+@property (nonatomic) BOOL subViewIsAlreadyOpen;
 
 - (id)initWithFrame:(CGRect)frame menu:(REMenu *)menu hasSubtitle:(BOOL)hasSubtitle;
 

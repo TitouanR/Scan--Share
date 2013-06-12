@@ -37,6 +37,7 @@
 
 - (void)setUp
 {
+        
     self.layer.cornerRadius = 12;
     self.layer.shadowOpacity = 0.7;
     self.layer.shadowOffset = CGSizeMake(6, 6);

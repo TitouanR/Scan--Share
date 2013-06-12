@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B057B651768CE1500F6C906 /* shareIco@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B057B641768CE1500F6C906 /* shareIco@2x.png */; };
+		5B057B671768CFF500F6C906 /* eyeIco@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B057B661768CFF500F6C906 /* eyeIco@2x.png */; };
+		5B057B691768D06900F6C906 /* +Ico@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B057B681768D06900F6C906 /* +Ico@2x.png */; };
 		5B2FEF7A175DD269002A7F88 /* SSAddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FEF79175DD269002A7F88 /* SSAddCommentViewController.m */; };
 		5B2FEF7C175DD718002A7F88 /* actionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B2FEF7B175DD718002A7F88 /* actionButton.png */; };
 		5B2FEF7F175DE8D1002A7F88 /* cross_scratches_@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B2FEF7D175DE8D1002A7F88 /* cross_scratches_@2X.png */; };
@@ -108,6 +111,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B057B641768CE1500F6C906 /* shareIco@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareIco@2x.png"; sourceTree = "<group>"; };
+		5B057B661768CFF500F6C906 /* eyeIco@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeIco@2x.png"; sourceTree = "<group>"; };
+		5B057B681768D06900F6C906 /* +Ico@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+Ico@2x.png"; sourceTree = "<group>"; };
 		5B2FEF78175DD269002A7F88 /* SSAddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSAddCommentViewController.h; path = Classes/SSAddCommentViewController.h; sourceTree = "<group>"; };
 		5B2FEF79175DD269002A7F88 /* SSAddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSAddCommentViewController.m; path = Classes/SSAddCommentViewController.m; sourceTree = "<group>"; };
 		5B2FEF7B175DD718002A7F88 /* actionButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = actionButton.png; sourceTree = "<group>"; };
@@ -443,6 +449,9 @@
 		8A1C76DD173DAC700042B9B6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5B057B681768D06900F6C906 /* +Ico@2x.png */,
+				5B057B661768CFF500F6C906 /* eyeIco@2x.png */,
+				5B057B641768CE1500F6C906 /* shareIco@2x.png */,
 				5BA1337417607CC000A33F62 /* mailIco@2x.png */,
 				5BA1337517607CC000A33F62 /* fbIco@2x.png */,
 				5BA1337617607CC000A33F62 /* twitterIco@2x.png */,
@@ -842,6 +851,9 @@
 				5BA1337717607CC000A33F62 /* mailIco@2x.png in Resources */,
 				5BA1337817607CC000A33F62 /* fbIco@2x.png in Resources */,
 				5BA1337917607CC000A33F62 /* twitterIco@2x.png in Resources */,
+				5B057B651768CE1500F6C906 /* shareIco@2x.png in Resources */,
+				5B057B671768CFF500F6C906 /* eyeIco@2x.png in Resources */,
+				5B057B691768D06900F6C906 /* +Ico@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

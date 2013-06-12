@@ -102,11 +102,7 @@
 }
 
 - (id)initWithItems:(NSArray *)items andDelegate:(id)deleg{
-    self = [self init];
-    if (!self)
-        return nil;
-    
-    self.items = items;
+    self = [self initWithItems:items];
     self.delegate = deleg;
     return self;
 }
