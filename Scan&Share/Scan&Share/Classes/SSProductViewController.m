@@ -415,13 +415,60 @@
     //Share action
     if (sender.tag == 0){
         //Share by Facebook
-    }
+        
+        SLComposeViewController *fbController =
+        [SLComposeViewController
+         composeViewControllerForServiceType:SLServiceTypeFacebook];
+        
+        
+        if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+        {
+            SLComposeViewControllerCompletionHandler __block completionHandler=
+            ^(SLComposeViewControllerResult result){
+                
+                [fbController dismissViewControllerAnimated:YES completion:nil];
+                UIAlertView * alert;
+                switch(result){
+                    case SLComposeViewControllerResultCancelled:
+                    default:
+                    {
+                        alert = [[UIAlertView alloc] initWithTitle:@"Mince..."
+                                                           message:@"Outch!! Une erreur est survenue"
+                                                          delegate:nil
+                                                 cancelButtonTitle:@"Ok, mince!" otherButtonTitles:nil];
+                        [alert show];
+                        
+                    }
+                    break;
+                    case SLComposeViewControllerResultDone:
+                    {
+                        alert = [[UIAlertView alloc] initWithTitle:@"Posté!"
+                                                           message:@"C'est posté sur Facebook, vos amis savent maintenant que vous aimez ce produit!"
+                                                          delegate:nil
+                                                 cancelButtonTitle:@"Cool, merci!"
+                                                 otherButtonTitles: nil];
+                        [alert show];
+                    }
+                        break;
+                }};
+            
+            [fbController setInitialText:[NSString stringWithFormat:@"J'adore ce produit sur Scan&Share : %@",[self.product name]]];
+            [fbController setCompletionHandler:completionHandler];
+            [self presentViewController:fbController animated:YES completion:nil];
+        }
+        else{
+            
+            UIAlertView* alert = [[UIAlertView alloc]   initWithTitle:@"Facebook?" message:@"Facebook n'est pas paramétré sur cet iPhone..." delegate:nil cancelButtonTitle:@"Ok, j'y cours..." otherButtonTitles: nil];
+            [alert show];
+        }
     
+    }
+
     else if(sender.tag == 1){
         //Share by Twitter
     }
-    
-    
+
+
     else if(sender.tag == 2){
         
         //Share by Mail

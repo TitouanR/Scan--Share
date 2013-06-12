@@ -16,6 +16,8 @@
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import <CoreLocation/CoreLocation.h>
+#import <Social/SLComposeViewController.h>
+#import <Social/Social.h>
 
 //Objet
 #import "SSProduct.h"

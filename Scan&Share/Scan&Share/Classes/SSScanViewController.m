@@ -14,7 +14,7 @@
 
 //View Controller
 #import "SSProductViewController.h"
-
+#import "SSAddProductViewController.h"
 @interface SSScanViewController ()
 
 @end
@@ -79,6 +79,14 @@
         [productVC setProduct:productToShow];
     }
     
+    else if ([[segue identifier] isEqualToString:@"scanToAddProductPush"]){
+        SSAddProductViewController *addProductVC = [segue destinationViewController];
+        
+        NSString *ean = (NSString*)sender;
+        
+        [addProductVC setEan:ean];
+    }
+    
 }
 
 #pragma mark -
@@ -127,31 +135,38 @@
     [super viewDidUnload];
 }
 - (IBAction)testButtonPressed:(id)sender {
-    
-    NSString *ean = @"3068320052007";
-    [[SSApi sharedApi] getProductWithEAN:ean withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
-        RKLogInfo(@"Load collection of Products: %@", product.comments);
+    UIButton *sendButton = (UIButton*)sender;
+    if (sendButton.tag == 0){
+        NSString *ean = @"3068320052007";
+        [[SSApi sharedApi] getProductWithEAN:ean withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
+            RKLogInfo(@"Load collection of Products: %@", product.comments);
+            
+            
+            RKLogInfo(@"Load collection of Products: %@", product);
+            
+            SSHistory *historyObject = [[SSHistory alloc] init];
+            historyObject.content = product.name;
+            historyObject.type = @"Scan";
+            historyObject.date = [NSDate date];
+            historyObject.scanID = ean;
+            
+            [self saveCustomObjectInHistory:historyObject];
+            
+            [self performSegueWithIdentifier:@"fromScanToProductSegue" sender:product];
+            
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [[SSApi sharedApi] errorHTTPHandler:error];
+            NSLog(@"Error in getting the data");
+        }];
         
-       
-        RKLogInfo(@"Load collection of Products: %@", product);
-        
-        SSHistory *historyObject = [[SSHistory alloc] init];
-        historyObject.content = product.name;
-        historyObject.type = @"Scan";
-        historyObject.date = [NSDate date];
-        historyObject.scanID = ean;
-        
-        [self saveCustomObjectInHistory:historyObject];
-        
-        [self performSegueWithIdentifier:@"fromScanToProductSegue" sender:product];
-        
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [[SSApi sharedApi] errorHTTPHandler:error];
-        NSLog(@"Error in getting the data");
-    }];
 
+    }
     
+    else{
+        [self performSegueWithIdentifier:@"scanToAddProductPush" sender:nil];
+    }
+        
 }
 
 - (void)saveCustomObjectInHistory:(SSHistory *)obj {
