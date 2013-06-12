@@ -19,7 +19,7 @@
         SSPrice *min = [self.prices objectAtIndex:0];
         
         for (SSPrice *p in self.prices) {
-            if (p.value < min.value){
+            if (p.value.floatValue < min.value.floatValue){
                 min = p;
             }
         }
@@ -35,7 +35,7 @@
         SSPrice *max = [self.prices objectAtIndex:0];
     
         for (SSPrice *p in self.prices) {
-            if (p.value > max.value){
+            if (p.value.floatValue > max.value.floatValue){
                 max = p;
             }
         }

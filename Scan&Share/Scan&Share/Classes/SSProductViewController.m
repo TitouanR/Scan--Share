@@ -259,6 +259,17 @@
     }
     
     [locationManager startUpdatingLocation];
+    
+    
+    //TESTING
+    
+    for (SSPrice *p in product.prices) {
+        NSLog(@"Price : %f and loc : %@\n", p.value.floatValue, p.location);
+    }
+
+   
+    
+    
 }
 
 
@@ -525,21 +536,20 @@
     {
         NSLog(@"Validate : Prix : %@ and loc : %@", priceToAdd.value, priceToAdd.location);
         
-        
       [[SSApi sharedApi] modifyProduct:product.ean withPrice:self.priceToAdd withCompletionBlockSucceed: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
           
           if (priceToAdd.value.floatValue < [product getMinimumPrice].value.floatValue){
-              [contentView.priceDownLabel setText :[NSString stringWithFormat:@"%@€", [[product getMinimumPrice] value]]];
+              [contentView.priceDownLabel setText :[NSString stringWithFormat:@"%@€", [priceToAdd value]]];
           }
-          else if(priceToAdd.value.floatValue < [product getMaximumPrice].value.floatValue){
-              [contentView.priceUpLabel setText :[NSString stringWithFormat:@"%@€", [[product getMaximumPrice] value]]];
+          else if(priceToAdd.value.floatValue > [product getMaximumPrice].value.floatValue){
+              [contentView.priceUpLabel setText :[NSString stringWithFormat:@"%@€", [priceToAdd value]]];
           }
+          
           
           [product.prices addObject:priceToAdd];
          
           
         [contentView.meanPriceLabel setText:[NSString stringWithFormat:@"Prix moyen : %.2f€", [product getPricesMean]]];
-        
               
     
       }
