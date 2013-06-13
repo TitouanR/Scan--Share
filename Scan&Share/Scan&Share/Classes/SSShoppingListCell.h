@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SSShoppingListCell : UITableViewCell
+@interface SSShoppingListCell : UITableViewCell <UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *productImageView;
 @property (strong, nonatomic) IBOutlet UILabel *productNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *priceLabel;
+@property (strong, nonatomic) IBOutlet UIView *selectView;
+
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SSProductViewController.h"
+#import "SSShoppingElement.h"
 #import "ASDepthModalViewController.h"
 #import "SSMapViewController.h"
 #import "SSAppDelegate.h"
@@ -117,7 +118,11 @@
                                                        image:[UIImage imageNamed:@"addToListIco.png"]
                                             highlightedImage:nil
                                                       action:^(REMenuItem *item) {
-                                                          [self saveCustomObjectInHistory:self.product];
+                                                          SSShoppingElement *shoppingElement = [[SSShoppingElement alloc] init];
+                                                          shoppingElement.name = self.product.name;
+                                                          shoppingElement.ean = self.product.ean;
+                                                          shoppingElement.price = [NSString stringWithFormat:@"%.2f", self.product.getPricesMean];
+                                                          [self saveCustomObjectInShoppingList:shoppingElement];
                                                           NSLog(@"Item: %@", item);
                                                       }];
     
@@ -173,7 +178,7 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 }
 
-- (void)saveCustomObjectInHistory:(SSProduct *)obj {
+- (void)saveCustomObjectInShoppingList:(SSShoppingElement *)obj {
     NSArray *userHistory = (NSArray *)[[NSUserDefaults standardUserDefaults] objectForKey:@"shoppingList"];
     NSMutableArray *shoppingList = [NSMutableArray array];
     
@@ -182,12 +187,13 @@
         [shoppingList addObjectsFromArray:userHistory];
         
     }
-    
+           
     NSData *myEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:obj];
     [shoppingList addObject:myEncodedObject];
     [[NSUserDefaults standardUserDefaults] setObject:shoppingList forKey:@"shoppingList"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -365,7 +371,7 @@
     
     else if (button.tag == 2) //show map Button
     {
-        [self performSegueWithIdentifier:@"productToMapPush" sender:nil];
+        [self performSegueWithIdentifier:@"productToMapPush" sender:self.product];
         
     }
     

@@ -8,7 +8,7 @@
 
 #import "SSShoppingListViewController.h"
 #import "SSShoppingListCell.h"
-#import "SSProduct.h"
+#import "SSShoppingElement.h"
 
 @interface SSShoppingListViewController ()
 
@@ -51,13 +51,37 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SSShoppingListCell *cell = (SSShoppingListCell *)[tableView dequeueReusableCellWithIdentifier:@"shoppingListCell"];
-    SSProduct *product = (SSProduct *)[self.shoppingList objectAtIndex:indexPath.row];
-   
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:product.image.imageURL]];
-    [cell.imageView setImage:[UIImage imageWithData:data]];
+    for (UIGestureRecognizer *gesture in [cell gestureRecognizers])
+    {
+        [cell removeGestureRecognizer:gesture];
+    }
+  
+ 
+    SSShoppingElement *product = (SSShoppingElement *)[self.shoppingList objectAtIndex:indexPath.row];
     cell.productNameLabel.text = product.name;
-    cell.priceLabel.text = [NSString stringWithFormat:@"%.2f€", product.getPricesMean];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@€", product.price];
     
+    CGRect frame = cell.selectView.frame;
+    frame.size.width = 0;
+    [cell.selectView setFrame:frame];
+    
+    if (product.isBought) {
+        CGRect frame = cell.selectView.frame;
+        frame.size.width += 290;
+        [cell.selectView setFrame:frame];
+    } 
+    
+    UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureAction:)];
+    UISwipeGestureRecognizer *gestureLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeftGestureAction:)];
+    gesture.delegate = self;
+    gestureLeft.delegate = self;
+    
+    [gesture setDirection:UISwipeGestureRecognizerDirectionRight];
+    [gestureLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    
+    [cell addGestureRecognizer:gesture];
+    [cell addGestureRecognizer:gestureLeft];
+   
     return cell;
 }
 
@@ -67,7 +91,8 @@
     NSMutableArray *result = [NSMutableArray array];
     
     for (NSData *object in myEncodedArrayObject) {
-        SSProduct *obj = (SSProduct *)[NSKeyedUnarchiver unarchiveObjectWithData: object];
+        SSShoppingElement *obj = (SSShoppingElement *)[NSKeyedUnarchiver unarchiveObjectWithData: object];
+
         [result addObject:obj];
     }
     
@@ -77,12 +102,84 @@
 - (IBAction)getTotal:(id)sender {
     float total = 0;
     
-    for(SSProduct *product in self.shoppingList)
+    for(SSShoppingElement *product in self.shoppingList)
     {
-        total = total + product.getPricesMean;
+        if (![product isBought]) {
+             total = total + [product.price floatValue];
+        }
+       
     }
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Total des courses" message:[NSString stringWithFormat:@"Le total de vos courses est de : %.2f€", total] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertView show];
+}
+
+- (void)swipeGestureAction:(id)sender {
+    UIGestureRecognizer *gestureRecognizer = (UIGestureRecognizer *)sender;
+    
+    SSShoppingListCell *cell = (SSShoppingListCell *)gestureRecognizer.view;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
+        
+    } else if([gestureRecognizer state] == UIGestureRecognizerStateEnded){
+         SSShoppingElement *shoppingElement = [self.shoppingList objectAtIndex:indexPath.row];
+        if (!shoppingElement.isBought)
+        {
+            [UIView animateWithDuration:0.5 animations:^{
+                CGRect frame = cell.selectView.frame;
+                frame.size.width += 290;
+                [cell.selectView setFrame:frame];
+            }];
+            
+            shoppingElement.isBought = YES;
+            
+            [self modifyCustomObjectInShoppingList:shoppingElement];
+        }
+    }
+}
+
+- (void)swipeLeftGestureAction:(id)sender
+{
+    UIGestureRecognizer *gestureRecognizer = (UIGestureRecognizer *)sender;
+    
+    SSShoppingListCell *cell = (SSShoppingListCell *)gestureRecognizer.view;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
+        
+    } else if([gestureRecognizer state] == UIGestureRecognizerStateEnded){
+        SSShoppingElement *shoppingElement = [self.shoppingList objectAtIndex:indexPath.row];
+        if (shoppingElement.isBought) {
+            [UIView animateWithDuration:0.5 animations:^{
+                CGRect frame = cell.selectView.frame;
+                frame.size.width = 0;
+                [cell.selectView setFrame:frame];
+            }];
+            
+            shoppingElement.isBought = NO;
+            
+            [self modifyCustomObjectInShoppingList:shoppingElement];
+        }
+    }
+
+}
+
+- (void)modifyCustomObjectInShoppingList:(SSShoppingElement *)obj {
+    NSMutableArray *shopping = [NSMutableArray array];
+    
+    for (SSShoppingElement *shopElt in self.shoppingList)
+    {
+        NSData *myEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:shopElt];
+        [shopping addObject:myEncodedObject];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:shopping forKey:@"shoppingList"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)viewDidUnload {
+    [self setGesture:nil];
+    [super viewDidUnload];
 }
 @end

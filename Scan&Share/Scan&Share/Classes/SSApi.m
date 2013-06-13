@@ -374,6 +374,19 @@ static SSApi *sharedApi = nil;
     [manager postObject:nil path:[NSString stringWithFormat:@"product?id=%@&price", ean] parameters:@{@"price":price.value, @"gps":price.location}  success:success failure:failure];
 }
 
+- (void)addProduct:(SSProduct *)product withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
+              failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure
+{
+    // Create the base URL
+    NSURL *url = [NSURL URLWithString:SSBaseURL];
+    // Setting response content type
+    [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/plain"];
+    
+    // Setting POST Request
+    RKObjectManager *manager = [RKObjectManager managerWithBaseURL:url];
+    [manager postObject:nil path:[NSString stringWithFormat:@"product?id=%@", product.ean] parameters:@{@"name":product.name, @"description":product.description, @"photo":product.image.imageBuffer, @"price":[NSString stringWithFormat:@"%f" ,product.getPricesMean], @"gps":[[product.prices objectAtIndex:0] location], @"type":[product.types objectAtIndex:0]}  success:success failure:failure];
+}
+
 #pragma mark - Handler Errors
 
 - (void)errorHTTPHandler:(NSError *)error

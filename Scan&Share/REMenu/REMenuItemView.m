@@ -207,7 +207,6 @@
                              }];
             
         }
-    }
     else if (_menu.waitUntilAnimationIsComplete) {
         __typeof (&*self) __weak weakSelf = self;
         [_menu closeWithCompletion:^{
@@ -218,6 +217,7 @@
         [_menu close];
         self.subViewIsAlreadyOpen = NO;
         self.item.action(self.item);
+        }
     }
     
 }

@@ -51,5 +51,6 @@ withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMapp
 // ERRORS
 
 - (void)errorHTTPHandler:(NSError *)error;
-
+- (void)addProduct:(SSProduct *)product withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
+           failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
 @end

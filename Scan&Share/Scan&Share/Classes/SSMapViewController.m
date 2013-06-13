@@ -53,14 +53,16 @@
     
     for(SSPrice *price in self.product.prices)
     {
-        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        
-        if([price location])
+        if(![[price location] isEqualToString:@""])
         {
             // Example for test
             // price.location = @"49.41568:2.81774";
-            NSNumber *latitude = [numberFormatter numberFromString:[[price.location componentsSeparatedByString:@":"] objectAtIndex:0]];
-            NSNumber *longitude = [numberFormatter numberFromString:[[price.location componentsSeparatedByString:@":"] objectAtIndex:1]];
+            NSLog(@"Price : %@", price.location);
+            NSString *lat = [[price.location componentsSeparatedByString:@":"] objectAtIndex:0];
+            NSNumber *latitude = [NSNumber numberWithDouble:[lat doubleValue]];
+            
+            NSString *longString = [[price.location componentsSeparatedByString:@":"] objectAtIndex:1];
+            NSNumber *longitude = [NSNumber numberWithDouble:[longString doubleValue]];
             
             CLLocationCoordinate2D coordinate;
             coordinate.latitude = latitude.doubleValue;
