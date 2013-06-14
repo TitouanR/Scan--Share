@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class SSComment, SSPrice;
+@class SSComment, SSPrice, SSProduct;
 
 @interface SSApi : NSObject
 
@@ -48,9 +48,11 @@ withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMapp
 
 - (void)modifyProduct:(NSString *)ean withPrice:(SSPrice *)price withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
 
+- (void)addProduct:(SSProduct *)product withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
+           failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
+
 // ERRORS
 
 - (void)errorHTTPHandler:(NSError *)error;
-- (void)addProduct:(SSProduct *)product withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
-           failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
+
 @end

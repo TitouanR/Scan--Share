@@ -100,7 +100,7 @@
   
     for(ZBarSymbol *sym in symbols) {
         ean = sym.data;
-        NSLog(@"code : %@", ean);
+        //NSLog(@"code : %@", ean);
         break;
     }
     
@@ -157,7 +157,7 @@
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [[SSApi sharedApi] errorHTTPHandler:error];
-            NSLog(@"Error in getting the data");
+            //NSLog(@"Error in getting the data");
         }];
         
 

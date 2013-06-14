@@ -107,15 +107,15 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="MHF-gA-uUm" customClass="SSSearchResultViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A7f-sI-oC9">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background@2x.png" id="gDb-5z-wmn">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="91" sectionHeaderHeight="22" sectionFooterHeight="22" id="Rdq-sA-x9g">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -372,7 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6J-yh-Mmw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="412"/>
+            <point key="canvasLocation" x="1849" y="820"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mhc-I6-qbn">
@@ -462,6 +462,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="of4-Qa-b8M" id="lXJ-dZ-NFY"/>
+                        <segue destination="oQJ-RJ-ip3" kind="push" identifier="shoppingListToProduct" id="dyj-gd-KK6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7e-JW-mkT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -481,7 +482,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yqH-zE-vH0">
-                                <rect key="frame" x="32" y="37" width="257" height="44"/>
+                                <rect key="frame" x="32" y="22" width="257" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Effacer l'historique de recherche">
@@ -495,6 +496,47 @@
                                     <action selector="clearHistory:" destination="lrE-Uo-LVn" eventType="touchUpInside" id="YzZ-8s-TI0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GTR-Vh-IKj">
+                                <rect key="frame" x="32" y="82" width="257" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Effacer la liste de course">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearHistory:" destination="lrE-Uo-LVn" eventType="touchUpInside" id="KOx-1c-Xz4"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" id="Jz0-iq-xYg">
+                                <rect key="frame" x="20" y="141" width="280" height="162"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Cette application a été réalisée dans le cadre de l'enseignement NF28 - Ingénierie des systèmes interactif à l'Université de Compiègne. Elle a été réalisée par Nathan Ducrey, Samuel Lepetit, Titouan Rossier et Karim Chebbour. Cette applicatione est basée sur les frameworks suivants : (RestKit, ZBarSDK, JSONKit, REMenu, ASDepthModal, AMRatingControl, AFNetworking) et sur une API Rest et une base de données SQL.</string>
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="GXl-v6-iLk">
+                                <rect key="frame" x="53" y="309" width="78" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="UTC - P2013" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NvI-ee-clc">
+                                <rect key="frame" x="139" y="326" width="150" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1000,7 +1042,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kPi-J3-jL5"/>
-        <segue reference="igl-rY-EE5"/>
+        <segue reference="dyj-gd-KK6"/>
+        <segue reference="txS-UP-Opb"/>
     </inferredMetricsTieBreakers>
 </document>

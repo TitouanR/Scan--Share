@@ -61,7 +61,7 @@
     
     NSURL *imageURL = [NSURL URLWithString:[[((SSProduct *)[resultList.result objectAtIndex:indexPath.row]) image] imageURL]];
     NSData *data = [NSData dataWithContentsOfURL:imageURL];
-    NSLog(@"Image : %@", data);
+    //NSLog(@"Image : %@", data);
     [cell.productImageView setImage:[UIImage imageWithData:data]];
      
     return cell;

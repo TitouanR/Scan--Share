@@ -9,6 +9,7 @@
 #import "SSShoppingListViewController.h"
 #import "SSShoppingListCell.h"
 #import "SSShoppingElement.h"
+#import "SSProductViewController.h"
 
 @interface SSShoppingListViewController ()
 
@@ -83,6 +84,16 @@
     [cell addGestureRecognizer:gestureLeft];
    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[SSApi sharedApi] getProductWithEAN:[(SSShoppingElement *)[self.shoppingList objectAtIndex:indexPath.row] ean] withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
+        [self performSegueWithIdentifier:@"shoppingListToProduct" sender:product];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[SSApi sharedApi] errorHTTPHandler:error];
+    }];
 }
 
 - (NSArray *)loadCustomObjectWithKey:(NSString *)key {
@@ -181,5 +192,18 @@
 - (void)viewDidUnload {
     [self setGesture:nil];
     [super viewDidUnload];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"shoppingListToProduct"]) {
+        // Get the destination view controller
+        SSProductViewController *productVC = [segue destinationViewController];
+        
+        // Get the product to send from (id)sender
+        SSProduct *productToShow =(SSProduct*)sender;
+        
+        // Set the product object in the destination VC
+        [productVC setProduct:productToShow];
+    }
 }
 @end

@@ -297,7 +297,7 @@
 
 -(void)shareButtonClicked:(id)sender{
     UIButton* buttonSender = (UIButton*)sender;
-    NSLog(@"Tag : %d", buttonSender.tag);
+    //NSLog(@"Tag : %d", buttonSender.tag);
     [self.delegate buttonClicked:buttonSender];
     
 }

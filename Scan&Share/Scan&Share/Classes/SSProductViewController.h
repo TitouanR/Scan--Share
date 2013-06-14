@@ -29,6 +29,8 @@
 
 //Object
 @property (strong, nonatomic) SSProduct *product;
+@property (strong, nonatomic) NSArray *shoppingListArray;
+@property (assign, nonatomic) BOOL isProductSaved;
 //Content View
 @property (strong, nonatomic) SSProductContentView* contentView;
 //The 2 different right nav bar button

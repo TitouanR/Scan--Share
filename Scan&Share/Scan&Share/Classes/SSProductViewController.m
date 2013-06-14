@@ -109,21 +109,26 @@
     
     self.view = contentView;
     
+    self.shoppingListArray = [self loadCustomObjectWithKey:@"shoppingList"];
     
+    self.isProductSaved = NO;
     
+    for (SSShoppingElement *elt in self.shoppingListArray) {
+        if ([elt.ean isEqualToString:self.product.ean]) {
+            self.isProductSaved = YES;
+            break;
+        }
+    }
     
     //Init Menu
-    REMenuItem *addToListItem = [[REMenuItem alloc] initWithTitle:@"Ajouter à ma liste"
+    REMenuItem *addToListItem = [[REMenuItem alloc] initWithTitle:(self.isProductSaved ? @"Retirer de ma liste" : @"Ajouter à ma liste")
                                                     subtitle:@"Pour faciliter vos courses"
                                                        image:[UIImage imageNamed:@"addToListIco.png"]
                                             highlightedImage:nil
                                                       action:^(REMenuItem *item) {
-                                                          SSShoppingElement *shoppingElement = [[SSShoppingElement alloc] init];
-                                                          shoppingElement.name = self.product.name;
-                                                          shoppingElement.ean = self.product.ean;
-                                                          shoppingElement.price = [NSString stringWithFormat:@"%.2f", self.product.getPricesMean];
-                                                          [self saveCustomObjectInShoppingList:shoppingElement];
-                                                          NSLog(@"Item: %@", item);
+                                                          (self.isProductSaved ? [self removeProductFromShoppingList] : [self addProductToShoppingList
+                                                                                                                         ]);
+                                                          //NSLog(@"Item: %@", item);
                                                       }];
     
     REMenuItem *shareItem = [[REMenuItem alloc] initWithTitle:@"Partager"
@@ -131,7 +136,7 @@
                                                           image:[UIImage imageNamed:@"shareIco.png"]
                                                highlightedImage:nil
                                                          action:^(REMenuItem *item) {
-                                                             NSLog(@"Item: %@", item);
+                                                             //NSLog(@"Item: %@", item);
                                                          }];
     
     REMenuItem *showOccasions = [[REMenuItem alloc] initWithTitle:@"Voir les occasions"
@@ -139,7 +144,7 @@
                                                            image:[UIImage imageNamed:@"eyeIco.png"]
                                                 highlightedImage:nil
                                                           action:^(REMenuItem *item) {
-                                                              NSLog(@"Item: %@", item);
+                                                              //NSLog(@"Item: %@", item);
                                                         
                                                           }];
     
@@ -147,7 +152,7 @@
                                                           image:[UIImage imageNamed:@"+Ico.png"]
                                                highlightedImage:nil
                                                          action:^(REMenuItem *item) {
-                                                             NSLog(@"Item: %@", item);
+                                                             //NSLog(@"Item: %@", item);
                                                              
                                                          }];
     
@@ -176,23 +181,9 @@
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+
 }
 
-- (void)saveCustomObjectInShoppingList:(SSShoppingElement *)obj {
-    NSArray *userHistory = (NSArray *)[[NSUserDefaults standardUserDefaults] objectForKey:@"shoppingList"];
-    NSMutableArray *shoppingList = [NSMutableArray array];
-    
-    if(userHistory)
-    {
-        [shoppingList addObjectsFromArray:userHistory];
-        
-    }
-           
-    NSData *myEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:obj];
-    [shoppingList addObject:myEncodedObject];
-    [[NSUserDefaults standardUserDefaults] setObject:shoppingList forKey:@"shoppingList"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -213,8 +204,8 @@
     NSData *imageData = [NSData alloc];
     //TODO check pk data != null 
    /* if (product.image.imageBuffer){
-        NSLog(@"%@", product.image.imageBuffer);
-        NSLog(@"Image data");
+        //NSLog(@"%@", product.image.imageBuffer);
+        //NSLog(@"Image data");
         imageData = product.image.imageBuffer;
     }
     else{*/
@@ -271,6 +262,36 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.shoppingListArray = [self loadCustomObjectWithKey:@"shoppingList"];
+    
+    self.isProductSaved = NO;
+    
+    for (SSShoppingElement *elt in self.shoppingListArray) {
+        if([self.product.ean isEqualToString:elt.ean])
+        {
+            self.isProductSaved = YES;
+            break;
+        }
+    }
+    
+    for (REMenuItem *item in menu.items) {
+        if (item.tag == 0) {
+            [item setTitle:(self.isProductSaved ? @"Retirer de ma liste" : @"Ajouter à ma liste")];
+            if (self.isProductSaved) {
+                [item setAction:^(REMenuItem *item) {
+                    [self removeProductFromShoppingList];
+                }];
+            } else {
+                [item setAction:^(REMenuItem *item) {
+                    [self addProductToShoppingList];
+                }];
+            }
+        
+        }
+    }
+}
 
 - (void)viewDidUnload {
    
@@ -520,19 +541,19 @@
 	switch (result)
 	{
 		case MFMailComposeResultCancelled:
-			NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued");
+			//NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued");
 			break;
 		case MFMailComposeResultSaved:
-			NSLog(@"Mail saved: you saved the email message in the Drafts folder");
+			//NSLog(@"Mail saved: you saved the email message in the Drafts folder");
 			break;
 		case MFMailComposeResultSent:
-			NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send the next time the user connects to email");
+			//NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send the next time the user connects to email");
 			break;
 		case MFMailComposeResultFailed:
-			NSLog(@"Mail failed: the email message was nog saved or queued, possibly due to an error");
+			//NSLog(@"Mail failed: the email message was nog saved or queued, possibly due to an error");
 			break;
 		default:
-			NSLog(@"Mail not sent");
+			//NSLog(@"Mail not sent");
 			break;
 	}
     
@@ -564,13 +585,13 @@
             }
                                    failure: ^(RKObjectRequestOperation *operation, NSError *error) {
                                        
-                                       NSLog(@"Rate action fail");
+                                       //NSLog(@"Rate action fail");
                                        
                                    }];
         }
             failure: (void)^(RKObjectRequestOperation *operation, NSError *error) {
                 [[SSApi sharedApi] errorHTTPHandler:error];
-                NSLog(@"Rate action fail");
+                //NSLog(@"Rate action fail");
                                    
         };
         
@@ -580,7 +601,7 @@
     
     else if (alertView.tag == 2 && buttonIndex == 1) //Send Price Action
     {
-        NSLog(@"Validate : Prix : %@ and loc : %@", priceToAdd.value, priceToAdd.location);
+        //NSLog(@"Validate : Prix : %@ and loc : %@", priceToAdd.value, priceToAdd.location);
         
       [[SSApi sharedApi] modifyProduct:product.ean withPrice:self.priceToAdd withCompletionBlockSucceed: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
           
@@ -710,5 +731,69 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 -(void)dismissKeyboard{
     [contentView.addPriceTextField resignFirstResponder];
+}
+
+#pragma mark - SHOPPING LIST
+
+- (void)addProductToShoppingList
+{
+    SSShoppingElement *shoppingElement = [[SSShoppingElement alloc] init];
+    shoppingElement.name = self.product.name;
+    shoppingElement.ean = self.product.ean;
+    shoppingElement.price = [NSString stringWithFormat:@"%.2f", self.product.getPricesMean];
+    [self saveCustomObjectInShoppingList:shoppingElement];
+}
+
+- (void)removeProductFromShoppingList
+{
+    self.shoppingListArray = [self loadCustomObjectWithKey:@"shoppingList"];
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (SSShoppingElement *elt in self.shoppingListArray) {
+        if (![self.product.ean isEqualToString:elt.ean]) {
+            [array addObject:elt];
+        }
+    }
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"shoppingList"];
+   
+    for (SSShoppingElement *elt in array) {
+        [self saveCustomObjectInShoppingList:elt];
+    }
+    
+    
+    
+    self.shoppingListArray = [self loadCustomObjectWithKey:@"shoppingList"];
+
+}
+
+- (void)saveCustomObjectInShoppingList:(SSShoppingElement *)obj {
+    NSArray *userHistory = (NSArray *)[[NSUserDefaults standardUserDefaults] objectForKey:@"shoppingList"];
+    NSMutableArray *shoppingList = [NSMutableArray array];
+    
+    if(userHistory)
+    {
+        [shoppingList addObjectsFromArray:userHistory];
+        
+    }
+    
+    NSData *myEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:obj];
+    [shoppingList addObject:myEncodedObject];
+    [[NSUserDefaults standardUserDefaults] setObject:shoppingList forKey:@"shoppingList"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSArray *)loadCustomObjectWithKey:(NSString *)key {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *myEncodedArrayObject = [defaults objectForKey:key];
+    NSMutableArray *result = [NSMutableArray array];
+    
+    for (NSData *object in myEncodedArrayObject) {
+        SSShoppingElement *obj = (SSShoppingElement *)[NSKeyedUnarchiver unarchiveObjectWithData: object];
+        
+        [result addObject:obj];
+    }
+    
+    return result;
 }
 @end

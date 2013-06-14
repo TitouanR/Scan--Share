@@ -57,18 +57,18 @@
 - (IBAction)clearHistory:(id)sender {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"history"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Historique supprimé" message:@"L'historique a été correctement effacé." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
 }
 
-- (IBAction)test:(id)sender {
+- (IBAction)clearShoppingList:(id)sender {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"shoppingList"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
-    SSPrice *price = [[SSPrice alloc] init];
-    price.value = [NSNumber numberWithFloat:0.64];
-    price.location = @"35.2:16.3";
-    
-    [[SSApi sharedApi] modifyProduct:@"3068320052007" withPrice:price withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [[SSApi sharedApi] errorHTTPHandler:error];
-    }];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Liste de course supprimé" message:@"La liste de course a été correctement effacé." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
 }
+
+
 @end

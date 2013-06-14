@@ -57,7 +57,7 @@
         {
             // Example for test
             // price.location = @"49.41568:2.81774";
-            NSLog(@"Price : %@", price.location);
+            //NSLog(@"Price : %@", price.location);
             NSString *lat = [[price.location componentsSeparatedByString:@":"] objectAtIndex:0];
             NSNumber *latitude = [NSNumber numberWithDouble:[lat doubleValue]];
             
