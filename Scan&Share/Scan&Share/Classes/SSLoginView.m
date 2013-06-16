@@ -56,6 +56,8 @@
     if(!([loginTextField.text isEqualToString:@""] && [passwordTextField.text isEqualToString:@""]))
     {
         [[SSApi sharedApi] getLoggedInWithUsername:loginTextField.text andPassword:passwordTextField.text withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            
+            // Action to do for request success
             SSAccount *account = (SSAccount *)[mappingResult.array objectAtIndex:0];
             SSAppDelegate *appDelegate = (SSAppDelegate *)[UIApplication sharedApplication].delegate;
             appDelegate.currentLoggedAccount = account;
@@ -64,9 +66,10 @@
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connexion réussie !" message:@"La connexion a été établie avec succès." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
-          //  [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccessNotification" object:nil];
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            
+            // Action to do for request failure
             [[SSApi sharedApi] errorHTTPHandler:error];
         }];
     }

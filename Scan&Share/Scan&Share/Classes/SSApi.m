@@ -129,7 +129,8 @@ static SSApi *sharedApi = nil;
     [objectRequestOperation start];
 }
 
-- (void)searchProductWithName:(NSString *)name withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
+- (void)searchProductWithName:(NSString *)name
+   withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
                   failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure
 {
     // Create mapping between JSON and Objective-C class
@@ -235,21 +236,23 @@ static SSApi *sharedApi = nil;
 {
    // Create the base URL
     NSURL *url = [NSURL URLWithString:SSBaseURL];
+    
     // Setting response content type
     [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/plain"];
     
+    // Setting mapping for class with descriptors
     RKObjectMapping *accountMapping = [RKObjectMapping mappingForClass:[SSAccount class]];
     [accountMapping addAttributeMappingsFromArray:@[@"token", @"email", @"username", @"age", @"job"]];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:accountMapping pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
+    // Set up the manager to send request with descriptors for mapping
     RKObjectManager *manager = [RKObjectManager managerWithBaseURL:url];
     [manager addResponseDescriptor:responseDescriptor];
+    
+    // Send the request with method GET
     SSAccount *account = [[SSAccount alloc] init];
     [manager getObject:account path:[NSString stringWithFormat:@"login?username=%@&password=%@", name, password] parameters:nil success:success failure:failure];
-    
-    
-    
 }
 
 - (void)getCommentsFromProduct:(NSString *)ean fromStartIndex:(int)index withCompletionBlockSucceed:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success

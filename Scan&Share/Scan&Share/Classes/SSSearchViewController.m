@@ -37,6 +37,10 @@
     searchTextField.delegate = self;
     [self.navigationController setHidesBottomBarWhenPushed:YES];
   
+    UIImage *buttonImage = [[UIImage imageNamed:@"blueButton"]
+                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    
+    [self.searchButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning

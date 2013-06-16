@@ -12,6 +12,7 @@
 @interface SSParameterViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIButton *clearHistoryButton;
+@property (strong, nonatomic) IBOutlet UIButton *clearShoppingListButton;
 
 - (IBAction)clearHistory:(id)sender;
 

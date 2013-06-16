@@ -38,6 +38,7 @@
                             resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     
     [self.clearHistoryButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [self.clearShoppingListButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
     
 }
 
@@ -49,6 +50,7 @@
 
 - (void)viewDidUnload {
     [self setClearHistoryButton:nil];
+    [self setClearShoppingListButton:nil];
     [super viewDidUnload];
 }
 

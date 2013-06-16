@@ -72,7 +72,7 @@
                                     <outlet property="delegate" destination="EpY-OE-YcY" id="9rb-jS-Hcu"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TU9-Pq-zRt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TU9-Pq-zRt">
                                 <rect key="frame" x="107" y="277" width="107" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -87,6 +87,26 @@
                                     <action selector="search:" destination="EpY-OE-YcY" eventType="touchUpInside" id="Vri-M4-Te9"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Par nom/description : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ysb-Z4-5Hn">
+                                <rect key="frame" x="20" y="121" width="184" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Par type : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="owj-Gx-PIN">
+                                <rect key="frame" x="20" y="170" width="184" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="bRj-3v-uHt">
+                                <rect key="frame" x="212" y="121" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="zpP-pR-gC6">
+                                <rect key="frame" x="212" y="170" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -178,7 +198,7 @@
             </objects>
             <point key="canvasLocation" x="1395" y="-334"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Map View Controller - Autour de soi-->
         <scene sceneID="vFr-7Q-1qs">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="nxu-Bx-Sdp" customClass="SSMapViewController" sceneMemberID="viewController">
@@ -186,21 +206,14 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="jvJ-6C-osP">
-                                <rect key="frame" x="0.0" y="372" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Refresh" id="LLa-m2-UGY"/>
-                                </items>
-                            </toolbar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="LuY-vI-SOp">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="372"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="381-I4-9bB"/>
+                    <navigationItem key="navigationItem" title="Autour de soi" id="381-I4-9bB"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="LuY-vI-SOp" id="CsB-YK-hfw"/>
@@ -243,7 +256,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aTr-OE-bHi">
+                            <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aTr-OE-bHi">
                                 <rect key="frame" x="162" y="287" width="135" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -258,7 +271,7 @@
                                     <action selector="testButtonPressed:" destination="WVC-2B-r0g" eventType="touchUpInside" id="eH1-Ko-4jl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="K8T-9l-v95">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="K8T-9l-v95">
                                 <rect key="frame" x="20" y="287" width="99" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -469,7 +482,7 @@
             </objects>
             <point key="canvasLocation" x="878" y="1002"/>
         </scene>
-        <!--Parameter View Controller-->
+        <!--Parameter View Controller - Paramètres-->
         <scene sceneID="CXr-f7-hOy">
             <objects>
                 <viewController id="lrE-Uo-LVn" customClass="SSParameterViewController" sceneMemberID="viewController">
@@ -512,12 +525,12 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" id="Jz0-iq-xYg">
-                                <rect key="frame" x="20" y="141" width="280" height="162"/>
+                                <rect key="frame" x="0.0" y="134" width="320" height="169"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">Cette application a été réalisée dans le cadre de l'enseignement NF28 - Ingénierie des systèmes interactif à l'Université de Compiègne. Elle a été réalisée par Nathan Ducrey, Samuel Lepetit, Titouan Rossier et Karim Chebbour. Cette applicatione est basée sur les frameworks suivants : (RestKit, ZBarSDK, JSONKit, REMenu, ASDepthModal, AMRatingControl, AFNetworking) et sur une API Rest et une base de données SQL.</string>
+                                        <string key="content">Cette application a été réalisée dans le cadre de l'enseignement NF28 - Ingénierie des systèmes interactif à l'Université de Compiègne. Elle a été réalisée par Nathan Ducrey, Samuel Lepetit, Titouan Rossier et Karim Chebbour. Cette applicatione est basée sur les frameworks suivants : (RestKit, ZBarSDK, JSONKit, REMenu, ASDepthModal, AMRatingControl, AFNetworking) et sur une API Rest et une base de données (Mongo DB et Node JS).</string>
                                         <attributes>
                                             <font key="NSFont" size="12" name="Helvetica"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
@@ -526,8 +539,8 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="GXl-v6-iLk">
-                                <rect key="frame" x="53" y="309" width="78" height="56"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo_utc.jpg" id="GXl-v6-iLk">
+                                <rect key="frame" x="20" y="309" width="111" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="UTC - P2013" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NvI-ee-clc">
@@ -540,15 +553,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="eVA-7M-QqD">
-                        <barButtonItem key="rightBarButtonItem" title="Test" id="7Pz-vp-0uh">
-                            <connections>
-                                <action selector="test:" destination="lrE-Uo-LVn" id="SOX-Qc-uzw"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Paramètres" id="eVA-7M-QqD"/>
                     <connections>
                         <outlet property="clearHistoryButton" destination="yqH-zE-vH0" id="hpy-cG-d58"/>
+                        <outlet property="clearShoppingListButton" destination="GTR-Vh-IKj" id="O4L-0i-Sqn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYg-Ug-Zl4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -916,6 +924,7 @@
     <resources>
         <image name="background@2x.png" width="640" height="1136"/>
         <image name="logoScan&amp;Share@2x.png" width="403" height="193"/>
+        <image name="logo_utc.jpg" width="150" height="52"/>
         <image name="thumbBorder@2x.png" width="90" height="90"/>
     </resources>
     <classes>
@@ -960,6 +969,7 @@
             <relationships>
                 <relationship kind="action" name="clearHistory:"/>
                 <relationship kind="outlet" name="clearHistoryButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="clearShoppingListButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="SSProductViewController" superclassName="UIViewController">
@@ -1042,7 +1052,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dyj-gd-KK6"/>
+        <segue reference="kPi-J3-jL5"/>
         <segue reference="txS-UP-Opb"/>
     </inferredMetricsTieBreakers>
 </document>

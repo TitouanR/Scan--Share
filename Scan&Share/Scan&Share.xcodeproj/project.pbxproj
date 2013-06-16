@@ -99,6 +99,7 @@
 		8A89ACE6175B82FF0072167D /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A89ACE5175B82FF0072167D /* backButton@2x.png */; };
 		8A89ACEA175B8D570072167D /* SSMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A89ACE9175B8D570072167D /* SSMapViewController.m */; };
 		8A89ACEC175B8E1E0072167D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A89ACEB175B8E1E0072167D /* MapKit.framework */; };
+		8A92862B176E2684001221DC /* logo_utc.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A92862A176E2684001221DC /* logo_utc.jpg */; };
 		8A9394B3174FB9F50061CFE2 /* SSComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9394B2174FB9F50061CFE2 /* SSComment.m */; };
 		8AA95B0B175FD070009BBEA6 /* SSProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA95B0A175FD070009BBEA6 /* SSProfileViewController.m */; };
 		8ACFC68F174D080000771E12 /* SSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFC68E174D080000771E12 /* SSImage.m */; };
@@ -265,6 +266,7 @@
 		8A89ACE8175B8D570072167D /* SSMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSMapViewController.h; path = Classes/SSMapViewController.h; sourceTree = "<group>"; };
 		8A89ACE9175B8D570072167D /* SSMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSMapViewController.m; path = Classes/SSMapViewController.m; sourceTree = "<group>"; };
 		8A89ACEB175B8E1E0072167D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8A92862A176E2684001221DC /* logo_utc.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo_utc.jpg; sourceTree = "<group>"; };
 		8A9394B1174FB9F50061CFE2 /* SSComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSComment.h; path = Classes/SSComment.h; sourceTree = "<group>"; };
 		8A9394B2174FB9F50061CFE2 /* SSComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSComment.m; path = Classes/SSComment.m; sourceTree = "<group>"; };
 		8AA95B09175FD070009BBEA6 /* SSProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSProfileViewController.h; path = Classes/SSProfileViewController.h; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 		8A1C76DD173DAC700042B9B6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8A92862A176E2684001221DC /* logo_utc.jpg */,
 				5B057B681768D06900F6C906 /* +Ico@2x.png */,
 				5B057B661768CFF500F6C906 /* eyeIco@2x.png */,
 				5B057B641768CE1500F6C906 /* shareIco@2x.png */,
@@ -876,6 +879,7 @@
 				5B057B691768D06900F6C906 /* +Ico@2x.png in Resources */,
 				5B057B73176907B200F6C906 /* Default@2x.png in Resources */,
 				5B057B7717690E9900F6C906 /* appIco.png in Resources */,
+				8A92862B176E2684001221DC /* logo_utc.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

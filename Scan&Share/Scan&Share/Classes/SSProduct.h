@@ -12,6 +12,8 @@
 
 @interface SSProduct : NSObject
 
+// Déclaration de variables et génération des getters/setters
+
 @property (nonatomic, strong) NSString *ean;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *description;
@@ -21,7 +23,7 @@
 @property (nonatomic, strong) NSArray *types;
 @property (nonatomic, strong) NSMutableArray *prices;
 
-// TO DO : Add Comments
+// Déclaration des méthodes
 
 -(SSPrice*)getMinimumPrice;
 -(SSPrice*)getMaximumPrice;
