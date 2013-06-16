@@ -49,6 +49,7 @@
     return [self.shoppingList count];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SSShoppingListCell *cell = (SSShoppingListCell *)[tableView dequeueReusableCellWithIdentifier:@"shoppingListCell"];

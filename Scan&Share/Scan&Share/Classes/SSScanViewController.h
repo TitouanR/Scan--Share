@@ -12,7 +12,7 @@
 @interface SSScanViewController : UIViewController <ZBarReaderViewDelegate>
 
 @property (nonatomic, strong) IBOutlet ZBarReaderView *readerView;
-
+@property (nonatomic, strong) NSString *eanToSend;
 - (IBAction)testButtonPressed:(id)sender;
 
 

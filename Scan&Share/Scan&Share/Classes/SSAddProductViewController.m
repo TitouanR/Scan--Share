@@ -7,6 +7,7 @@
 //
 
 #import "SSAddProductViewController.h"
+#import "SSProduct.h"
 
 @interface SSAddProductViewController ()
 
@@ -14,7 +15,7 @@
 
 @implementation SSAddProductViewController
 
-@synthesize imagePickedPlace, ean, addPictureButton, addProductButton, nameTextField, descTextView;
+@synthesize imagePickedPlace, ean, addPictureButton, addProductButton, nameTextField, descTextView, imagePicker, currentLocation, image, priceTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,6 +50,13 @@
     [addProductButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
      [addProductButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
     
+    //Set up location manager
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,7 +70,7 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
     
     
-    UIImage* image = [[UIImage alloc] init];
+    image = [[UIImage alloc] init];
     
     image = [info objectForKey:UIImagePickerControllerOriginalImage];
     self.imagePickedPlace.image = image;
@@ -72,19 +80,90 @@
 }
 
 - (IBAction)selectPicture:(id)sender {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.allowsEditing = NO;
-    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    picker.delegate = self;
-    [self presentViewController:picker animated:YES completion:nil];
+    
+        imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.allowsEditing = NO;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.delegate = self;
+
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    self.imagePicker = nil;
 }
+
+- (IBAction)addProduct:(id)sender {
+    
+    if([self.nameTextField.text isEqualToString:@""] || [self.descTextView.text isEqualToString:@""] || [priceTextField.text isEqualToString:@""] || !image){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Infos manquantes" message:@"Veuillez remplir tous les champs" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    else{
+    
+        SSProduct *product = [[SSProduct alloc] init];
+    
+        product.ean = self.ean;
+        product.name = self.nameTextField.text;
+        product.description = self.descTextView.text;
+        NSData *imageData = UIImagePNGRepresentation(image);
+        product.image.imageBuffer = imageData;
+        
+        product.types = [[NSArray alloc] initWithObjects:@"type", nil];
+        SSPrice *price = [[SSPrice alloc] init];
+        price.location = [NSString stringWithFormat:@"%f:%f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude];
+        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber * myNumber = [f numberFromString:priceTextField.text];
+        
+        price.value = myNumber;
+        product.prices = [[NSMutableArray alloc] initWithObjects:price, nil];
+        
+        SSPrice *p = [product.prices objectAtIndex:0];
+        NSLog(@"%@ : %@",p.value, p.location);
+        NSLog(@"Type : %@", [[product types] objectAtIndex:0]);
+        
+        [[SSApi sharedApi] addProduct:product withCompletionBlockSucceed: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Produit ajouté" message:@"Votre produit à été ajouter" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+    failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        
+    }];
+        
+        
+        
+    }
+}
+
+
 - (void)viewDidUnload {
- 
+    [self setPriceTextField:nil];
     [super viewDidUnload];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [locationManager startUpdatingLocation];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+ 
+}
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations {
+    CLLocation *location = [locations lastObject];
+    
+    if (!self.currentLocation ){
+        self.currentLocation = [[CLLocation alloc] init];
+    }
+    
+    self.currentLocation = location;
+    [locationManager stopUpdatingLocation];
 }
 
 -(void)dismissKeyboard{
     [nameTextField resignFirstResponder];
     [descTextView resignFirstResponder];
+    [priceTextField resignFirstResponder];
 }
 @end

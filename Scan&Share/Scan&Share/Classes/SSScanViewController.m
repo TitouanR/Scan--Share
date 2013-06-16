@@ -22,7 +22,7 @@
 
 @implementation SSScanViewController
 
-@synthesize readerView;
+@synthesize readerView, eanToSend;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -124,10 +124,24 @@
         
         [self saveCustomObjectInHistory:historyObject];
         RKLogInfo(@"Load collection of Products: %@", product);
-        
+       [self.readerView stop];
         [self performSegueWithIdentifier:@"fromScanToProductSegue" sender:product];
+        
+        
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-       [[SSApi sharedApi] errorHTTPHandler:error];
+        
+        if (error.code == -1011){
+            eanToSend = ean;
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Produit non référencé" message:@"Oups, Scan&Share ne connait pas ce produit, souhaitez-vous l'ajouter ?" delegate:self cancelButtonTitle:@"Non, pas le temps" otherButtonTitles:@"Oui, bien sûr", nil];
+            
+            [alert show];
+            
+            
+        }else{
+            [[SSApi sharedApi] errorHTTPHandler:error];
+        }
+        
+    
     }];
 }
 - (void)viewDidUnload {
@@ -152,7 +166,7 @@
             historyObject.scanID = ean;
             
             [self saveCustomObjectInHistory:historyObject];
-            
+            [self.readerView stop];
             [self performSegueWithIdentifier:@"fromScanToProductSegue" sender:product];
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -167,6 +181,11 @@
         [self performSegueWithIdentifier:@"scanToAddProductPush" sender:nil];
     }
         
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self.readerView start];
 }
 
 - (void)saveCustomObjectInHistory:(SSHistory *)obj {
@@ -184,4 +203,15 @@
     [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+        if (buttonIndex == 1) {
+            [self performSegueWithIdentifier:@"scanToAddProductPush" sender:eanToSend];
+        }
+
+}
+
+
 @end

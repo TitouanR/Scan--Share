@@ -11,6 +11,7 @@
 #import "ASDepthModalViewController.h"
 #import "SSMapViewController.h"
 #import "SSAppDelegate.h"
+#import "SSAddCommentViewController.h"
 
 @interface SSProductViewController ()
 
@@ -342,6 +343,16 @@
         // Set the product object in the destination VC
         mapViewController.product = productToShow;
     }
+    
+    else if ([[segue identifier] isEqualToString:@"productToAddCommentPush"]){
+        SSAddCommentViewController *destVC = [segue destinationViewController];
+        
+        NSString* ean = self.product.ean;
+        NSString *rate = [NSString stringWithFormat:@"%@", self.product.rating ];
+        
+        [destVC setEan:ean];
+        [destVC setRate:rate];
+    }
 }
 
 -(void)buttonClicked:(UIButton*)button inView:(UIView*)view {
@@ -669,8 +680,7 @@
         
         [cell.contentLabel sizeThatFits:labelSize];
         [cell.contentLabel setText:comment.content];
-        
-        [cell.authorDateLabel setText:[NSString stringWithFormat:@"%@, le %@",comment.author, comment.date ]];
+        [cell.authorDateLabel setText:[NSString stringWithFormat:@"%@ le %@",comment.author, comment.date ]];
 
     return cell;
     

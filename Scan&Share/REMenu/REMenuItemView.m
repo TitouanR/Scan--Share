@@ -218,14 +218,15 @@
         self.subViewIsAlreadyOpen = NO;
         self.item.action(self.item);
         }
-    }
     
+    }
 }
 
 
 -(void) shareButtonClicked:(id)sender{
    
     [self.menu shareButtonClicked:sender];
+    [_menu close];
 }
 
 @end

@@ -387,7 +387,8 @@ static SSApi *sharedApi = nil;
     
     // Setting POST Request
     RKObjectManager *manager = [RKObjectManager managerWithBaseURL:url];
-    [manager postObject:nil path:[NSString stringWithFormat:@"product?id=%@", product.ean] parameters:@{@"name":product.name, @"description":product.description, @"photo":product.image.imageBuffer, @"price":[NSString stringWithFormat:@"%f" ,product.getPricesMean], @"gps":[[product.prices objectAtIndex:0] location], @"type":[product.types objectAtIndex:0]}  success:success failure:failure];
+    SSPrice *p = [product.prices objectAtIndex:0];
+    [manager postObject:nil path:[NSString stringWithFormat:@"product?id=%@", product.ean] parameters:@{@"name":product.name, @"description":product.description, @"photo":product.image.imageBuffer, @"price":[NSString stringWithFormat:@"%@" ,p.value], @"gps":p.location, @"type":[NSString stringWithFormat:@"%@" ,[product.types objectAtIndex:0]]}  success:success failure:failure];
 }
 
 #pragma mark - Handler Errors

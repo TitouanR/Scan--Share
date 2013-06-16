@@ -7,6 +7,7 @@
 //
 
 #import "SSAddCommentViewController.h"
+#import "SSAppDelegate.h"
 
 @interface SSAddCommentViewController ()
 
@@ -14,7 +15,7 @@
 
 @implementation SSAddCommentViewController
 
-@synthesize sendButton, commentTextField;
+@synthesize sendButton, commentTextField, ean, rate, commentToSend;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -103,6 +104,26 @@
 
 - (IBAction)sendComment:(id)sender {
     
-    //Send Comment
+    
+    SSAppDelegate *appDelegate = (SSAppDelegate *)[UIApplication sharedApplication].delegate;
+    SSAccount *userAccount = appDelegate.currentLoggedAccount;
+                                                   
+    commentToSend = [[SSComment alloc] init];
+    commentToSend.author = userAccount.username;
+    //TODO : ADD DATE FORMATTER
+    
+    commentToSend.date = @"16/06/2013";
+    commentToSend.content = commentTextField.text;
+    
+    [[SSApi sharedApi] rateProduct:ean withRate:rate andComment:commentToSend withCompletionBlockSucceed: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Commentaire envoyé" message:@"Votre commentaire est bien parti" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+failure:^(RKObjectRequestOperation *operation, NSError *error) {
+    
+}];
 }
 @end

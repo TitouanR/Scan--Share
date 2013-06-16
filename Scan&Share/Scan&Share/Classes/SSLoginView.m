@@ -55,6 +55,7 @@
 {
     if(!([loginTextField.text isEqualToString:@""] && [passwordTextField.text isEqualToString:@""]))
     {
+        
         [[SSApi sharedApi] getLoggedInWithUsername:loginTextField.text andPassword:passwordTextField.text withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             
             // Action to do for request success
@@ -72,6 +73,7 @@
             // Action to do for request failure
             [[SSApi sharedApi] errorHTTPHandler:error];
         }];
+        
     }
     else {
         
