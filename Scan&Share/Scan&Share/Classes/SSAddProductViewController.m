@@ -104,16 +104,16 @@
         product.name = self.nameTextField.text;
         product.description = self.descTextView.text;
         NSData *imageData = UIImagePNGRepresentation(image);
-        product.image.imageBuffer = imageData;
+        SSImage *imageP = [[SSImage alloc] init];
+        imageP.imageBuffer = imageData;
+        product.image = imageP;
         
         product.types = [[NSArray alloc] initWithObjects:@"type", nil];
         SSPrice *price = [[SSPrice alloc] init];
         price.location = [NSString stringWithFormat:@"%f:%f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude];
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        NSNumber * myNumber = [f numberFromString:priceTextField.text];
+
         
-        price.value = myNumber;
+        price.value = [NSNumber numberWithFloat:[priceTextField.text floatValue]];
         product.prices = [[NSMutableArray alloc] initWithObjects:price, nil];
         
         SSPrice *p = [product.prices objectAtIndex:0];

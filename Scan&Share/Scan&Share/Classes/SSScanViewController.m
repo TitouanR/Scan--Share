@@ -104,6 +104,8 @@
         break;
     }
     
+    eanToSend = ean;
+    
     [[SSApi sharedApi] getProductWithEAN:ean withCompletionBlockSucceed:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         SSProduct *product = (SSProduct *)[mappingResult.array objectAtIndex:0];
         
@@ -131,7 +133,6 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         
         if (error.code == -1011){
-            eanToSend = ean;
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Produit non référencé" message:@"Oups, Scan&Share ne connait pas ce produit, souhaitez-vous l'ajouter ?" delegate:self cancelButtonTitle:@"Non, pas le temps" otherButtonTitles:@"Oui, bien sûr", nil];
             
             [alert show];
@@ -178,7 +179,7 @@
     }
     
     else{
-        [self performSegueWithIdentifier:@"scanToAddProductPush" sender:nil];
+        [self performSegueWithIdentifier:@"scanToAddProductPush" sender:@"01"];
     }
         
 }
