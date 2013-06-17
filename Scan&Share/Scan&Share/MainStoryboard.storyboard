@@ -256,7 +256,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aTr-OE-bHi">
+                            <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aTr-OE-bHi">
                                 <rect key="frame" x="162" y="287" width="135" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -271,7 +271,7 @@
                                     <action selector="testButtonPressed:" destination="WVC-2B-r0g" eventType="touchUpInside" id="eH1-Ko-4jl"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="K8T-9l-v95">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="K8T-9l-v95">
                                 <rect key="frame" x="20" y="287" width="99" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -541,7 +541,7 @@
                                     <action selector="clearHistory:" destination="lrE-Uo-LVn" eventType="touchUpInside" id="KOx-1c-Xz4"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" id="Jz0-iq-xYg">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" id="Jz0-iq-xYg">
                                 <rect key="frame" x="0.0" y="134" width="320" height="169"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -626,6 +626,7 @@
                     <navigationItem key="navigationItem" id="LpN-GB-VMq"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="loginView" destination="acu-cW-On2" id="X5X-oD-8QY"/>
                         <segue destination="U6l-U6-uMl" kind="push" identifier="productToAddCommentPush" id="VsG-OA-LbB"/>
                         <segue destination="nxu-Bx-Sdp" kind="push" identifier="productToMapPush" id="5X7-NS-3TH"/>
                     </connections>
@@ -995,6 +996,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SSProductViewController.h"/>
             <relationships>
                 <relationship kind="action" name="aroundMe:"/>
+                <relationship kind="action" name="showMenu:"/>
                 <relationship kind="outlet" name="loginView" candidateClass="SSLoginView"/>
             </relationships>
         </class>

@@ -708,6 +708,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     ASDepthModalOptions options = style | ASDepthModalOptionBlurNone;
     
     [ASDepthModalViewController presentView:self.loginView backgroundColor:color options:options completionHandler:^{
+        [self performSegueWithIdentifier:@"productToAddCommentPush" sender:self.product.ean];
         
     }];
     

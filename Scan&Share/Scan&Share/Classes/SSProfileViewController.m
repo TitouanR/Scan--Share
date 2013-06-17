@@ -52,6 +52,16 @@
     [self reloadData];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    SSAppDelegate *appDelegate = (SSAppDelegate *)[UIApplication sharedApplication].delegate;
+    SSAccount *account = appDelegate.currentLoggedAccount;
+    
+    if (account) {
+        [self revealHeaderView];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

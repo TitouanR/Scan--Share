@@ -80,6 +80,7 @@
 		8A4CD44E1762D933006A8B26 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4CD44D1762D933006A8B26 /* CoreImage.framework */; };
 		8A4CD4501762D988006A8B26 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4CD44F1762D987006A8B26 /* Accelerate.framework */; };
 		8A4CD4551762E307006A8B26 /* SSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD4541762E307006A8B26 /* SSAccount.m */; };
+		8A62823E176EF55600C58CBA /* SSLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A62823D176EF55600C58CBA /* SSLoadingView.m */; };
 		8A7CAC41176A027D00CEA298 /* SSShoppingElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7CAC40176A027D00CEA298 /* SSShoppingElement.m */; };
 		8A7D1F3717447DD2009E7536 /* logoScan&Share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D1F3617447DD2009E7536 /* logoScan&Share@2x.png */; };
 		8A7D1F56174481C3009E7536 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7D1F50174481C3009E7536 /* libzbar.a */; };
@@ -223,6 +224,8 @@
 		8A4CD44F1762D987006A8B26 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		8A4CD4531762E307006A8B26 /* SSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSAccount.h; path = Classes/SSAccount.h; sourceTree = "<group>"; };
 		8A4CD4541762E307006A8B26 /* SSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSAccount.m; path = Classes/SSAccount.m; sourceTree = "<group>"; };
+		8A62823C176EF55600C58CBA /* SSLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSLoadingView.h; path = Classes/SSLoadingView.h; sourceTree = "<group>"; };
+		8A62823D176EF55600C58CBA /* SSLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSLoadingView.m; path = Classes/SSLoadingView.m; sourceTree = "<group>"; };
 		8A7CAC3F176A027D00CEA298 /* SSShoppingElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSShoppingElement.h; path = Classes/SSShoppingElement.h; sourceTree = "<group>"; };
 		8A7CAC40176A027D00CEA298 /* SSShoppingElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSShoppingElement.m; path = Classes/SSShoppingElement.m; sourceTree = "<group>"; };
 		8A7D1F3617447DD2009E7536 /* logoScan&Share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoScan&Share@2x.png"; sourceTree = "<group>"; };
@@ -620,6 +623,7 @@
 				8A1C76D6173D226A0042B9B6 /* MainStoryboard.storyboard */,
 				8A1C76DA173DAB380042B9B6 /* SSMainViewController.h */,
 				8A1C76DB173DAB380042B9B6 /* SSMainViewController.m */,
+				8A62823B176EF52300C58CBA /* Loading View */,
 				5B057B6A1768D5E700F6C906 /* Add Product */,
 				8A1C8E6717670ECC00558141 /* Shopping List */,
 				8A4CD4391762D15A006A8B26 /* Login */,
@@ -678,6 +682,15 @@
 				8A4CD4471762D490006A8B26 /* UIImage+Blur.m */,
 			);
 			path = ASDepthModal;
+			sourceTree = "<group>";
+		};
+		8A62823B176EF52300C58CBA /* Loading View */ = {
+			isa = PBXGroup;
+			children = (
+				8A62823C176EF55600C58CBA /* SSLoadingView.h */,
+				8A62823D176EF55600C58CBA /* SSLoadingView.m */,
+			);
+			name = "Loading View";
 			sourceTree = "<group>";
 		};
 		8A7D1F38174481C3009E7536 /* ZBarSDK */ = {
@@ -954,6 +967,7 @@
 				8A1C8E6E17670FB300558141 /* SSShoppingListViewController.m in Sources */,
 				5B057B6D1768D5F100F6C906 /* SSAddProductViewController.m in Sources */,
 				8A7CAC41176A027D00CEA298 /* SSShoppingElement.m in Sources */,
+				8A62823E176EF55600C58CBA /* SSLoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
